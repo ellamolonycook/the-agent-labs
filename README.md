@@ -7,12 +7,21 @@ Both pages were removed from timerich.ai in the same move — they 404 there now
 
 ## Pages
 
+The AI Content Machine **is** the site root — theagentlabs.ai serves the sales
+page directly, not a separate landing page in front of it.
+
 | Path | Source | Indexed |
 |---|---|---|
-| `/` | `index.html` | no — **placeholder, replace me** |
-| `/contentmachine/` | `contentmachine/index.html` | yes |
-| `/contentmachine/apply/` | `contentmachine/apply/index.html` | no (`noindex`) |
+| `/` | `index.html` | yes — the AI Content Machine |
+| `/apply/` | `apply/index.html` | no (`noindex`) |
 | `/portal/` | `portal/index.html` | no (`noindex`) |
+
+Its images (`ajay.jpg`, `ella*.jpg`) sit at the root next to `index.html`
+because the page references them relatively (`src="ajay.jpg"`). Don't move them
+into a subfolder without rewriting those `src` attributes.
+
+`_redirects` keeps the older `/contentmachine` and `/contentmachine/apply`
+paths alive as 301s, for links already out in the world.
 
 ## Deploy — Cloudflare Pages (not yet connected)
 
@@ -45,9 +54,8 @@ If The Agent Labs gets its own terms/privacy, update the footer links in
 
 ## Known placeholders inherited from the old repo
 
-- `index.html` — the whole root page is a placeholder
 - `portal/index.html` — `href="[LINK]"` and `src="[ELLA_HEADSHOT]"`
-- `contentmachine/apply/index.html` — `href="[ELLA_CALENDAR_LINK]"`
+- `apply/index.html` — `href="[ELLA_CALENDAR_LINK]"`
 
 ## Note
 

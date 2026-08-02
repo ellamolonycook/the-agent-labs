@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects.
+# The Content Machine used to sit at /contentmachine on timerich.ai and was
+# briefly at /contentmachine here. It now IS the site root. Keep the old paths
+# alive for links already out in the world (Instagram bio, ads, sent emails).
+/contentmachine            /        301
+/contentmachine/           /        301
+/contentmachine/apply      /apply/  301
+/contentmachine/apply/     /apply/  301
