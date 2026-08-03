@@ -121,6 +121,12 @@
   .typeline .tw-char{opacity:0}
   .typeline .tw-char.on{opacity:1}
   .typeline .tw-caret{display:inline-block;width:.5ch;height:1.05em;background:var(--lime);vertical-align:-.15em;margin-left:1px;animation:blink 1s steps(1) infinite}
+
+  /* typewriter loop: type + erase + repeat continuously */
+  .typeline-loop .tw-char{opacity:0}
+  .typeline-loop .tw-char.on{opacity:1}
+  .typeline-loop .tw-caret{display:inline-block;width:.5ch;height:1.05em;background:var(--lime);vertical-align:-.15em;margin-left:1px;animation:blink 1s steps(1) infinite}
+
   /* interactive story: curved scroll-drawn thread + spotlight beats */
   .story{position:relative;padding-left:48px;margin-top:28px}
   @media(max-width:600px){.story{padding-left:32px}}
@@ -130,7 +136,7 @@
   .story-spine .prog{stroke:var(--lime);stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px rgba(212,255,79,.55));transition:stroke-dashoffset .7s ease}
   .story-group{position:relative;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
   .story-group + .story-group{margin-top:34px}
-  .story-group.in{opacity:1;transform:none}
+  .story-group.in{opacity:1;transform:none;}
   .story-group::before{content:'';position:absolute;left:-34px;top:.55em;width:13px;height:13px;border-radius:50%;background:var(--panel2);border:2px solid var(--dim);transition:background .7s ease,border-color .7s ease,box-shadow .7s ease}
   @media(max-width:600px){.story-group::before{left:-17px;width:11px;height:11px}}
   .story-group.in::before{background:var(--lime);border-color:var(--lime);box-shadow:0 0 18px -1px var(--lime)}
@@ -149,6 +155,10 @@
   .why-split .pull{margin-bottom:0}
   @media(max-width:820px){.why-split{grid-template-columns:1fr;gap:28px}}
 
+
+
+
+  
   /* ---------- loop timeline ---------- */
   .week{margin:44px 0;padding-left:0;list-style:none}
   .week li{position:relative;padding:0 0 26px 0}
@@ -430,6 +440,82 @@
     <p class="hero-sub">RUNS ON ANY AI TOOL · NO CODE · DOORS CLOSE SEPT 4</p>
   </div>
 </header>
+
+
+
+<!-- ============ FILMING GRIND ============ -->
+<section>
+  <div class="wrap narrow">
+    <span class="eyebrow">The filming grind</span>
+
+    <div class="story">
+      <svg class="story-spine" viewBox="0 0 24 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="track" d="M12 0 L 12 100"/>
+        <path class="prog" pathLength="1" d="M12 0 L 12 100"/>
+      </svg>
+
+      <div class="story-group">
+        <p class="story-line p-emph">
+          <strong><span class="key">Let’s be real—social media is HUMBLING.</span></strong>
+        </p>
+        <p class="story-line">
+          Because behind every “simple” post is a <span class="key">RIDICULOUS</span> amount of work.
+        </p>
+      </div>
+
+      <div class="story-group">
+        <p class="story-line">
+          Find the idea. Write the hook. Fix your hair. Balance your phone on a stack of books.
+        </p>
+        <p class="story-line">
+          Take one. Take six. Take fourteen.
+        </p>
+      </div>
+
+      <div class="story-group">
+        <p class="story-line">
+          By take twenty, you’re not talking, you’re reciting.
+        </p>
+        <p class="story-line p-emph">
+          <strong><span class="key">45 seconds of content. 2 hours of editing.</span></strong>
+        </p>
+      </div>
+
+      <div class="story-group">
+        <p class="story-line">
+          You cringe. Post anyway. Refresh.
+        </p>
+        <p class="story-line p-emph">
+          <strong><span class="key">Only 200 views? And mostly from people who already follow you.</span></strong>
+        </p>
+      </div>
+
+      <div class="story-group">
+        <p class="story-line">
+          Tomorrow? Same cycle. More takes. More trends. More cringe.
+        </p>
+      </div>
+
+      <div class="story-group">
+        <p class="story-line p-emph">
+          <strong><span class="key">You don’t need to be good at talking to the camera. You need a content system that works without taking over your life.</span></strong>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============ THE TURN ============ -->
+  <section>
+    <div class="wrap narrow">
+      <p class="statement typeline-loop" style="text-align:center;margin:60px auto">Your expertise should show up—even when you don't.</p>
+    </div>
+  </section>
+
+
 
 <!-- ============ 01 THE LOOP ============ -->
 <section>
@@ -1040,30 +1126,114 @@ const CONFIG = {
   lines.forEach(function(el){ to.observe(el); });
 })();
 
-/* story: each paragraph starts blank and glides in as you scroll down to it. Pure scroll, once each, never re-hides. */
+
+/* typewriter loop: type + erase + repeat, triggered on scroll-in */
 (function(){
-  var story = document.querySelector('.story');
-  if(!story) return;
-  var prog = story.querySelector('.story-spine .prog');
-  var groups = Array.prototype.slice.call(story.querySelectorAll('.story-group'));
-  if(!groups.length) return;
   var reduceMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduceMo){ groups.forEach(function(b){ b.classList.add('in'); }); if(prog) prog.style.strokeDashoffset='0'; return; }
-  var revealed = 0;
-  function drawTo(n){ if(prog) prog.style.strokeDashoffset = String(1 - Math.min(1, n / groups.length)); }
-  drawTo(0);
-  // a paragraph arrives as its top enters the lower part of the viewport, so the text comes with your scroll
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(e.isIntersecting && !e.target.classList.contains('in')){
-        e.target.classList.add('in');
-        revealed++;
-        drawTo(revealed);
-        io.unobserve(e.target);
+  var lines = Array.prototype.slice.call(document.querySelectorAll('.typeline-loop'));
+  if(!lines.length) return;
+  if(reduceMo) return;
+  
+  lines.forEach(function(el){
+    var text = el.textContent;
+    el.textContent = '';
+    el._chars = [];
+    for(var i = 0; i < text.length; i++){
+      var s = document.createElement('span');
+      s.className = 'tw-char';
+      s.textContent = text.charAt(i);
+      el.appendChild(s);
+      el._chars.push(s);
+    }
+  });
+  
+  function loop(el){
+    var chars = el._chars || [];
+    var caret = document.createElement('span');
+    caret.className = 'tw-caret';
+    
+    function typeOut(){
+      var i = 0;
+      (function step(){
+        if(i >= chars.length){
+          setTimeout(erase, 2000);
+          return;
+        }
+        var c = chars[i];
+        c.classList.add('on');
+        c.after(caret);
+        i++;
+        var ch = c.textContent;
+        var delay = /[.,!?;:]/.test(ch) ? 460 : (ch === ' ' ? 95 : 74);
+        setTimeout(step, delay);
+      })();
+    }
+    
+    function erase(){
+      var i = chars.length - 1;
+      (function step(){
+        if(i < 0){
+          setTimeout(typeOut, 800);
+          return;
+        }
+        var c = chars[i];
+        c.classList.remove('on');
+        c.after(caret);
+        i--;
+        setTimeout(step, 50);
+      })();
+    }
+    
+    typeOut();
+  }
+  
+  var to = new IntersectionObserver(function(es){
+    es.forEach(function(e){ 
+      if(e.isIntersecting && !e.target._loopStarted){
+        e.target._loopStarted = true;
+        loop(e.target);
+        to.unobserve(e.target);
       }
     });
-  }, { threshold: 0, rootMargin: '0px 0px -18% 0px' });
-  groups.forEach(function(b){ io.observe(b); });
+  }, { threshold: .5 });
+  
+  lines.forEach(function(el){ to.observe(el); });
+})();
+
+/* story: each paragraph starts blank and glides in as you scroll down to it. */
+(function(){
+  var stories = Array.prototype.slice.call(document.querySelectorAll('.story'));
+  if(!stories.length) return;
+  var reduceMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  stories.forEach(function(story) {
+    var prog = story.querySelector('.story-spine .prog');
+    var groups = Array.prototype.slice.call(story.querySelectorAll('.story-group'));
+    if(!groups.length) return;
+    
+    if(reduceMo){ 
+      groups.forEach(function(b){ b.classList.add('in'); }); 
+      if(prog) prog.style.strokeDashoffset='0'; 
+      return; 
+    }
+    
+    var revealed = 0;
+    function drawTo(n){ if(prog) prog.style.strokeDashoffset = String(1 - Math.min(1, n / groups.length)); }
+    drawTo(0);
+    
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting && !e.target.classList.contains('in')){
+          e.target.classList.add('in');
+          revealed++;
+          drawTo(revealed);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -18% 0px' });
+    
+    groups.forEach(function(b){ io.observe(b); });
+  });
 })();
 
 /* 50+ skills: turn the wrapped chip list into two stacked auto-scrolling rows */
