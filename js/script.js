@@ -1,10 +1,10 @@
 
 /* ============ CONFIG · all dates + prices live here ============ */
 const CONFIG = {
-  earlyBirdEnds: new Date('2026-08-29T00:00:00+01:00'),   // midnight Lisbon after Fri Aug 28
-  doorsClose:    new Date('2026-09-05T00:00:00+01:00'),   // midnight Lisbon after Fri Sept 4
-  essEarly:  '$197', essFull: '$297',   // Essential
-  earlyPrice: '$395', fullPrice: '$495' // Full Machine
+  earlyBirdEnds: new Date('2026-08-29T00:00:00+01:00'),
+  doorsClose:    new Date('2026-09-05T00:00:00+01:00'), 
+  essEarly:  '$197', essFull: '$297',  
+  earlyPrice: '$395', fullPrice: '$495'
 };
 
 /* pricing flip */
@@ -35,23 +35,37 @@ const CONFIG = {
 })();
 
 /* countdown in sticky bar: early-bird first, then doors-close */
-/* TEMPORARILY DISABLED: static 48hr message instead of countdown */
-(function(){
+(function () {
   const el = document.getElementById('bar-count');
-  let timer;
-  /* function fmt(ms){ const d=Math.floor(ms/86400000), h=Math.floor(ms%86400000/3600000); return d+'D '+h+'H'; }
-  function tick(){
+  if (!el) return;
+
+  const endTime = new Date(Date.now() + 48 * 60 * 60 * 1000);
+
+  function fmt(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${hours}H ${minutes}M ${seconds}S`;
+  }
+
+  function tick() {
     const now = new Date();
-    if(now < CONFIG.earlyBirdEnds){
-      el.textContent = 'EARLY BIRD · LIMITED TIME · ' + fmt(CONFIG.earlyBirdEnds - now) + ' LEFT';
-    } else if(now < CONFIG.doorsClose){
-      el.textContent = 'DOORS CLOSE IN ' + fmt(CONFIG.doorsClose - now) + ' · FRI SEPT 4';
+    const remaining = endTime - now;
+
+    if (remaining > 0) {
+      el.textContent = `EARLY BIRD SPECIAL ENDS IN ${fmt(remaining)}`;
     } else {
-      el.textContent = 'DOORS CLOSED · NEXT RUN TBA';
+      el.textContent = 'EARLY BIRD SPECIAL ENDED';
       clearInterval(timer);
     }
   }
-  tick(); timer = setInterval(tick, 60000); */
+
+  tick();
+
+  const timer = setInterval(tick, 1000);
 })();
 
 /* urgent red bar: live countdown + height sync */
@@ -71,7 +85,7 @@ const CONFIG = {
   var timer;
   function setState(s){
     if(state===s) return; state=s;
-    if(s==='early'){ msg.innerHTML='This price never comes back <span class="ub-soft ub-hide-sm">· early-bird special ends in 48 hours</span>'; }
+    if(s==='early'){ msg.innerHTML='Founding member pricing available now'; }
     else if(s==='doors'){ msg.textContent='Doors close Fri Sept 4 · last chance to get in'; }
     else { msg.textContent='Doors closed · next run TBA'; el.style.display='none'; }
     sync();
