@@ -1535,7 +1535,14 @@ a.stat:hover span {
 .tier .cta-btn {
   width: 100%;
   text-align: center;
-  margin-top: auto;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+#ess-btn {
+  transform: translateY(25px);
+  margin-bottom: 45px;
+
 }
 
 /* .tier.studio .t-name{
