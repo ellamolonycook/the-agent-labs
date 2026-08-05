@@ -815,11 +815,50 @@ a.stat:hover span {
     transform 0.35s ease;
 }
 .week.armed li {
-  opacity: 0.4;
+  opacity: 0.25;
+  transform: translateY(12px);
+}
+.week.armed li.lit {
+  opacity: 1;
+  transform: translateY(0);
 }
 .week li.lit {
   opacity: 1;
 }
+
+/* cracked code highlight */
+.cracked-highlight {
+  position: relative;
+  z-index: 1;
+}
+
+.cracked-highlight::before {
+  content: "";
+  position: absolute;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: 0.17em;
+  height: 0.09em;
+  background: var(--lime);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: crackedSwipe 1s ease-in forwards;
+}
+
+@keyframes crackedSwipe {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.neon {
+  color: var(--lime);
+  text-shadow: 0 0 18px rgba(212, 255, 79, 0.35);
+}
+
+
+
 .callout {
   border: 1px solid var(--line);
   border-left: 3px solid var(--lime);
@@ -1458,15 +1497,7 @@ a.stat:hover span {
   );
 }
 
-/* .tier.studio {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.05),
-    var(--panel) 40%
-  );
-  position: relative;
-  border-color: #555;
-} */
+
 
 
 .studio-vip-btn {
@@ -1506,21 +1537,6 @@ a.stat:hover span {
 
 
 
-/* .studio-btn{
-  background:#fff;
-  color:#0B0B10;
-  border:3px solid var(--lime);
-  background: #fff;
-
-}
-
-.studio-btn:hover{
-  opacity:.92;
-  background: var(--lime);
-  border: 3px solid var(--lime);
-  
-} */
-
 .tier .btn {
   width: 100%;
   text-align: center;
@@ -1545,13 +1561,6 @@ a.stat:hover span {
 
 }
 
-/* .tier.studio .t-name{
-  display:block;
-  margin:-26px -26px 18px;
-  padding:16px 26px;
-  background:rgba(255,255,255,.06);
-  border-bottom:1px solid var(--line);
-} */
 
 .tier .badge {
   position: absolute;
