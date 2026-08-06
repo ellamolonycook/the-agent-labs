@@ -2508,3 +2508,733 @@ a.band-btn[data-todo] { cursor: not-allowed; }
   background: rgba(212,255,79,.25);
   box-shadow: 0 0 45px rgba(212,255,79,.3);
 }
+
+/* ================================================================
+   FIT TO SCREEN · Ella, 6 Aug 2026
+   "I shouldn't be scrolling if it's one section."
+   Every section is sized to sit inside one viewport on both a 390x844
+   phone and a 1440x900 desktop, minus the urgent bar + sticky bar.
+   Where content genuinely could not share a screen (two bios, twenty-one
+   priced line items) the SECTION was split in the HTML rather than the
+   type being shrunk past readability.
+   ================================================================ */
+
+:root { --chrome: calc(var(--urgent-h, 40px) + 52px); }
+
+section { padding: 26px 0; }
+
+/* ---- hero ---- */
+.hero { padding: calc(76px + var(--urgent-h)) 0 26px; }
+.h-big { font-size: clamp(30px, 4.6vw, 54px); }
+.h-setup { font-size: clamp(15px, 1.8vw, 20px); }
+.hero .lead { font-size: 16px; margin-top: 16px; }
+.hero-ctas { margin-top: 20px; }
+.hero .stats { margin-top: 16px !important; }
+.stat { padding: 16px 14px; }
+.stat b { font-size: clamp(21px, 2vw, 27px); }
+.hero-sub { margin-top: 16px; }
+
+/* ---- shared rhythm: the big margin-tops were the real height ---- */
+.teach, .phases, .grid2, .calls { margin-top: 26px; }
+.term, .machine { margin-top: 22px; }
+.sec-h { font-size: clamp(20px, 2.4vw, 28px); }
+.lead { font-size: 16.5px; }
+
+/* ---- bios: one person per screen, photo beside the words ---- */
+.teach { grid-template-columns: 1fr; }
+.teach .card { display: grid; grid-template-columns: minmax(0, 260px) 1fr; gap: 30px; align-items: start; }
+.t-photo { aspect-ratio: 4/5; margin-bottom: 0; max-height: 330px; object-position: 50% 12%; }
+.teach .card-body p { font-size: 14.5px; line-height: 1.55; }
+.teach .card-body h3 { margin-top: 0; }
+.bio-quote { margin-top: 12px; }
+
+/* ---- guest speaker ---- */
+.guest { margin-top: 22px; padding: 22px; }
+.guest-photo { max-height: 300px; object-fit: cover; }
+.guest-body p { font-size: 14px; line-height: 1.55; }
+
+/* ---- machine ---- */
+.term { font-size: 12.5px; }
+.m-agent em { font-size: 11.5px; }
+
+/* ---- money ---- */
+.grand { margin-top: 26px; padding: 30px 20px 26px; }
+.grand-num { font-size: clamp(46px, 8.4vw, 86px); }
+.grand-pay { margin-top: 16px; }
+.band-screen .bands { margin-top: 0; }
+.band { padding: 22px 24px; }
+.band-head { padding-bottom: 13px; }
+.band-list li { padding: 9px 0; }
+.bi { font-size: 14.5px; }
+.bi em { font-size: 12px; margin-top: 2px; }
+.band-locked { margin-top: 10px; padding-top: 10px; }
+.band-locked li { padding: 3px 0 3px 22px; font-size: 12.5px; }
+.band-close { margin-top: 16px; padding-top: 16px; }
+.band-pay b { font-size: clamp(34px, 4.6vw, 46px); }
+.band-btn { margin-top: 14px; }
+.split-div { margin-top: 16px; }
+.split-btn { margin-top: 10px; }
+.band-foot, .band-aside { margin-top: 12px; }
+
+/* ---- FAQ: eleven rows have to share one screen ---- */
+.faq summary { padding: 13px 40px 13px 4px; font-size: 16px; }
+.faq .a { padding-bottom: 14px; }
+
+/* ---- dates + figures: photos were setting the height ---- */
+.story-figure img { max-height: 380px; object-fit: cover; }
+.dates { margin-top: 20px; }
+
+/* ---- VIP ---- */
+.vip-photo { aspect-ratio: 4/5; max-height: 320px; }
+.vip-intro { gap: 30px; }
+.vip-tiers { margin-top: 0; }
+
+/* ================================================================
+   PHONE · 390x844 leaves ~717px once both bars are on screen
+   ================================================================ */
+@media (max-width: 640px) {
+  section { padding: 20px 0; }
+  .wrap { padding: 0 16px; }
+
+  .hero { padding: calc(52px + var(--urgent-h)) 0 20px; }
+  .h-big { font-size: 27px; line-height: 1.02; }
+  .h-setup { font-size: 14px; }
+  .hero .lead { font-size: 14px; line-height: 1.5; }
+  .hero .lead[style] { margin-top: 14px !important; }
+  .stat { padding: 11px 12px; }
+  .stat b { font-size: 19px; }
+  .stat span { font-size: 9.5px; letter-spacing: .08em; }
+  .hero-sub { font-size: 10px; margin-top: 12px; }
+  .btn.big { padding: 13px 20px; font-size: 14px; }
+
+  .sec-h { font-size: 21px; line-height: 1.15; }
+  .lead, p { font-size: 14.5px; line-height: 1.5; }
+  .eyebrow { font-size: 10px; }
+
+  /* every card grid goes 2x2 instead of a single tall column */
+  .phases, .grid2, .calls { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+  .phase, .grid2 .card, .call { padding: 14px 13px; }
+  .phase h3, .grid2 .card h3, .call h3 { font-size: 14px; margin-top: 8px; }
+  .phase p, .grid2 .card p, .call p { font-size: 11.5px; line-height: 1.45; margin-top: 7px; }
+  .call-n { font-size: 26px; }
+  .call-host { font-size: 9.5px; margin-top: 3px; }
+  .calls-foot { font-size: 12px; margin-top: 16px; }
+
+  /* bio: photo becomes a banner above the words, not a tall portrait */
+  .teach .card { grid-template-columns: 1fr; gap: 14px; }
+  .t-photo { aspect-ratio: 16/7; max-height: 150px; object-position: 50% 22%; }
+  .teach .card-body p { font-size: 13px; line-height: 1.48; margin-top: 9px; }
+  .teach .card-body h3 { font-size: 19px; }
+  .cred { font-size: 9.5px; line-height: 1.5; }
+  .bio-quote { font-size: 12.5px; margin-top: 10px; padding-left: 10px; }
+  .socials { margin-top: 12px; }
+
+  .guest { padding: 16px; gap: 16px; margin-top: 18px; }
+  .guest-photo { aspect-ratio: 16/9; max-height: 150px; object-fit: cover; object-position: 50% 28%; }
+  .guest-body p { font-size: 12.5px; line-height: 1.5; margin-top: 10px; }
+  .guest-session { font-size: 9.5px; padding: 4px 8px; }
+  .guest-body h3 { font-size: 19px; margin-top: 12px; }
+
+  .story-line + .story-line { margin-top: 9px; }
+  .story-group + .story-group { margin-top: 14px; }
+  .story-line, .story-line strong { font-size: 14px; line-height: 1.45; }
+  .statement { font-size: 17px; line-height: 1.25; }
+
+  .term { margin-top: 16px; font-size: 10.5px; }
+  .machine { margin-top: 16px; }
+  .m-agent { font-size: 11px; }
+  .m-agent em { font-size: 10px; }
+
+  .grand { padding: 22px 14px 20px; margin-top: 18px; }
+  .grand-num { font-size: 44px; }
+  .grand-cap { font-size: 10px; margin-top: 10px; }
+  .grand-pay { font-size: 18px; margin-top: 14px; }
+  .grand-note { font-size: 12.5px; margin-top: 14px; }
+
+  .band { padding: 16px 14px; }
+  .band-sub { font-size: 15px; margin-top: 7px; }
+  .band-list li { padding: 7px 0; }
+  .bi { font-size: 13px; }
+  .bi em { font-size: 11px; line-height: 1.35; }
+  .bv { font-size: 12.5px; margin-top: 3px; }
+  .band-locked li { font-size: 11px; padding: 2px 0 2px 20px; }
+  .band-close { margin-top: 12px; padding-top: 12px; }
+  .band-pay b { font-size: 34px; }
+  .band-urgency { font-size: 11px; }
+  .band-btn { margin-top: 11px; padding: 12px 16px; font-size: 13px; }
+  .split-sub, .band-foot, .band-aside { font-size: 11px; }
+
+  .faq summary { padding: 9px 32px 9px 2px; font-size: 13.5px; }
+  .faq .a p { font-size: 13px; }
+
+  .story-figure img { max-height: 210px; }
+  .dates { margin-top: 14px; }
+  .date-row { padding: 9px 0; }
+  .dd, .dt { font-size: 12px; }
+
+  .vip-photo { aspect-ratio: 16/9; max-height: 150px; }
+  .vip-intro { gap: 14px; }
+  .vip-card { padding: 14px; }
+  .vip-card p { font-size: 12px; }
+  .vprice { font-size: 26px; }
+
+  .testi p { font-size: 13.5px; line-height: 1.5; }
+  .vchip { font-size: 10px; padding: 4px 8px; }
+}
+
+/* ---------------- FIT PASS 2 · the stubborn ones ---------------- */
+
+/* The Essentials carries eleven priced items. On desktop they run in two
+   columns so the band still closes on its price inside one screen. */
+@media (min-width: 641px) {
+  #band-essentials .band-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+  }
+  #band-essentials .band-list li { padding: 7px 0; }
+  #band-essentials .band-list li:nth-last-child(2) { border-bottom: none; }
+}
+
+/* trims that buy back the last few pixels */
+.hero .lead { font-size: 15.5px; }
+.story-line + .story-line { margin-top: 11px; }
+.grid2 .card { padding: 18px 18px; }
+.grid2 .card p { font-size: 14px; }
+.band-close { margin-top: 13px; padding-top: 13px; }
+.band-value b { font-size: 17px; }
+.band-pay { margin-top: 5px; }
+.phase p { font-size: 13.5px; }
+
+@media (max-width: 640px) {
+  /* hero: the headline was doing the damage */
+  .hero { padding: calc(44px + var(--urgent-h)) 0 16px; }
+  .h-big { font-size: 24px; }
+  .h-setup { font-size: 13px; }
+  .h-kick { font-size: 10.5px; margin-top: .5em; }
+  .hero .lead { font-size: 13px; line-height: 1.45; margin-top: 12px; }
+  .hero-ctas { margin-top: 14px; gap: 8px; }
+  .hero .stats { margin-top: 12px !important; }
+  .stat { padding: 9px 10px; }
+  .stat b { font-size: 17px; }
+  .hero-sub { margin-top: 10px; }
+
+  /* THE ESSENTIALS · phone
+     Eleven items with their micro-copy cannot share a 717px screen at a
+     readable size. Name and price share a row and the descriptions step
+     back, so the band still closes on its price without scrolling.
+     They stay in the markup, and return the moment there is width for them. */
+  #band-essentials .band-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 6px 0;
+  }
+  #band-essentials .bi em { display: none; }
+  #band-essentials .bi { font-size: 12.5px; }
+  #band-essentials .bv { margin-top: 0; font-size: 12px; }
+
+  /* bands 2 and 3 keep their micro-copy — five items each leaves room */
+  .band-list li { padding: 6px 0; }
+  .bi em { font-size: 10.5px; line-height: 1.3; }
+  .band-pay b { font-size: 30px; }
+  .band-value b { font-size: 15px; }
+  .band-btn { margin-top: 9px; padding: 11px 14px; font-size: 12.5px; }
+  .split-div { margin-top: 11px; font-size: 10px; }
+  .split-btn { margin-top: 8px; }
+  .split-sub { margin-top: 7px; }
+  .band-foot { margin-top: 9px; }
+  .band-aside { margin-top: 9px; font-size: 10.5px; }
+  .band-locked { margin-top: 8px; padding-top: 8px; }
+  .band-locked li { font-size: 10.5px; }
+
+  /* the agent map */
+  .machine { margin-top: 12px; }
+  .m-brain { font-size: 11px; padding: 8px; }
+  .m-grid { gap: 6px; }
+  .m-agent { padding: 8px; font-size: 10.5px; }
+  .m-agent em { display: none; }
+  .m-io { font-size: 10px; padding: 8px; }
+
+  /* dates: the studio photo was half the screen */
+  .story-figure img { max-height: 132px; }
+  .date-row { padding: 7px 0; }
+  .dd, .dt { font-size: 11.5px; }
+  .dates-split { gap: 1rem; }
+
+  /* story + viral cards */
+  .story-line, .story-line strong { font-size: 13.5px; line-height: 1.4; }
+  .story-line + .story-line { margin-top: 8px; }
+  .phase p { font-size: 11px; }
+  .phase { padding: 12px 11px; }
+}
+
+/* ---------------- FIT PASS 3 ---------------- */
+
+/* Price and button sit side by side, so the close block costs one row not four.
+   The value still touches the buy — they are in the same box, on the same line. */
+@media (min-width: 641px) {
+  .band-close {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 300px);
+    gap: 26px;
+    align-items: center;
+  }
+  .band-close .band-btn { margin-top: 0; grid-column: 2; }
+  .band-close .band-value,
+  .band-close .band-pay,
+  .band-close .band-urgency { grid-column: 1; }
+  .band-close .band-urgency { margin-top: 6px; }
+  .split-div, .split-btn, .split-sub { grid-column: 2; }
+  .split-div { margin-top: 12px; }
+
+  /* the three locked rows read fine in a row rather than a stack */
+  #band-essentials .band-locked { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+  #band-essentials .band-locked li { padding: 2px 0 2px 20px; }
+}
+
+.hero { padding-bottom: 14px; }
+.dates { margin-top: 16px; }
+
+@media (max-width: 640px) {
+  /* the date rows were stacking into 150px blocks each */
+  .date-row {
+    grid-template-columns: 94px 1fr !important;
+    gap: 10px;
+    padding: 6px 0;
+    align-items: baseline;
+  }
+  .date-row .dd { font-size: 10px; line-height: 1.3; }
+  .date-row .dt { font-size: 11.5px; line-height: 1.4; }
+  .dates-split p { font-size: 11.5px; margin-top: 14px !important; }
+
+  /* How it works: the four-calls card carries three times the copy of the others */
+  .grid2 .card { padding: 12px 11px; }
+  .grid2 .card p { font-size: 11px; line-height: 1.4; }
+  .grid2 .card h3 { font-size: 13.5px; }
+
+  /* Studio's close block is the tallest on the page — two buttons and a divider */
+  #band-studio .band-list li { padding: 5px 0; }
+  #band-studio .bi em { font-size: 10px; }
+  #band-studio .band-aside { margin-top: 7px; font-size: 10px; }
+  #band-studio .band-close { margin-top: 10px; padding-top: 10px; }
+  #band-studio .band-foot { font-size: 10px; margin-top: 7px; }
+  .split-sub { font-size: 10px; line-height: 1.35; }
+
+  #band-essentials .band-locked { display: flex; flex-wrap: wrap; gap: 2px 14px; }
+  .hero { padding-bottom: 10px; }
+  .story-group + .story-group { margin-top: 12px; }
+}
+
+/* ---------------- FIT PASS 4 · close block as two real columns ---------------- */
+.band-close { display: flex; flex-direction: column; gap: 12px; }
+.band-money { flex: 1; min-width: 0; }
+.band-actions { display: flex; flex-direction: column; }
+.band-actions .band-btn { margin-top: 0; }
+.band-actions .split-div { margin-top: 12px; }
+.band-actions .split-btn { margin-top: 8px; }
+.band-actions .split-sub { margin-top: 7px; }
+
+@media (min-width: 641px) {
+  .band-close { flex-direction: row; align-items: center; gap: 30px; }
+  .band-actions { width: 320px; flex: none; }
+  /* pass-3 grid placement is superseded by the flex columns above */
+  .band-close .band-btn,
+  .band-close .band-value,
+  .band-close .band-pay,
+  .band-close .band-urgency,
+  .split-div, .split-btn, .split-sub { grid-column: auto; }
+}
+
+/* ---------------- FIT PASS 5 · phone bands ---------------- */
+@media (max-width: 640px) {
+  /* price returns to the item's own row instead of claiming a line of its own —
+     that line was costing ~17px on every one of the twenty-one items */
+  .band-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    padding: 5px 0;
+  }
+  .bv { display: inline; margin-top: 0; text-align: right; font-size: 11.5px; }
+  .bi { font-size: 12.5px; }
+  .bi em { font-size: 10px; line-height: 1.28; margin-top: 1px; }
+
+  .band-head { padding-bottom: 10px; }
+  .band-sub { font-size: 14px; margin-top: 5px; }
+  .band-name { font-size: 10.5px; }
+
+  .band-locked { margin-top: 7px; padding-top: 7px; }
+  .band-locked li { font-size: 10px; padding: 1px 0 1px 17px; }
+  .band-locked li::before { font-size: 9px; }
+
+  .band-money .band-value b { font-size: 14px; }
+  .band-money .band-pay { font-size: 14px; margin-top: 3px; }
+  .band-money .band-pay b { font-size: 27px; }
+  .band-money .band-urgency { font-size: 10.5px; margin-top: 4px; }
+  .band-close { gap: 8px; margin-top: 10px; padding-top: 10px; }
+
+  .band-actions .band-btn { padding: 10px 12px; font-size: 12px; }
+  .band-actions .split-div { margin-top: 8px; font-size: 9.5px; }
+  .band-actions .split-btn { margin-top: 6px; }
+  .band-actions .split-sub { margin-top: 5px; font-size: 9.5px; line-height: 1.3; }
+  #band-studio .band-aside { margin-top: 6px; font-size: 9.5px; }
+  #band-studio .band-foot { margin-top: 6px; font-size: 9.5px; }
+
+  /* hero: last few pixels */
+  .hero { padding-bottom: 6px; }
+  .hero .lead { font-size: 12.5px; }
+  .hero-sub { font-size: 9.5px; margin-top: 8px; }
+}
+
+/* ---------------- FIT PASS 6 · the last few pixels ---------------- */
+section { padding: 22px 0; }
+#band-studio .band-list li { padding: 4px 0; }
+
+@media (max-width: 640px) {
+  section { padding: 16px 0; }
+  .hero { padding-bottom: 4px; }
+  .hero .stats { margin-top: 10px !important; }
+  #band-studio .band-list li { padding: 4px 0; }
+  #band-studio .band-close { margin-top: 8px; padding-top: 8px; }
+}
+
+@media (max-width: 640px) { .hero { padding-bottom: 0; } .hero-sub { margin-top: 6px; } }
+
+
+/* ================================================================
+   FIT · FLUID SCALE  (supersedes the fixed px in passes 1-6)
+   Whether a section fits depends on how SHORT the screen is and how
+   NARROW it is — a phone loses height to wrapping, a laptop just has
+   less height. So every size below is the SMALLER of a width-relative
+   and a height-relative measure:  clamp(floor, min(Nvw, Msvh), ceiling).
+   The floor keeps it readable, the ceiling keeps the original design.
+   svh, not vh, so mobile browser chrome can't push a section off-screen.
+   Verified from an iPhone SE (375x667) to 1920x1080.
+   ================================================================ */
+
+section { padding: clamp(7px, min(4.1vw, 2.44svh), 22px) 0; }
+
+/* ---- type ---- */
+.sec-h      { font-size: clamp(16px,   min(5.38vw, 3.11svh), 28px); }
+.lead, p    { font-size: clamp(11px,   min(3.33vw, 1.83svh), 16.5px); }
+.statement  { font-size: clamp(14px,   min(4.36vw, 2.67svh), 24px); }
+.eyebrow    { font-size: clamp(8.5px,  min(2.56vw, 1.33svh), 12px); }
+.h-big      { font-size: clamp(20px,   min(6.15vw, 6svh),    54px); }
+.h-setup    { font-size: clamp(11px,   min(3.33vw, 2.22svh), 20px); }
+.h-kick     { font-size: clamp(9px,    min(2.56vw, 1.5svh),  15px); }
+.hero .lead { font-size: clamp(11px,   min(3.2vw,  1.72svh), 15.5px); }
+.hero-sub   { font-size: clamp(8.5px,  min(2.44vw, 1.22svh), 12px); }
+
+/* ---- rhythm ---- */
+.teach, .phases, .grid2, .calls { margin-top: clamp(9px, min(4.62vw, 2.89svh), 26px); }
+.term, .machine, .bands, .grand { margin-top: clamp(8px, min(4.1vw,  2.67svh), 24px); }
+.hero { padding: clamp(34px, min(11.3vw, 8.44svh), 76px) 0 clamp(0px, min(1vw, 1svh), 14px); }
+.hero { padding-top: calc(clamp(34px, min(11.3vw, 8.44svh), 76px) + var(--urgent-h)); }
+.hero-ctas   { margin-top: clamp(8px, min(3.6vw, 2.22svh), 20px); }
+.hero .stats { margin-top: clamp(7px, min(3.1vw, 1.78svh), 16px) !important; }
+
+/* ---- images: the biggest single height driver ---- */
+.t-photo          { max-height: clamp(80px, min(38vw,   36svh),   330px); }
+.story-figure img { max-height: clamp(90px, min(33.8vw, 42.2svh), 380px); }
+.guest-photo      { max-height: clamp(86px, min(38.5vw, 33.3svh), 300px); }
+.vip-photo        { max-height: clamp(86px, min(38.5vw, 35.6svh), 320px); }
+
+/* ---- stats ---- */
+.stat   { padding: clamp(6px, min(2.3vw, 1.78svh), 16px) clamp(8px, 1.2vw, 14px); }
+.stat b { font-size: clamp(14px, min(4.36vw, 3svh), 27px); }
+
+/* ---- cards ---- */
+.phase, .grid2 .card, .call          { padding: clamp(9px, min(3.08vw, 2svh), 18px) clamp(9px, 1vw, 18px); }
+.phase h3, .grid2 .card h3, .call h3 { font-size: clamp(12px, min(3.46vw, 1.94svh), 16px); margin-top: clamp(4px, min(2vw, 1.1svh), 10px); }
+.phase p,  .grid2 .card p,  .call p  { font-size: clamp(9.5px, min(2.82vw, 1.5svh), 13.5px); line-height: 1.45; margin-top: clamp(4px, min(1.8vw, 1svh), 10px); }
+.call-n     { font-size: clamp(18px, min(6.67vw, 4.44svh), 40px); }
+.call-host  { font-size: clamp(8.5px, min(2.44vw, 1.22svh), 11px); }
+.calls-foot { font-size: clamp(10px, min(3.08vw, 1.56svh), 14px); margin-top: clamp(8px, min(4.1vw, 2.44svh), 22px); }
+
+/* ---- bios ---- */
+.teach .card-body p  { font-size: clamp(10.5px, min(3.33vw, 1.61svh), 14.5px); line-height: 1.5; margin-top: clamp(5px, min(2.3vw, 1.33svh), 12px); }
+.teach .card-body h3 { font-size: clamp(14px, min(4.87vw, 2.44svh), 22px); }
+.cred       { font-size: clamp(8px, min(2.44vw, 1.22svh), 11px); }
+.bio-quote  { font-size: clamp(10.5px, min(3.2vw, 1.56svh), 14px); margin-top: clamp(6px, min(2.56vw, 1.56svh), 14px); }
+
+/* ---- guest ---- */
+.guest         { padding: clamp(11px, min(4.1vw, 2.44svh), 22px); margin-top: clamp(9px, min(4.6vw, 2.44svh), 22px); }
+.guest-body p  { font-size: clamp(10px, min(3.2vw, 1.56svh), 14px); line-height: 1.5; margin-top: clamp(5px, min(2.56vw, 1.56svh), 14px); }
+.guest-body h3 { font-size: clamp(14px, min(4.87vw, 2.67svh), 24px); }
+.guest-session { font-size: clamp(8px, min(2.44vw, 1.22svh), 11px); }
+
+/* ---- story ---- */
+.story-line, .story-line strong { font-size: clamp(11px, min(3.46vw, 1.78svh), 16px); line-height: 1.45; }
+.story-line + .story-line   { margin-top: clamp(4px, min(2.05vw, 1.33svh), 12px); }
+.story-group + .story-group { margin-top: clamp(7px, min(3.08vw, 2svh), 18px); }
+
+/* ---- machine ---- */
+.term    { font-size: clamp(8px, min(2.7vw, 1.39svh), 12.5px); }
+.m-agent { font-size: clamp(8.5px, min(2.82vw, 1.33svh), 12px); padding: clamp(5px, min(2.05vw, 1.22svh), 11px); }
+.m-brain { font-size: clamp(8.5px, min(2.82vw, 1.33svh), 12px); padding: clamp(5px, min(2.05vw, 1.22svh), 11px); }
+.m-io    { font-size: clamp(8px, min(2.56vw, 1.33svh), 12px); }
+
+/* ---- money ---- */
+.grand      { padding: clamp(14px, min(5.64vw, 3.33svh), 30px) clamp(12px, 2vw, 20px); }
+.grand-num  { font-size: clamp(30px, min(11.3vw, 9.56svh), 86px); }
+.grand-cap  { font-size: clamp(8px, min(2.56vw, 1.33svh), 12px);  margin-top: clamp(5px, min(2.56vw, 1.78svh), 16px); }
+.grand-pay  { font-size: clamp(14px, min(4.62vw, 3.33svh), 30px); margin-top: clamp(7px, min(3.6vw, 1.78svh), 16px); }
+.grand-note { font-size: clamp(10px, min(3.2vw, 1.56svh), 14px);  margin-top: clamp(7px, min(3.6vw, 2.22svh), 20px); }
+
+.band           { padding: clamp(12px, min(4.1vw, 2.67svh), 24px) clamp(12px, 1.6vw, 24px); }
+.band-head      { padding-bottom: clamp(6px, min(2.56vw, 1.56svh), 14px); }
+.band-name      { font-size: clamp(8.5px, min(2.7vw, 1.33svh), 12px); }
+.band-sub       { font-size: clamp(12px, min(3.6vw, 2.44svh), 22px); margin-top: clamp(3px, min(1.28vw, 1.11svh), 10px); }
+.band-list li   { padding: clamp(3px, min(1.28vw, 1svh), 9px) 0; }
+.bi             { font-size: clamp(10.5px, min(3.2vw, 1.67svh), 15px); }
+.bi em          { font-size: clamp(8.5px, min(2.56vw, 1.39svh), 12.5px); line-height: 1.3; }
+.bv             { font-size: clamp(10px, min(2.95vw, 1.67svh), 15px); }
+.band-locked    { margin-top: clamp(5px, min(2.05vw, 1.56svh), 14px); padding-top: clamp(5px, min(2.05vw, 1.56svh), 14px); }
+.band-locked li { font-size: clamp(8.5px, min(2.56vw, 1.44svh), 13px); padding-top: clamp(1px, .35svh, 5px); padding-bottom: clamp(1px, .35svh, 5px); }
+.band-close     { margin-top: clamp(6px, min(2.05vw, 1.78svh), 16px); padding-top: clamp(6px, min(2.05vw, 1.78svh), 16px); }
+.band-value b   { font-size: clamp(12px, min(3.59vw, 2.11svh), 19px); }
+.band-pay       { font-size: clamp(11px, min(3.33vw, 1.89svh), 17px); }
+.band-pay b     { font-size: clamp(21px, min(6.9vw, 5.11svh), 46px); }
+.band-urgency   { font-size: clamp(9px, min(2.7vw, 1.39svh), 12.5px); }
+.band-btn       { padding: clamp(8px, min(2.82vw, 1.78svh), 16px) 14px; font-size: clamp(10.5px, min(3.08vw, 1.56svh), 14px); }
+.split-div      { margin-top: clamp(6px, min(2.3vw, 1.56svh), 14px); font-size: clamp(8px, min(2.44vw, 1.22svh), 11px); }
+.split-btn      { margin-top: clamp(4px, min(1.8vw, 1.33svh), 12px); }
+.split-sub      { font-size: clamp(8.5px, min(2.44vw, 1.39svh), 12.5px); margin-top: clamp(3px, min(1.5vw, 1.11svh), 10px); }
+.band-aside, .band-foot { font-size: clamp(8.5px, min(2.56vw, 1.44svh), 13px); margin-top: clamp(4px, min(1.8vw, 1.56svh), 14px); }
+
+/* ---- FAQ ---- */
+.faq summary { padding: clamp(5px, min(2.3vw, 1.44svh), 13px) 40px clamp(5px, min(2.3vw, 1.44svh), 13px) 4px; font-size: clamp(11px, min(3.46vw, 1.78svh), 16px); }
+.faq .a p    { font-size: clamp(10.5px, min(3.33vw, 1.61svh), 14.5px); }
+.faq .a      { padding-bottom: clamp(6px, min(2.56vw, 1.56svh), 14px); }
+
+/* ---- dates ---- */
+.dates    { margin-top: clamp(7px, min(3.08vw, 2.22svh), 20px); }
+.date-row { padding: clamp(3px, min(1.54vw, 1svh), 9px) 0; }
+.dd, .dt  { font-size: clamp(9.5px, min(2.95vw, 1.56svh), 14px); }
+
+/* ---- VIP + final ---- */
+.vip-card   { padding: clamp(10px, min(3.6vw, 2.22svh), 20px); }
+.vip-card p { font-size: clamp(10px, min(3.08vw, 1.56svh), 14px); }
+.vprice     { font-size: clamp(18px, min(6.67vw, 3.33svh), 30px); }
+.vip-intro  { gap: clamp(11px, min(3.6vw, 2.67svh), 30px); }
+.countdown  { font-size: clamp(9.5px, min(2.82vw, 1.56svh), 14px); }
+.testi p    { font-size: clamp(11px, min(3.46vw, 1.67svh), 15px); }
+.vchip      { font-size: clamp(8.5px, min(2.56vw, 1.33svh), 12px); }
+
+/* Tablet: two columns of cards land at ~360px each and wrap like a phone. */
+@media (min-width: 641px) and (max-width: 960px) {
+  .calls, .phases, .grid2 { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .dates-split { gap: 1.2rem; }
+}
+
+/* the final CTA still carried its original 120px band */
+.final { padding: clamp(14px, min(6vw, 4svh), 120px) 0; }
+.final h2 { font-size: clamp(18px, min(5.6vw, 3.4svh), 52px); }
+.final .lead { margin-top: clamp(6px, min(2.8vw, 1.6svh), 18px); }
+.countdown { margin-bottom: clamp(9px, min(4vw, 2.6svh), 34px); margin-top: clamp(9px, min(4vw, 2.6svh), 30px); }
+
+@media (min-width: 641px) and (max-width: 960px) {
+  .dates-split .story-figure img { max-height: clamp(90px, 22svh, 240px); }
+}
+
+/* ================================================================
+   SHORT SCREENS · iPhone SE and friends (≤760px tall)
+   A 667px phone loses 127px to the two fixed bars — nearly a fifth of
+   the screen before any content. The bars shrink first, then the floors.
+   ================================================================ */
+@media (max-height: 760px) {
+  :root { --urgent-h: 26px; }
+  .urgent-bar { padding: 3px 12px; font-size: 9.5px; gap: 7px; min-height: 26px; }
+  .bar-in { padding: 5px 14px; }
+  .bar-brand { font-size: 11px; }
+  .bar-in .btn { min-height: 32px; padding: 6px 11px; font-size: 10.5px; }
+
+  section { padding: clamp(5px, 1.5svh, 22px) 0; }
+  .hero { padding-top: calc(clamp(20px, 5svh, 76px) + var(--urgent-h)); padding-bottom: 0; }
+  .h-big { font-size: clamp(17px, min(6.15vw, 5.4svh), 54px); line-height: 1.03; }
+  .h-setup { font-size: clamp(9.5px, min(3.33vw, 2svh), 20px); }
+  .hero .lead { font-size: clamp(9.5px, min(3.2vw, 1.6svh), 15.5px); }
+  .hero-ctas { margin-top: clamp(6px, 1.6svh, 20px); }
+  /* the "AJ's numbers" label is a caption for the row directly beneath it */
+  .hero .lead[style] { display: none; }
+  .stat { padding: clamp(4px, 1.1svh, 16px) 8px; }
+  .stat b { font-size: clamp(12px, min(4.36vw, 2.7svh), 27px); }
+  .stat span { font-size: 8.5px; letter-spacing: .06em; }
+  .hero-sub { font-size: 8px; margin-top: 5px; }
+
+  .sec-h { font-size: clamp(13.5px, min(5.38vw, 2.9svh), 28px); }
+  .lead, p { font-size: clamp(9.5px, min(3.33vw, 1.72svh), 16.5px); }
+  .statement { font-size: clamp(12px, min(4.36vw, 2.5svh), 24px); }
+  .story-line, .story-line strong { font-size: clamp(9.5px, min(3.46vw, 1.68svh), 16px); }
+  .story-line + .story-line { margin-top: clamp(3px, .9svh, 12px); }
+  .story-group + .story-group { margin-top: clamp(5px, 1.5svh, 18px); }
+
+  .teach, .phases, .grid2, .calls { margin-top: clamp(6px, 1.9svh, 26px); }
+  .term, .machine, .bands, .grand { margin-top: clamp(6px, 1.8svh, 24px); }
+  .t-photo { max-height: clamp(64px, min(38vw, 26svh), 330px); }
+  .story-figure img { max-height: clamp(70px, min(33.8vw, 30svh), 380px); }
+  .guest-photo { max-height: clamp(70px, min(38.5vw, 26svh), 300px); }
+  .vip-photo { max-height: clamp(70px, min(38.5vw, 26svh), 320px); }
+  .teach .card-body p { font-size: clamp(9.5px, min(3.33vw, 1.5svh), 14.5px); margin-top: clamp(4px, 1svh, 12px); }
+  .teach .card-body h3 { font-size: clamp(12.5px, min(4.87vw, 2.2svh), 22px); }
+  .cred { font-size: clamp(7.5px, min(2.44vw, 1.1svh), 11px); }
+  .bio-quote { font-size: clamp(9.5px, min(3.2vw, 1.45svh), 14px); }
+
+  .phase, .grid2 .card, .call { padding: clamp(6px, 1.5svh, 18px) 9px; }
+  .phase p, .grid2 .card p, .call p { font-size: clamp(8.5px, min(2.82vw, 1.4svh), 13.5px); }
+  .phase h3, .grid2 .card h3, .call h3 { font-size: clamp(10.5px, min(3.46vw, 1.8svh), 16px); }
+  .call-n { font-size: clamp(15px, min(6.67vw, 3.6svh), 40px); }
+
+  .band { padding: clamp(9px, 2svh, 24px) clamp(10px, 1.6vw, 24px); }
+  .band-list li { padding: clamp(2px, .8svh, 9px) 0; }
+  .bi { font-size: clamp(9.5px, min(3.2vw, 1.55svh), 15px); }
+  .bi em { font-size: clamp(7.5px, min(2.56vw, 1.3svh), 12.5px); }
+  .bv { font-size: clamp(9px, min(2.95vw, 1.55svh), 15px); }
+  .band-pay b { font-size: clamp(18px, min(6.9vw, 4.4svh), 46px); }
+  .band-locked li { font-size: clamp(7.5px, min(2.56vw, 1.35svh), 13px); }
+  .band-btn { padding: clamp(6px, 1.5svh, 16px) 12px; font-size: clamp(9.5px, min(3.08vw, 1.45svh), 14px); }
+  .grand { padding: clamp(10px, 2.4svh, 30px) 12px; }
+  .grand-num { font-size: clamp(26px, min(11.3vw, 8.4svh), 86px); }
+  .grand-pay { font-size: clamp(12px, min(4.62vw, 3svh), 30px); }
+
+  .faq summary { padding: clamp(3px, 1.1svh, 13px) 34px clamp(3px, 1.1svh, 13px) 4px; font-size: clamp(9.5px, min(3.46vw, 1.68svh), 16px); }
+  .date-row { padding: clamp(2px, .8svh, 9px) 0; }
+  .dd, .dt { font-size: clamp(8.5px, min(2.95vw, 1.45svh), 14px); }
+  .final { padding: clamp(10px, 3svh, 120px) 0; }
+  .final h2 { font-size: clamp(15px, min(5.6vw, 3.1svh), 52px); }
+  .vip-card { padding: clamp(8px, 1.8svh, 20px); }
+  .vip-card p { font-size: clamp(8.5px, min(3.08vw, 1.45svh), 14px); }
+  .vprice { font-size: clamp(15px, min(6.67vw, 3svh), 30px); }
+  .m-agent { padding: clamp(4px, 1svh, 11px); font-size: clamp(7.5px, min(2.82vw, 1.25svh), 12px); }
+  .testi p { font-size: clamp(9.5px, min(3.46vw, 1.55svh), 15px); }
+}
+
+/* ---- short screens · final pass ---- */
+@media (max-height: 760px) {
+  /* the two hero buttons were wrapping to two rows */
+  .hero-ctas { display: flex; flex-wrap: nowrap; gap: 8px; }
+  .hero-ctas .btn { flex: 1 1 0; min-width: 0; text-align: center; justify-content: center;
+                    padding: 9px 8px; font-size: clamp(9px, 2.6vw, 13px); white-space: nowrap; }
+
+  /* descriptions are below readable size here — the priced list still reads */
+  .band-list li { padding: clamp(1px, .55svh, 9px) 0; }
+  .band .bi em { display: none; }
+  .band-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .bv { display: inline; margin-top: 0; }
+  .band-locked { display: flex; flex-wrap: wrap; gap: 1px 12px; margin-top: 4px; padding-top: 4px; }
+  .band-locked li { padding: 0 0 0 15px; }
+  .band-head { padding-bottom: 5px; }
+  .band-close { margin-top: 5px; padding-top: 5px; }
+  .band-value b { font-size: clamp(10.5px, 1.9svh, 19px); }
+  .band-pay { font-size: clamp(9.5px, 1.7svh, 17px); }
+  #band-studio .band-aside, #band-studio .band-foot { margin-top: 3px; }
+  .split-div { margin-top: 5px; }
+  .split-btn { margin-top: 4px; }
+  .split-sub { margin-top: 3px; }
+
+  /* dates */
+  .dates-split .story-figure img { max-height: clamp(60px, 14svh, 380px); }
+  .dates { margin-top: 6px; }
+  .dates-split > .narrow > p { margin-top: 8px !important; font-size: 9.5px; }
+
+  /* vip pricing */
+  .vip-scarcity { font-size: 10px; margin-top: 10px; }
+  .vip-apply-sub { font-size: 8.5px; margin-top: 8px; }
+  .vip-band .btn.big { margin-top: 12px !important; padding: 9px 16px; font-size: 11px; }
+  .vip-tiers { gap: 10px; }
+}
+
+/* 03's story runs six paragraphs — it needs the tightest leading of any block */
+@media (max-width: 640px) {
+  .story-group + .story-group { margin-top: clamp(5px, 1.4svh, 18px); }
+  .story-line + .story-line { margin-top: clamp(4px, .95svh, 12px); }
+}
+
+/* ---- short screens · the last two ---- */
+@media (max-height: 760px) {
+  /* eleven priced rows in The Essentials: two columns rather than eleven rows */
+  #band-essentials .band-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+  }
+  #band-essentials .band-list li { padding: 2px 0; gap: 6px; }
+  #band-essentials .bi { font-size: clamp(8.5px, 2.4vw, 15px); }
+  #band-essentials .bv { font-size: clamp(8px, 2.3vw, 15px); }
+  #band-essentials .band-list li:nth-last-child(2) { border-bottom: none; }
+
+  .dates-split .story-figure img { max-height: clamp(46px, 11svh, 380px); }
+  .date-row { padding: 1px 0; }
+}
+
+/* section 03 carries eleven story lines — the densest text block on the page */
+@media (max-width: 640px) {
+  .story-line, .story-line strong { font-size: clamp(10.5px, min(3.3vw, 1.68svh), 16px); }
+  .story-line + .story-line { margin-top: clamp(3px, .85svh, 12px); }
+  .story-group + .story-group { margin-top: clamp(4px, 1.25svh, 18px); }
+}
+
+/* The hero must clear BOTH fixed bars, not just the red one.
+   --bar-h is published by script.js alongside --urgent-h; the 44px fallback
+   covers the moment before JS runs. */
+:root { --bar-h: 44px; }
+.hero { padding-top: calc(clamp(18px, min(6vw, 4svh), 44px) + var(--urgent-h) + var(--bar-h)); }
+@media (max-height: 760px) {
+  .hero { padding-top: calc(clamp(10px, 2.6svh, 30px) + var(--urgent-h) + var(--bar-h)); }
+}
+
+/* ================================================================
+   SHORT BUT WIDE · iPad landscape, short laptops (≤820px tall, ≥961px wide)
+   Plenty of width, very little height. Tighten the vertical rhythm only —
+   nothing is hidden here, because the width is there to carry it.
+   ================================================================ */
+@media (max-height: 820px) and (min-width: 961px) {
+  section { padding: clamp(5px, 1.5svh, 22px) 0; }
+  .teach, .phases, .grid2, .calls { margin-top: clamp(7px, 2svh, 26px); }
+  .term, .machine, .bands, .grand { margin-top: clamp(6px, 1.8svh, 24px); }
+  .sec-h { font-size: clamp(15px, 2.7svh, 28px); }
+  .lead, p { font-size: clamp(11px, 1.65svh, 16.5px); }
+  .story-figure img { max-height: clamp(80px, 24svh, 380px); }
+  .t-photo { max-height: clamp(80px, 30svh, 330px); }
+  .dates { margin-top: clamp(5px, 1.4svh, 20px); }
+  .date-row { padding: clamp(2px, .7svh, 9px) 0; }
+  .dd, .dt { font-size: clamp(9.5px, 1.45svh, 14px); }
+  .dates-split { grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+  .band-list li { padding: clamp(2px, .65svh, 9px) 0; }
+  .band-close { margin-top: clamp(5px, 1.4svh, 16px); padding-top: clamp(5px, 1.4svh, 16px); }
+  .band-head { padding-bottom: clamp(5px, 1.2svh, 14px); }
+  .band { padding: clamp(10px, 2svh, 24px) clamp(12px, 1.6vw, 24px); }
+  .faq summary { padding: clamp(3px, 1.1svh, 13px) 40px clamp(3px, 1.1svh, 13px) 4px; }
+  .final { padding: clamp(10px, 3svh, 120px) 0; }
+  .guest { padding: clamp(10px, 2svh, 22px); }
+  .guest-photo { max-height: clamp(80px, 26svh, 300px); }
+}
+
+@media (max-height: 820px) and (min-width: 961px) {
+  /* the studio photo is the tallest thing in the dates block */
+  .dates-split .story-figure img { max-height: clamp(70px, 17svh, 380px); }
+  .dates-split > .narrow > p { margin-top: clamp(8px, 2svh, 30px) !important; }
+}
+
+@media (max-height: 820px) and (min-width: 961px) {
+  .dates-split .story-figure img { max-height: clamp(60px, 13svh, 380px); }
+  .dates-split .sec-h { font-size: clamp(14px, 2.4svh, 28px); }
+  .dates-split > .narrow > p { font-size: clamp(10px, 1.5svh, 16.5px); }
+}
+
+@media (max-height: 820px) and (min-width: 961px) {
+  .dates-split .dates { margin-top: clamp(4px, 1svh, 20px); }
+  .dates-split .date-row { padding: clamp(1px, .5svh, 9px) 0; }
+  .dates-split > .narrow > p { margin-top: clamp(6px, 1.4svh, 30px) !important; }
+  .dates-split .eyebrow { margin-bottom: 2px; }
+}
+
+/* Anchor jumps (#value, #machine) must land BELOW the two fixed bars,
+   otherwise the target section's heading opens underneath them. */
+html { scroll-behavior: smooth; }
+section[id], header[id] { scroll-margin-top: calc(var(--urgent-h) + var(--bar-h) + 10px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

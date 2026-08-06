@@ -28,12 +28,22 @@ const CONFIG = {
   });
 })();
 
-/* urgent bar: height sync only — the ticker is gone */
+/* Both fixed bars publish their real height.
+   The hero has to clear BOTH — the red bar and the sticky bar — or its opening
+   line renders underneath them. The red bar wraps to two lines on a phone, so
+   these cannot be constants. */
 (function(){
-  var bar = document.getElementById('urgent-bar');
-  if(!bar) return;
-  function sync(){ document.documentElement.style.setProperty('--urgent-h', bar.offsetHeight+'px'); }
+  var urgent = document.getElementById('urgent-bar');
+  var sticky = document.querySelector('.bar');
+  if(!urgent && !sticky) return;
+  function sync(){
+    var root = document.documentElement.style;
+    if(urgent) root.setProperty('--urgent-h', urgent.offsetHeight + 'px');
+    if(sticky) root.setProperty('--bar-h', sticky.offsetHeight + 'px');
+  }
   window.addEventListener('resize', sync);
+  window.addEventListener('orientationchange', sync);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
   sync();
 })();
 
