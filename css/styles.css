@@ -1829,8 +1829,8 @@ a.stat:hover span {
 }
 
 .profile-photo {
-  width: 140px;
-  height: 180px;
+  width: 200px;
+  height: 250px;
   border-radius: 8px;
   background: rgba(204, 255, 0, 0.1);
   flex-shrink: 0;
