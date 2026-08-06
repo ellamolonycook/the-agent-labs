@@ -2008,6 +2008,61 @@ a.stat:hover span {
 }
 
 
+/* ---------- The Receipts ---------- */
+
+#proof {
+  padding: 100px 0;
+}
+
+#proof .sec-h {
+  margin-bottom: 50px;
+}
+
+.testi-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.testi {
+  max-width: 850px;
+  padding: 45px 50px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.testi p {
+  font-size: 24px;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.testi .who {
+  display: block;
+  margin-top: 30px;
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+
+@media (max-width: 820px) {
+  #proof {
+    padding: 70px 0;
+  }
+
+  .testi {
+    padding: 30px 25px;
+  }
+
+  .testi p {
+    font-size: 18px;
+  }
+}
+
+
 
 
 
