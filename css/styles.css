@@ -2044,7 +2044,13 @@ a.stat:hover span {
   }
 }
 
-
+.why-cost {
+  margin-top: 24px;
+  max-width: 420px;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
 
 /* Move bio and socials below the image + name area */
 
