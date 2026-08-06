@@ -1053,7 +1053,7 @@ a.stat:hover span {
   border-color: rgba(212, 255, 79, 0.35);
 }
 .m-agent.vip::after {
-  content: "FULL";
+  content: "EDIT";
   float: right;
   color: var(--lime);
   font-size: 10px;
@@ -2101,4 +2101,410 @@ footer a:hover {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* ================================================================
+   LANDING v2 · audit build (6 Aug 2026)
+   The money section, the four live calls, the guest speaker.
+   The old .tiers/.tier and .price-countdown rules above are now dead
+   — the value bands ARE the tier cards (audit Part 2, Cut 5).
+   ================================================================ */
+
+:root {
+  /* Studio-only alarm colour. 6.4:1 on --panel, passes WCAG AA.
+     Deliberately not #FF0000 — pure red vibrates on this background. */
+  --alarm: #ff6b60;
+}
+
+/* ---------- the one big number ---------- */
+.grand {
+  margin-top: 48px;
+  text-align: center;
+  padding: 44px 20px 40px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: radial-gradient(120% 140% at 50% 0%, rgba(212,255,79,.07), transparent 62%), var(--panel);
+}
+.grand-num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(52px, 11vw, 118px);
+  line-height: .95;
+  letter-spacing: -.045em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.grand-cap {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.grand-pay {
+  margin-top: 26px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(20px, 3vw, 30px);
+  color: var(--text);
+}
+.grand-note {
+  margin: 20px auto 0;
+  max-width: 620px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- the three nested bands ---------- */
+.bands { margin-top: 44px; }
+
+.band {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+  padding: 30px 28px 28px;
+}
+.band + .band { margin-top: 20px; }
+
+/* each band sits one step deeper than the one above it */
+.band.nested   { margin-left: 34px; background: var(--panel2); }
+.band.nested-2 { margin-left: 68px; }
+
+.band.nested::before {
+  content: "";
+  position: absolute;
+  left: -34px;
+  top: -21px;
+  bottom: 40%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--line));
+}
+
+.band-head { border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+.band-name {
+  display: block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+.band.nested-2 .band-name { color: var(--text); }
+.band-sub {
+  margin-top: 10px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(17px, 2.1vw, 22px);
+  color: var(--text);
+  letter-spacing: -.01em;
+}
+
+/* item rows: name + micro-copy left, price hard right */
+.band-list { list-style: none; margin: 4px 0 0; padding: 0; }
+.band-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 22px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+.band-list li:last-child { border-bottom: none; }
+.band-list li.bonus .bv { color: var(--lime); }
+.bi {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+  min-width: 0;
+}
+.bi em {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  font-family: var(--body);
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.bi a { color: var(--lime); text-decoration: underline; text-underline-offset: 2px; }
+.bv {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* loss aversion: locked items stay visible, greyed, never removed */
+.band-locked { list-style: none; margin: 14px 0 0; padding: 14px 0 0; border-top: 1px dashed var(--line); }
+.band-locked li {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--dim);
+  padding: 5px 0 5px 24px;
+  position: relative;
+}
+.band-locked li::before {
+  content: "🔒";
+  position: absolute;
+  left: 0;
+  font-size: 11px;
+  opacity: .55;
+}
+
+.band-aside {
+  margin-top: 16px;
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* value → price → button, tight. Never more than a thumb-scroll apart. */
+.band-close { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line); }
+.band-value {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.band-value span {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.band-value b {
+  font-family: var(--display);
+  font-size: 19px;
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  font-variant-numeric: tabular-nums;
+}
+.band-pay {
+  margin-top: 8px;
+  font-family: var(--display);
+  font-size: 17px;
+  color: var(--muted);
+}
+.band-pay b {
+  font-size: clamp(38px, 6vw, 54px);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -.035em;
+  margin-left: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.band-urgency {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: .04em;
+  color: var(--lime);
+}
+/* only The Studio earns the alarm colour — its price never comes back down.
+   Bold as well as red, so it still reads as urgent without the hue. */
+.band-urgency.alarm { color: var(--alarm); font-weight: 700; }
+
+.band-btn { display: block; width: 100%; text-align: center; margin-top: 20px; }
+a.band-btn[data-todo] { cursor: not-allowed; }
+
+.split-div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.split-div::before, .split-div::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.split-btn { margin-top: 14px; }
+.split-sub {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--dim);
+}
+.band-foot {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+/* ---------- 09 · four live calls ---------- */
+.calls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 36px;
+}
+.call {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  padding: 26px 24px;
+}
+.call-n {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: var(--lime);
+}
+.call h3 {
+  margin-top: 14px;
+  font-family: var(--display);
+  font-size: 19px;
+  letter-spacing: -.01em;
+}
+.call-host {
+  display: block;
+  margin-top: 5px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.call p { margin-top: 13px; font-size: 14px; color: var(--muted); line-height: 1.55; }
+.calls-foot { margin-top: 26px; font-size: 14px; color: var(--muted); }
+
+/* ---------- guest speaker · ViKA ---------- */
+.guest {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) 1fr;
+  gap: 34px;
+  align-items: start;
+  margin-top: 40px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+}
+.guest-photo { width: 100%; border-radius: 14px; display: block; }
+.guest-session {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #0b0b10;
+  background: var(--lime);
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+.guest-body h3 {
+  margin-top: 16px;
+  font-family: var(--display);
+  font-size: clamp(20px, 2.4vw, 26px);
+  letter-spacing: -.02em;
+}
+.guest-body h3 em { font-style: normal; font-weight: 400; color: var(--muted); }
+.guest-body .cred { display: block; margin-top: 8px; }
+.guest-body p { margin-top: 14px; font-size: 14.5px; color: var(--muted); line-height: 1.6; }
+.guest-kicker {
+  font-family: var(--display) !important;
+  font-size: 16px !important;
+  color: var(--text) !important;
+  font-weight: 600;
+}
+
+/* attributed quote inside a bio card — keeps both bios in one voice */
+.bio-quote {
+  margin-top: 16px;
+  padding-left: 14px;
+  border-left: 2px solid var(--lime);
+  font-style: italic;
+  color: var(--muted);
+}
+.bio-quote cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--dim);
+}
+
+/* ---------- 10 · dates split (was an inline grid) ---------- */
+.dates-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ================================================================
+   PHONE VIEW · audit Part 6
+   ================================================================ */
+@media (max-width: 900px) {
+  .calls { grid-template-columns: 1fr; }
+  .guest { grid-template-columns: 1fr; gap: 24px; }
+  .guest-photo { max-width: 300px; }
+  .dates-split { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 640px) {
+  /* bands un-nest — indentation costs more than it communicates on a phone */
+  .band.nested, .band.nested-2 { margin-left: 0; }
+  .band.nested::before { display: none; }
+  .band { padding: 24px 18px; border-radius: 16px; }
+
+  /* rows stop being rows: name, then description, then price right-aligned */
+  .band-list li {
+    display: block;
+    padding: 14px 0;
+  }
+  .bv {
+    display: block;
+    text-align: right;
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  .grand { padding: 32px 16px 30px; }
+  .band-pay b { font-size: 42px; }
+}
+
+/* The drawn SVG thread is a desktop flourish (audit Part 6).
+   On a phone it costs 32px of gutter and draws in a viewport too short to
+   read as a thread — so the story runs full width instead. */
+@media (max-width: 640px) {
+  .story { padding-left: 0; }
+  .story-spine { display: none; }
+}
+
+/* Top-of-ladder button. Replaces the legacy .studio-vip-btn, whose ::before
+   stamped a "VIP" pill on it — VIP is now its own section (1:1 with Ella),
+   so that badge read as a second, conflicting offer. */
+.band-btn-top {
+  background: linear-gradient(135deg, rgba(212,255,79,.18), rgba(212,255,79,.05));
+  border: 1px solid var(--lime);
+  color: var(--lime);
+  font-family: var(--mono);
+  font-weight: 700;
+  letter-spacing: .12em;
+  box-shadow: 0 0 30px rgba(212,255,79,.12);
+  transition: all .3s ease;
+}
+.band-btn-top:hover {
+  transform: translateY(-2px);
+  background: rgba(212,255,79,.25);
+  box-shadow: 0 0 45px rgba(212,255,79,.3);
 }
