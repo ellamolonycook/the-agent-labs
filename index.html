@@ -411,7 +411,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
     <p style="margin-top:28px">I'm not going to trap you in weekly Zoom calls at dinnertime. That's the hustle model wearing a lanyard. Here's the actual deal:</p>
     <div class="grid2">
       <div class="card"><span class="tag">ON-DEMAND</span><h3>Pre-recorded modules</h3><p>Watch when you want. Pause, rewind, build alongside. 2x speed if you like.</p></div>
-      <div class="card"><span class="tag">6 MONTHS</span><h3>Access from day of purchase</h3><p>Enough time to build it properly. Not so long you park it in the "someday" folder.</p></div>
+      <!-- Terms §4.1: six months from DAY 1 (7 Sep 2026 – 7 Mar 2027), regardless of purchase date.
+           The old "from day of purchase" wording contradicted the signed agreement. -->
+      <div class="card"><span class="tag">6 MONTHS</span><h3>Access runs to 7 March 2027</h3><p>Six months from Day 1, however early you join. Enough time to build it properly. Not so long you park it in the "someday" folder.</p></div>
       <div class="card"><span class="tag">LIVE × 4</span><h3>Four live calls</h3><p>Two with Ella — a Day 1 kickoff to get your machine started right, and a Day 40 close to send you off running. Plus a Q&amp;A with AJ, and a bonus session with ViKA, our Narrative Architect. No weekly cohort calls, no calendar guilt.</p></div>
       <div class="card"><span class="tag">YOUR PACE</span><h3>The machine runs at its pace</h3><p>You build at yours. You get your evenings back. That's the whole point.</p></div>
     </div>
@@ -489,7 +491,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
       <p class="grand-pay">You pay from <span class="hl">$197</span>.</p>
     </div>
 
-    <p class="grand-note">Every price below rises. Choose the level that fits, and upgrade any time inside your six months by paying the difference.</p>
+    <!-- Terms §5.7: an upgrade costs the difference between what you paid and the
+         THEN-CURRENT price of the higher tier — not the price you first saw. Since
+         prices rise, "pay the difference" alone would have read as a locked figure. -->
+    <p class="grand-note">Every price below rises. Choose the level that fits, and upgrade any time inside your access window — you pay the difference between what you paid and the higher tier's price at the time you upgrade.</p>
   </div>
 </section>
 
@@ -517,7 +522,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
           <li><span class="bi">The Cohort<em>the private room where everyone builds at the same time, for the full 40 days</em></span><span class="bv">$1,000</span></li>
           <li><span class="bi">All 4 live calls<em>The Content Brain, The Story Only You Can Tell, The AI Engine, Ship It</em></span><span class="bv">$7,000</span></li>
           <li class="bonus"><span class="bi"><span class="btag">BONUS</span>UseVoice.xyz<em>talk your content into existence, <a href="https://usevoice.xyz" target="_blank" rel="noopener">yours to keep</a></em></span><span class="bv">$490</span></li>
-          <li><span class="bi">Six months access<em>every replay, the whole time</em></span><span class="bv">$1,000</span></li>
+          <li><span class="bi">Six months access<em>every replay, Day 1 through 7 March 2027</em></span><span class="bv">$1,000</span></li>
         </ul>
 
         <ul class="band-locked">
@@ -612,9 +617,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
 
             <div class="split-div"><span>or split it</span></div>
 
-            <!-- TODO (Ella): needs a SECOND Stripe link — a two-instalment schedule, not a one-off charge.
-                 Access is granted on the FIRST payment, so the portal must not gate on payment completion.
-                 DEPENDS ON: the payment clause in the T&Cs being amended to permit instalments (lawyer edit). -->
+            <!-- ⚠ STILL BLOCKED — the 3 Aug 2026 agreement does NOT permit instalments.
+                 Terms §5.1: "...in a single payment in full at the time of purchase."
+                 Terms §6.1: all sales final, no refunds — which needs a stated outcome for a
+                 failed second payment (§5.4 suspends access; it does not address a part-paid seat).
+                 Two things must happen before this button can be switched on:
+                   1. §5.1 amended to permit a two-instalment option on The Studio, and §5.4
+                      extended to say what happens if the second payment fails.
+                   2. A SECOND Stripe link — a two-instalment schedule, not a one-off charge.
+                 Access is granted on the FIRST payment, so the portal must not gate on
+                 payment completion. Inert until both are done. -->
             <a href="#" class="btn ghost cta-btn band-btn split-btn" data-todo="stripe-instalment-link-missing" aria-disabled="true">2 payments of $415 →</a>
             <p class="split-sub">First payment today, second in 30 days. Full access from the moment you join.</p>
           </div>
@@ -706,20 +718,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
       <details><summary>Is this just a prompt pack?</summary><div class="a"><p>No. Prompts are ingredients. This is the kitchen, the recipes, and the chef. You're building agents with memory, your tone of voice, and a research pipeline. An entire system, not a single output.</p></div></details>
       <details><summary>Will the content actually sound like me?</summary><div class="a"><p>That's the foundation of the system. You'll add your voice, stories and perspectives first, giving every agent the context it needs to create content that feels natural and personal to you.</p></div></details>
       <details><summary>Are there weekly calls?</summary><div class="a"><p>No. There are four live sessions: a kickoff and closing call with Ella, a Q&amp;A with AJ, and a bonus storytelling session with ViKA. The rest is recorded, so you can build around your own schedule.</p></div></details>
-      <details><summary>The Essentials, The Edit or The Studio?</summary><div class="a"><p>The Essentials gives you research and caption support, with everything you need to start building. The Edit adds LinkedIn, Substack, carousels and infographics. The Studio adds the full video pipeline on top. You can begin with The Essentials and upgrade during your six-month access by simply paying the difference.</p></div></details>
+      <details><summary>The Essentials, The Edit or The Studio?</summary><div class="a"><p>The Essentials gives you research and caption support, with everything you need to start building. The Edit adds LinkedIn, Substack, carousels and infographics. The Studio adds the full video pipeline on top. You can begin with The Essentials and upgrade any time inside your access window, paying the difference between what you paid and the higher tier's price at the time you upgrade.</p></div></details>
+      <!-- ⚠ This answer describes the split payment, which Terms §5.1 does not yet permit
+           ("in a single payment in full at the time of purchase"). It must not go live until
+           §5.1 is amended. If the lawyer declines the change, replace this whole answer with:
+           "Every tier is a one-time payment in full at checkout." -->
       <details><summary>Are there payment plans?</summary><div class="a"><p>The Essentials and The Edit are a one-time payment. The Studio can be split into two payments of $415 — the first today and the second in 30 days. Your access opens on the first payment.</p></div></details>
       <details><summary>What tools do I need?</summary><div class="a"><p>Any capable AI tool. That's the stack. We show you exactly how to set it up inside the challenge.</p></div></details>
-      <details><summary>How long do I have access?</summary><div class="a"><p>6 months from purchase. Build it once in that window and the machine is yours to run forever.</p></div></details>
+      <details><summary>How long do I have access?</summary><div class="a"><p>Six months from Day 1 — 7 September 2026 to 7 March 2027 — whenever you join. Build your machine inside that window and the agents you've configured in your own AI tool stay in your account afterwards.</p></div></details>
       <details><summary>What if I'm starting from zero followers?</summary><div class="a"><p>That's completely fine. You'll build your system from the beginning, with a Research Agent to help you understand what's already connecting with people in your niche, so you can start with insight rather than guesswork.</p></div></details>
-      <!-- ⚠ Ella, 6 Aug 2026: policy changed to NO REFUNDS.
-           THE LIVE TERMS PAGE CONTRADICTS THIS. timerich.ai/challenge/terms.html Section 5 currently
-           grants "a full refund within 14 days", and Section 6 calls it "our voluntary 14-day refund
-           window ... offered on top of ... any statutory right you keep". Sections 5, 6 and the
-           summary block all need the lawyer's edit BEFORE this ships.
-           The "except where the law requires otherwise" clause below is deliberate and must stay:
-           UK/EU statutory cancellation rights are non-waivable, and a flat "no refunds ever" claim
-           on a page you sell from is the kind that gets challenged. -->
-      <details><summary>What's the refund policy?</summary><div class="a"><p>All sales are final. You get the complete system — every agent, every module and every replay — the moment you join, so we don't offer refunds except where the law requires otherwise. Read this page properly before you buy, and if you're unsure which level fits, email us first and we'll tell you straight. The full details are in our <a href="https://timerich.ai/challenge/terms.html">Terms</a>.</p></div></details>
+      <!-- RESOLVED 6 Aug 2026. The old timerich.ai terms promised a 14-day refund and
+           contradicted this answer. Superseded by the Growth Haus LLC agreement of 3 Aug 2026,
+           now served at /terms/ — §6 "No Refunds — All Sales Final". This answer follows §6.1
+           and §6.4 ("contact us first"). The savings clauses for non-waivable rights live in
+           the agreement itself (§17.4, §18), so the page states the policy plainly. -->
+      <details><summary>What's the refund policy?</summary><div class="a"><p>All sales are final. The Content Stack is fully digital and your access opens immediately, so there are no refunds, returns, credits or exchanges. Read this page properly before you buy — and if you're unsure which level fits, email <a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a> first and we'll tell you straight. If something isn't right after you join, email us: we'd far rather fix it than lose you. Section 6 of the <a href="/terms/">Terms</a> sets this out in full.</p></div></details>
     </div>
   </div>
 </section>
@@ -777,7 +790,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
 <footer>
   <!-- TODO (Ella): confirm support@theagentlabs.ai is a live mailbox before this ships. Previous address was support@timerich.ai. -->
   AI CONTENT MACHINE · THE AGENT LABS · 2026<br>
-  <a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a> &nbsp;·&nbsp; <a href="https://timerich.ai/challenge/terms.html">Terms</a> &nbsp;·&nbsp; <a href="https://timerich.ai/challenge/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/ellamolonycook/" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="https://timerich.ai/challenge/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/ellamolonycook/" target="_blank" rel="noopener">LinkedIn</a>
 </footer>
 
 <script src="js/script.js"></script>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms and Conditions · The Content Stack · The Agent Labs</title>
+<meta name="description" content="The Content Stack Program Agreement — the binding terms governing access to and use of The Content Stack, operated by Growth Haus LLC dba The Agent Labs." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://theagentlabs.ai/terms/" />
+<meta name="theme-color" content="#0B0B10" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<style>
+:root{
+  --bg:#0b0b10; --panel:#14141c; --panel2:#181822;
+  --line:rgba(255,255,255,.09);
+  --text:#f2f2f4; --muted:#a2a2b0; --dim:#6e6e7c;
+  --lime:#d4ff4f; --lime-dim:rgba(212,255,79,.12);
+  --alarm:#ff6b60;
+  --display:"Space Grotesk",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,monospace;
+  --body:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);
+     font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+a{color:var(--lime);text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:2px}
+
+.topbar{position:sticky;top:0;z-index:40;background:rgba(11,11,16,.94);
+        -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+        border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1120px;margin:0 auto;padding:12px 24px;display:flex;
+           align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--lime);
+       text-transform:uppercase;text-decoration:none}
+.back{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--muted);
+      text-decoration:none;text-transform:uppercase}
+.back:hover{color:var(--lime)}
+
+.mast{max-width:1120px;margin:0 auto;padding:56px 24px 0}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,50px);
+   letter-spacing:-.03em;line-height:1.04;margin:14px 0 0;text-wrap:balance}
+.dek{color:var(--muted);margin-top:14px;max-width:62ch}
+.entity{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:18px;letter-spacing:.04em}
+
+.layout{max-width:1120px;margin:0 auto;padding:40px 24px 90px;
+        display:grid;grid-template-columns:230px minmax(0,1fr);gap:52px;align-items:start}
+
+nav.toc{position:sticky;top:78px;max-height:calc(100vh - 110px);overflow-y:auto;
+        border-left:1px solid var(--line);padding-left:16px}
+nav.toc h2{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+           color:var(--dim);margin:0 0 12px;border:0;padding:0}
+nav.toc a{display:flex;gap:9px;text-decoration:none;color:var(--muted);font-size:12.5px;
+          line-height:1.35;padding:5px 0;border:0}
+nav.toc a span{font-family:var(--mono);color:var(--dim);min-width:17px;font-size:11px}
+nav.toc a:hover{color:var(--lime)}
+nav.toc a:hover span{color:var(--lime)}
+
+article{min-width:0;max-width:74ch}
+article h2{font-family:var(--display);font-weight:700;font-size:clamp(19px,2.4vw,25px);
+           letter-spacing:-.02em;line-height:1.2;margin:52px 0 18px;scroll-margin-top:90px;
+           padding-top:22px;border-top:1px solid var(--line);display:flex;gap:14px;align-items:baseline}
+article h2:first-child{margin-top:0;border-top:0;padding-top:0}
+article h2.nonum{display:block}
+article h2 .sn{font-family:var(--mono);font-size:13px;color:var(--lime);font-weight:400;
+               letter-spacing:.06em;flex:none}
+article p{margin:0 0 13px}
+article p.cl,article p.sub{display:grid;grid-template-columns:52px minmax(0,1fr);gap:6px}
+article p.sub{grid-template-columns:40px minmax(0,1fr);margin-left:52px}
+.cn{font-family:var(--mono);font-size:12.5px;color:var(--dim);letter-spacing:.02em}
+strong{color:var(--text);font-weight:600}
+
+.warnbox{background:var(--lime-dim);border:1px solid rgba(212,255,79,.34);border-radius:12px;
+         padding:20px 22px;margin:0 0 26px;font-size:15px}
+.warnbox.sub{background:rgba(255,107,96,.08);border-color:rgba(255,107,96,.36)}
+.warnbox strong{color:var(--text)}
+
+.todo{color:var(--alarm);font-family:var(--mono);font-size:12.5px;font-style:normal;
+      border:1px dashed rgba(255,107,96,.55);border-radius:4px;padding:1px 6px}
+article{overflow-wrap:anywhere}
+
+.updated{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:34px;
+         padding-top:20px;border-top:1px solid var(--line)}
+.exec{color:var(--muted);margin-top:30px}
+
+footer{border-top:1px solid var(--line);padding:30px 24px 60px;text-align:center;
+       font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--dim)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--lime)}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:0;padding-top:26px}
+  nav.toc{position:static;max-height:none;border-left:0;border-bottom:1px solid var(--line);
+          padding:0 0 22px;margin-bottom:30px;
+          display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 16px}
+  nav.toc h2{grid-column:1/-1}
+  .mast{padding-top:34px}
+  article{max-width:none}
+  article p.sub{margin-left:22px}
+  body{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">The Agent Labs</a>
+    <a class="back" href="/">&larr; Back to The Content Stack</a>
+  </div>
+</div>
+
+<header class="mast">
+  <span class="eyebrow">Legal</span>
+  <h1>Terms and Conditions</h1>
+  <p class="dek">The Content Stack Program Agreement. These are the binding terms governing your access to and use of The Content Stack. They apply from the moment you complete checkout.</p>
+  <p class="entity">GROWTH HAUS LLC &middot; A WYOMING LIMITED LIABILITY COMPANY &middot; DOING BUSINESS AS THE AGENT LABS</p>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Sections">
+    <h2>Sections</h2>
+<a href="#s1"><span>1</span>Definitions</a>
+<a href="#s2"><span>2</span>Acknowledgements at Purchase</a>
+<a href="#s3"><span>3</span>Licence and Permitted Use</a>
+<a href="#s4"><span>4</span>Access Period</a>
+<a href="#s5"><span>5</span>Payment</a>
+<a href="#s6"><span>6</span>No Refunds — All Sales Final</a>
+<a href="#s7"><span>7</span>Program Delivery and Modification</a>
+<a href="#s8"><span>8</span>No Guarantee of Results</a>
+<a href="#s9"><span>9</span>AI Platforms and Third-Party Services</a>
+<a href="#s10"><span>10</span>Payment Disputes and Chargebacks</a>
+<a href="#s11"><span>11</span>Account Security and Communications</a>
+<a href="#s12"><span>12</span>Community and User Content</a>
+<a href="#s13"><span>13</span>Audio, Video, and Testimonial Release</a>
+<a href="#s14"><span>14</span>Intellectual Property</a>
+<a href="#s15"><span>15</span>Digital Millennium Copyright Act</a>
+<a href="#s16"><span>16</span>Disclaimer of Warranties</a>
+<a href="#s17"><span>17</span>Limitation of Liability</a>
+<a href="#s18"><span>18</span>Release</a>
+<a href="#s19"><span>19</span>Indemnity</a>
+<a href="#s20"><span>20</span>Dispute Resolution — Binding Arbitration and Class Action Waiver</a>
+<a href="#s21"><span>21</span>Force Majeure</a>
+<a href="#s22"><span>22</span>Term, Termination, and Survival</a>
+<a href="#s23"><span>23</span>Changes to this Agreement</a>
+<a href="#s24"><span>24</span>General</a>
+  </nav>
+
+  <article>
+<h2 id="the-content-stack-program-agreement" class="nonum">The Content Stack — Program Agreement</h2>
+<div class="warnbox"><strong>Please read carefully. This Agreement contains a binding arbitration provision and a class action waiver in Section 20, which affect your legal rights. It also provides that all sales are final and that no refunds are available under any circumstances (Section 6).</strong></div>
+<p>This Content Stack Program Agreement (this "<strong>Agreement</strong>") is entered into and is effective as of the date of purchase, by and between the purchaser ("<strong>Client</strong>", "<strong>you</strong>", or "<strong>your</strong>") and <strong>Growth Haus LLC</strong>, a Wyoming limited liability company doing business as <strong>The Agent Labs</strong> ("<strong>we</strong>", "<strong>us</strong>", "<strong>our</strong>", "<strong>ours</strong>", or the "<strong>Company</strong>"), and sets forth the legally binding terms governing your access to and use of <strong>The Content Stack</strong> (the "<strong>Program</strong>").</p>
+<p>By clicking to accept these terms, completing checkout, submitting payment, or accessing any part of the Program, you acknowledge that you have read, understand, and agree to be bound by this Agreement. If you do not agree, do not purchase and do not access the Program.</p>
+<h2 id="s1"><span class="sn">1.</span>Definitions</h2>
+<p class="cl"><span class="cn">1.1</span>"<strong>Program</strong>" means The Content Stack, a forty (40) day digital program, together with any component, tier, bonus, session, or material made available to you by the Company in connection with it.</p>
+<p class="cl"><span class="cn">1.2</span>"<strong>Content</strong>" means all materials comprising or supplied through the Program, including without limitation agent configurations, prompts, prompt architectures, frameworks, workflows, templates, videos, audio recordings, PDFs, worksheets, live session recordings, written guidance, curricula, graphics, images, and any derivative or updated version of any of the foregoing.</p>
+<p class="cl"><span class="cn">1.3</span>"<strong>Portal</strong>" means the online membership platform operated by or on behalf of the Company through which the Program is delivered, together with any associated community area, and any successor or replacement platform.</p>
+<p class="cl"><span class="cn">1.4</span>"<strong>Day 1</strong>" means Monday, 7 September 2026, the first day of the Program.</p>
+<p class="cl"><span class="cn">1.5</span>"<strong>Access Period</strong>" has the meaning given in Section 4.</p>
+<p class="cl"><span class="cn">1.6</span>"<strong>AI Platform</strong>" means any third-party artificial intelligence product, service, model, or interface — including without limitation large language model providers and their applications — used by you in connection with the Program.</p>
+<p class="cl"><span class="cn">1.7</span>"<strong>VIP Services</strong>" means the one-to-one advisory tiers described in Section 5.6, where purchased.</p>
+<h2 id="s2"><span class="sn">2.</span>Acknowledgements at Purchase</h2>
+<p>You expressly acknowledge, represent and agree that:</p>
+<p class="cl"><span class="cn">2.1</span>You are at least eighteen (18) years of age and have the full legal capacity to enter into this Agreement. If you are purchasing on behalf of a company or other entity, you represent that you have authority to bind that entity, and "you" refers to both you individually and that entity.</p>
+<p class="cl"><span class="cn">2.2</span>Before submitting payment you had a full and fair opportunity to review the Program description, the price, the inclusions of the tier you selected, and this Agreement in its entirety, and you have satisfied yourself that the Program is suitable for your purposes.</p>
+<p class="cl"><span class="cn">2.3</span>The Program is a digital product. <strong>You expressly request, consent to, and instruct the Company to make the Program available to you immediately upon purchase, and you acknowledge that the Company begins performance immediately.</strong></p>
+<p class="cl"><span class="cn">2.4</span>You understand and agree that, upon purchase, the Company has substantially and irrevocably performed its principal obligations by granting you access to the Content, and that the Content cannot be returned, un-delivered, or un-viewed.</p>
+<p class="cl"><span class="cn">2.5</span>No statement, representation, promise, figure, projection, result, testimonial, case study, or inducement made in any webinar, sales page, advertisement, email, social media post, direct message, call, or other communication forms part of this Agreement or creates any obligation of the Company. This Agreement, and this Agreement alone, sets out what you are purchasing.</p>
+<p class="cl"><span class="cn">2.6</span>You have not relied on any representation not expressly set out in this Agreement.</p>
+<h2 id="s3"><span class="sn">3.</span>Licence and Permitted Use</h2>
+<p><strong>3.1 Grant.</strong> Subject to your continuing compliance with this Agreement and to payment in full, the Company grants you a limited, personal, non-exclusive, non-transferable, non-sublicensable, revocable licence to access and use the Content for your own individual use, and for the internal business purposes of a single business you own or are employed by, for the duration of the Access Period.</p>
+<p><strong>3.2 One person, one seat.</strong> Access is granted to one named individual. Your login credentials, call-in details, access links, and any protected material are personal to you. You will not share, sell, lend, transfer, publish, or otherwise make available your credentials or any Content to any other person, including employees, contractors, business partners, spouses, or members of any group, mastermind, or community. Sharing access is a <strong>material breach</strong> of this Agreement.</p>
+<p><strong>3.3 Prohibited uses.</strong> You will not, and will not permit any other person to:</p>
+<p class="sub"><span class="cn">(a)</span>reproduce, republish, distribute, resell, license, sublicense, rent, lend, or otherwise commercially exploit the Content;</p>
+<p class="sub"><span class="cn">(b)</span>use the Content, in whole or in part, to create, develop, market, or deliver any course, program, coaching offer, agent pack, prompt pack, template library, or other product or service that competes with the Program;</p>
+<p class="sub"><span class="cn">(c)</span>upload, ingest, or otherwise supply the Content to any AI Platform, model, dataset, or automated system for the purpose of training, fine-tuning, replicating, reverse-engineering, or generating a substitute for the Content;</p>
+<p class="sub"><span class="cn">(d)</span>record, screen-capture, transcribe, or download any live session, video, or Portal material except where the Company expressly provides a download function for that item;</p>
+<p class="sub"><span class="cn">(e)</span>remove, obscure, or alter any copyright, trademark, or proprietary notice; or</p>
+<p class="sub"><span class="cn">(f)</span>use the Content in any manner that is unlawful, or that infringes the rights of any third party.</p>
+<p><strong>3.4 What you may keep.</strong> For the avoidance of doubt, the configurations you build inside your own AI Platform account during the Program remain accessible to you within that account after the Access Period ends, subject to the terms of your agreement with that AI Platform provider. The underlying Content, frameworks, and Company materials remain the exclusive property of the Company at all times, and Sections 3.2 and 3.3 continue to apply to them permanently, including after the Access Period ends.</p>
+<p><strong>3.5 Revocation.</strong> Without limiting any other right or remedy available to it at law, in equity, or under this Agreement, the Company may suspend or terminate your licence and your access to the Program, in whole or in part, immediately and without notice, <strong>without refund of any amount paid</strong>, if the Company determines in its sole and reasonable discretion that you have breached any provision of this Agreement.</p>
+<h2 id="s4"><span class="sn">4.</span>Access Period</h2>
+<p class="cl"><span class="cn">4.1</span>Your access to the Program runs for <strong>six (6) months from Day 1</strong>, beginning Monday, 7 September 2026 and ending Monday, 7 March 2027 (the "<strong>Access Period</strong>"), regardless of the date on which you purchased.</p>
+<p class="cl"><span class="cn">4.2</span>The Access Period includes all live session recordings and any updates the Company makes to the Content during that window.</p>
+<p class="cl"><span class="cn">4.3</span>Any access to the Portal made available to you before Day 1 is provided as a courtesy and does not form part of, extend, or shorten the Access Period, and the Company gives no assurance as to what will be available before Day 1.</p>
+<p class="cl"><span class="cn">4.4</span>At the end of the Access Period your licence terminates automatically and your access to the Portal and the Content will cease. The Company is under no obligation to provide continued access, to supply copies of Content, or to notify you in advance of expiry.</p>
+<p class="cl"><span class="cn">4.5</span>Suspension of your access under Section 3.5 or Section 5.4 does not pause, extend, reset, or otherwise alter the Access Period.</p>
+<p class="cl"><span class="cn">4.6</span>Your failure to use, complete, attend, or engage with the Program during the Access Period does not extend it, does not void any part of this Agreement, and does not entitle you to any refund, credit, transfer, or extension.</p>
+<h2 id="s5"><span class="sn">5.</span>Payment</h2>
+<p><strong>5.1 Price.</strong> In consideration of access to the Program you agree to pay the Company the full purchase price of the tier you selected, plus any applicable taxes, duties, and processing fees, in a single payment in full at the time of purchase.</p>
+<p><strong>5.2 Authorisation.</strong> By purchasing, you authorise the Company and its payment processors to charge your nominated credit card, debit card, or payment account for the full amount due. You agree to provide complete, current, and accurate payment information.</p>
+<p><strong>5.3 Currency and fees.</strong> All prices are stated and charged in United States Dollars unless expressly stated otherwise. You are solely responsible for any currency conversion charges, foreign transaction fees, bank fees, or taxes imposed by your card issuer, bank, or jurisdiction. The Company is not responsible for any overdraft charge, over-limit fee, insufficient funds fee, or other cost imposed by your financial institution.</p>
+<p><strong>5.4 Failed payment.</strong> If any payment fails, is declined, is reversed, or is otherwise not successfully processed, your access to the Program — including Content, community features, live sessions, and any bonus material — may be suspended immediately and without notice. Access will be reinstated only once the outstanding amount has been successfully collected in full. If you experience a payment issue, contact <strong><a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a></strong> within five (5) business days.</p>
+<p><strong>5.5 Collection.</strong> You agree to pay all costs of collection of any amount owed to the Company, including without limitation reasonable attorneys' fees, collection agency fees, and court costs. All past due amounts accrue interest at the lesser of eighteen percent (18%) per annum or the maximum rate permitted by applicable law. The Company reserves the right to refer any unpaid amount to a third-party collections agency.</p>
+<p><strong>5.6 VIP Services.</strong> Where you purchase a VIP tier, the following additional terms apply:</p>
+<p class="sub"><span class="cn">(a)</span>VIP Services comprise the number and duration of one-to-one sessions specified for the tier you purchased, to be delivered over the stated term of six (6) weeks or twelve (12) weeks as applicable, commencing on the date agreed between you and the Company or, absent agreement, on Day 1.</p>
+<p class="sub"><span class="cn">(b)</span>Sessions must be scheduled and used within the stated term. <strong>Any session not scheduled and attended within the term is forfeited without refund, credit, or carry-over.</strong></p>
+<p class="sub"><span class="cn">(c)</span>Sessions cancelled or rescheduled with fewer than twenty-four (24) hours' notice, and sessions for which you fail to attend, are deemed used and are forfeited.</p>
+<p class="sub"><span class="cn">(d)</span>VIP Services are personal to you and may not be transferred, shared, resold, or assigned.</p>
+<p class="sub"><span class="cn">(e)</span>All other terms of this Agreement, including without limitation Section 6 (No Refunds), apply to VIP Services in full.</p>
+<p><strong>5.7 Upgrades.</strong> Where the Company offers a tier upgrade, the upgrade price is the difference between the price you originally paid and the then-current price of the higher tier. Upgrades are subject to this Agreement in full and are non-refundable.</p>
+<h2 id="s6"><span class="sn">6.</span>No Refunds — All Sales Final</h2>
+<p class="cl"><span class="cn">6.1</span><strong>Due to the immediate and fully digital nature of the Program, all sales are final. The Company does not offer, and you are not entitled to, any refund, return, credit, exchange, transfer, cancellation, or money-back guarantee, in whole or in part, under any circumstances.</strong></p>
+<p class="cl"><span class="cn">6.2</span>You acknowledge and agree that the entire value of your purchase is delivered to you at the moment access is granted, that the Content is capable of being copied, retained, and used indefinitely once accessed, and that this is the basis on which the price has been set. You acknowledge that a lower price has been offered to you in consideration of, among other things, the finality of sale set out in this Section 6.</p>
+<p class="cl"><span class="cn">6.3</span>Without limiting Section 6.1, you expressly acknowledge that <strong>none</strong> of the following constitutes grounds for any refund, chargeback, or claim:</p>
+<p class="sub"><span class="cn">(a)</span>you did not use, access, complete, or attend any part of the Program;</p>
+<p class="sub"><span class="cn">(b)</span>you changed your mind, no longer want the Program, or found it did not meet your expectations;</p>
+<p class="sub"><span class="cn">(c)</span>your personal, financial, professional, medical, or business circumstances changed after purchase;</p>
+<p class="sub"><span class="cn">(d)</span>you did not achieve any particular result, outcome, follower count, level of engagement, income, or return on investment;</p>
+<p class="sub"><span class="cn">(e)</span>you disagree with the Program's method, approach, opinions, or recommendations;</p>
+<p class="sub"><span class="cn">(f)</span>you did not attend, or could not attend, a live session, whether or not you watched the recording;</p>
+<p class="sub"><span class="cn">(g)</span>the Company exercised its rights under Section 7 to modify, substitute, reschedule, or replace any component, guest, session, or delivery method;</p>
+<p class="sub"><span class="cn">(h)</span>an AI Platform, social media platform, or other third-party service changed its pricing, terms, availability, functionality, policies, or results, or restricted or terminated your account;</p>
+<p class="sub"><span class="cn">(i)</span>you purchased a tier other than the one you now believe you wanted, or the price of a tier subsequently changed;</p>
+<p class="sub"><span class="cn">(j)</span>your access was suspended or terminated under Section 3.5, Section 5.4, Section 12.9, or Section 22.2; or</p>
+<p class="sub"><span class="cn">(k)</span>you claim to have found the same or similar material elsewhere, at a lower price, or free of charge.</p>
+<p><strong>6.4 Contact us first.</strong> If you are dissatisfied for any reason, you agree to contact <strong><a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a></strong> and to allow the Company a reasonable period of not less than ten (10) business days to respond and, where it chooses to do so, to address your concern, before taking any other step. The Company would far rather resolve an issue than lose you.</p>
+<p><strong>6.5 No waiver.</strong> Any accommodation, credit, or goodwill gesture the Company may elect to offer in any individual case is made in its sole discretion, is not an admission of any obligation, does not vary this Agreement, and creates no precedent or entitlement for you or any other person.</p>
+<h2 id="s7"><span class="sn">7.</span>Program Delivery and Modification</h2>
+<p class="cl"><span class="cn">7.1</span>The Company will use commercially reasonable efforts to deliver the Program substantially as described. The Company reserves the right, at any time and in its sole discretion, to:</p>
+<p class="sub"><span class="cn">(a)</span>modify, update, add to, remove from, reorder, or replace any part of the Content or curriculum;</p>
+<p class="sub"><span class="cn">(b)</span>reschedule, shorten, combine, or change the format or delivery method of any live session;</p>
+<p class="sub"><span class="cn">(c)</span>substitute or replace any host, guest, speaker, or contributor with another of comparable standing, or remove a guest session and replace it with alternative Content of comparable value; and</p>
+<p class="sub"><span class="cn">(d)</span>change, migrate, or replace the Portal or any platform through which the Program is delivered.</p>
+<p class="cl"><span class="cn">7.2</span>No exercise of the rights in Section 7.1 constitutes a breach of this Agreement, a failure of consideration, or grounds for any refund, credit, or claim.</p>
+<p class="cl"><span class="cn">7.3</span>Named guests, contributors, and session dates are indicative and are not guaranteed. Any specific guest appearance is subject to that person's availability and is not a term of this Agreement.</p>
+<h2 id="s8"><span class="sn">8.</span>No Guarantee of Results</h2>
+<p class="cl"><span class="cn">8.1</span>The Program is provided for <strong>educational and informational purposes only</strong>. The Company is not a marketing agency, and nothing in the Program constitutes legal, financial, tax, accounting, investment, medical, employment, or other professional advice. You should obtain independent professional advice before acting on anything in the Program.</p>
+<p class="cl"><span class="cn">8.2</span><strong>The Company does not and cannot represent, warrant, guarantee, or promise any result of any kind</strong> arising from your access to or use of the Program, including without limitation any level of: followers, subscribers, connections, audience growth, reach, impressions, views, engagement, leads, enquiries, clients, customers, sales, revenue, profit, brand recognition, time saved, content output, or return on investment.</p>
+<p class="cl"><span class="cn">8.3</span>Your results, if any, depend on factors entirely outside the Company's control, including without limitation your existing audience, your market, your offer, your expertise, your positioning, the time and effort you commit, your skill, your consistency, the AI Platforms you use, and the policies and algorithms of third-party platforms. Because these factors differ from person to person, no outcome can be predicted or promised.</p>
+<p class="cl"><span class="cn">8.4</span><strong>Testimonials, case studies, screenshots, figures, and examples</strong> — including any figures relating to the Company's founders, instructors, or contributors — describe the individual experience of specific people. They are illustrative only, are not typical, are not a guarantee, and should not be understood as an average, an expected, or a promised result. Individual results vary and may be zero.</p>
+<p class="cl"><span class="cn">8.5</span>You knowingly and voluntarily assume full responsibility for all decisions you make and all actions you take in reliance on the Program, and for any resulting loss.</p>
+<h2 id="s9"><span class="sn">9.</span>AI Platforms and Third-Party Services</h2>
+<p><strong>9.1 Your subscriptions.</strong> The Program is designed to be operated inside third-party AI Platforms. You are solely responsible for obtaining, paying for, and maintaining your own accounts and subscriptions with any AI Platform, social media platform, scheduling tool, or other third-party service required to use the Program. Those costs are not included in the price of the Program.</p>
+<p><strong>9.2 No control.</strong> The Company does not own, operate, or control any AI Platform or social media platform. The Company gives no warranty and accepts no liability as to the availability, continuity, pricing, functionality, performance, terms of service, output quality, or policies of any such platform, or as to any change to any of them.</p>
+<p><strong>9.3 Output.</strong> Output generated by an AI Platform may be inaccurate, incomplete, outdated, biased, misleading, or unsuitable for your purpose, and may resemble output generated for other users. <strong>You are solely responsible for reviewing, verifying, editing, fact-checking, and approving all output before you publish, distribute, or rely on it.</strong> Nothing publishes without your review.</p>
+<p><strong>9.4 Your compliance.</strong> You are solely responsible for ensuring that your use of the Program, of any AI Platform, and of any output complies with: the terms of service and acceptable use policies of every platform you use; all applicable laws and regulations, including those governing advertising, disclosure of AI-generated content, consumer protection, data protection, and any regulated industry in which you operate; and any third-party intellectual property rights. The Company accepts no liability for any restriction, suspension, or termination of your accounts by any third party.</p>
+<p><strong>9.5 Ownership of output.</strong> As between you and the Company, content you generate using your own inputs remains yours, subject to the terms of the relevant AI Platform. The Company's frameworks, agent architectures, prompt structures, and Content remain the Company's exclusive property and are licensed to you only as set out in Section 3.</p>
+<h2 id="s10"><span class="sn">10.</span>Payment Disputes and Chargebacks</h2>
+<p class="cl"><span class="cn">10.1</span>You agree that you will not initiate, encourage, or assist any chargeback, payment dispute, reversal, stop-payment instruction, or claim with your bank, card issuer, or payment provider in respect of any amount properly charged under this Agreement.</p>
+<p class="cl"><span class="cn">10.2</span>You acknowledge that initiating such a dispute after you have been granted access to the Program constitutes a <strong>material breach</strong> of this Agreement.</p>
+<p class="cl"><span class="cn">10.3</span>In the event of a chargeback or payment dispute, the Company may, immediately and without notice: (a) terminate your access to the Program in full and permanently; (b) revoke your licence under Section 3; and (c) pursue recovery of the disputed amount together with all resulting costs, fees, and expenses, including without limitation processor dispute fees, administrative costs, collection costs, and reasonable attorneys' fees, in accordance with Section 5.5.</p>
+<p class="cl"><span class="cn">10.4</span>You agree that this Agreement, together with your purchase record, access logs, and any correspondence with the Company, may be submitted in response to any dispute as evidence of the terms you accepted.</p>
+<p class="cl"><span class="cn">10.5</span>Termination under this Section does not relieve you of any payment obligation and does not entitle you to any refund.</p>
+<h2 id="s11"><span class="sn">11.</span>Account Security and Communications</h2>
+<p class="cl"><span class="cn">11.1</span>You will provide true, accurate, current, and complete information when creating your account, and will keep it up to date.</p>
+<p class="cl"><span class="cn">11.2</span>You are responsible for maintaining the confidentiality of your login credentials and for all activity occurring under your account.</p>
+<p class="cl"><span class="cn">11.3</span>By purchasing, you consent to receive from the Company communications relating to the Program, including administrative, service, and transactional messages, at the email address you provide. You also consent to receive marketing communications, announcements, and offers, and you may withdraw that marketing consent at any time using the unsubscribe link in any marketing email or by contacting <strong><a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a></strong>. Withdrawal of marketing consent does not affect service communications necessary to deliver the Program.</p>
+<p class="cl"><span class="cn">11.4</span>The Company's collection and use of personal information is governed by its Privacy Policy, available at <span class="todo">[privacy policy URL]</span>, which is incorporated into this Agreement by reference.</p>
+<h2 id="s12"><span class="sn">12.</span>Community and User Content</h2>
+<p class="cl"><span class="cn">12.1</span>The Program may allow you to submit content, including comments, posts, questions, replies, files, and messages within the Portal or in communication with the Company ("<strong>User Content</strong>").</p>
+<p class="cl"><span class="cn">12.2</span>You expressly acknowledge and agree that once submitted, User Content may be accessible to other participants and to the Company, and that <strong>there is no confidentiality or privacy in respect of User Content</strong>, including any personally identifying or commercially sensitive information you choose to include.</p>
+<p class="cl"><span class="cn">12.3</span><strong>You are entirely responsible for all User Content you upload, post, email, or otherwise transmit, and you will indemnify the Company in respect of any loss, liability, claim, or damage suffered or incurred by the Company in connection with your User Content.</strong></p>
+<p class="cl"><span class="cn">12.4</span>You agree not to submit User Content that: (a) may create a risk of harm, loss, physical or mental injury, emotional distress, death, disability, disfigurement, or illness to you or any other person; (b) may create a risk of loss or damage to any person or property; (c) seeks to harm or exploit a minor; (d) may constitute or contribute to a crime or tort; (e) is unlawful, including without limitation content disclosing another party's trade secrets or confidential information; or (f) you do not have the right to make available under any law or under any contractual or fiduciary obligation.</p>
+<p class="cl"><span class="cn">12.5</span>You represent and warrant that your User Content does not and will not infringe any third-party right, including intellectual property, privacy, and publicity rights. You acknowledge that the Company acts only as a passive conduit for the distribution of your User Content.</p>
+<p class="cl"><span class="cn">12.6</span>You may be exposed to User Content that is inaccurate, objectionable, or unsuited to your purpose. The Company is not liable for any damage you allege to have suffered as a result of User Content submitted by any other person.</p>
+<p><strong>12.7 Community conduct.</strong> You agree to interact respectfully with the Company, its team, and other participants at all times. Harassment, abuse, discrimination, threats, and disruptive behaviour are prohibited. The Company does not permit advertising, soliciting, recruiting, or promoting any other service, product, program, or coaching offer within the Portal or any Program forum.</p>
+<p><strong>12.8 Community confidentiality.</strong> You agree not to screenshot, republish, quote, or disclose outside the Portal any other participant's User Content, business information, revenue figures, strategies, or personal circumstances, without that participant's prior express permission.</p>
+<p><strong>12.9 Enforcement.</strong> The Company may remove any User Content and may suspend or terminate the access of any participant who breaches this Section, immediately, without notice, and <strong>without refund</strong>.</p>
+<p><strong>12.10 Licence to User Content.</strong> By submitting User Content, you grant the Company, and represent and warrant that you have all rights necessary to grant, an irrevocable, perpetual, non-exclusive, royalty-free, sublicensable, transferable, worldwide licence to use, reproduce, modify, publish, edit, translate, distribute, syndicate, publicly display, and make derivative works of that User Content and of your name, voice, image, and likeness as contained in it, in whole or in part, in any form, media, or technology now known or later developed, in connection with the Program and the Company's business, including for the purpose of promoting the Program and the Company's services across any media channel. You also grant each other participant a non-exclusive, royalty-free licence to access your User Content through the Program.</p>
+<h2 id="s13"><span class="sn">13.</span>Audio, Video, and Testimonial Release</h2>
+<p class="cl"><span class="cn">13.1</span>You agree to allow the use of your voice, photograph, image, and likeness captured in connection with the Program by photograph, audio, and video, using any technology now known or later developed, for distribution to participants as part of the Company's normal course of business, including the recording of live sessions for replay.</p>
+<p class="cl"><span class="cn">13.2</span>You understand that you may opt out of any recording by not attending or not participating in live sessions or other recorded events.</p>
+<p class="cl"><span class="cn">13.3</span>You waive any right you have or may have to inspect or approve any photograph, audio, or video of you captured in connection with the Program.</p>
+<p class="cl"><span class="cn">13.4</span>All photographs, audio, and video subject to this Section are the exclusive property of the Company, its affiliates, successors, and assigns.</p>
+<p class="cl"><span class="cn">13.5</span>Where you voluntarily provide a testimonial, review, result, or endorsement to the Company, you grant the Company a perpetual, irrevocable, worldwide, royalty-free right to use it, together with your name, likeness, business name, and any results described, for marketing and promotional purposes in any medium, without further approval or compensation.</p>
+<h2 id="s14"><span class="sn">14.</span>Intellectual Property</h2>
+<p class="cl"><span class="cn">14.1</span>The Content is the exclusive property of the Company or its licensors and is protected by copyright, trademark, and other intellectual property laws. Nothing in this Agreement transfers ownership of any Content to you.</p>
+<p class="cl"><span class="cn">14.2</span>You may not reproduce, republish, display, perform, distribute, modify, transmit, reuse, re-post, or use the Content for any public or commercial purpose without the Company's express prior written permission, which may be withheld in its sole discretion.</p>
+<p class="cl"><span class="cn">14.3</span>The trademarks, logos, and service marks displayed within the Content (the "<strong>Trademarks</strong>") are registered and unregistered Trademarks of the Company or of third parties who have authorised their use. Nothing in the Content or on any Company website should be construed as granting, by implication, estoppel, or otherwise, any licence or right to use any Trademark.</p>
+<p class="cl"><span class="cn">14.4</span>You acknowledge that the Content is unique and that any breach of Section 3 or this Section 14 would cause the Company irreparable harm for which monetary damages would be an inadequate remedy. Accordingly, the Company is entitled to seek injunctive relief and specific performance in addition to all other remedies, without the necessity of posting a bond.</p>
+<h2 id="s15"><span class="sn">15.</span>Digital Millennium Copyright Act</h2>
+<p>If you believe that any part of the Program contains material that infringes your copyright, please send the following to <strong><a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a></strong>, or in writing to: <span class="todo">[registered agent name]</span>, Registered Agent for Growth Haus LLC, <span class="todo">[registered agent street address, city, WY, ZIP]</span>:</p>
+<p class="sub"><span class="cn">(a)</span>your address, telephone number, and email address;</p>
+<p class="sub"><span class="cn">(b)</span>a description of the copyrighted work you claim has been infringed;</p>
+<p class="sub"><span class="cn">(c)</span>a description of where the allegedly infringing material is located;</p>
+<p class="sub"><span class="cn">(d)</span>a statement that you have a good faith belief that the disputed use is not authorised by you, the copyright owner, its agent, or the law;</p>
+<p class="sub"><span class="cn">(e)</span>an electronic or physical signature of the person authorised to act on behalf of the owner of the copyright interest; and</p>
+<p class="sub"><span class="cn">(f)</span>a statement, made under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on the copyright owner's behalf.</p>
+<h2 id="s16"><span class="sn">16.</span>Disclaimer of Warranties</h2>
+<p class="cl"><span class="cn">16.1</span><strong>The Program, the Content, and the Portal are provided "as is" and "as available", without warranty of any kind, express, implied, or statutory.</strong></p>
+<p class="cl"><span class="cn">16.2</span><strong>To the maximum extent permitted by law, the Company disclaims all warranties, including without limitation any implied warranty of merchantability, fitness for a particular purpose, title, accuracy, and non-infringement.</strong></p>
+<p class="cl"><span class="cn">16.3</span><strong>The Company does not warrant that the Program will be uninterrupted, timely, secure, or error-free, that any defect will be corrected, or that the Program will meet your requirements or expectations.</strong></p>
+<h2 id="s17"><span class="sn">17.</span>Limitation of Liability</h2>
+<p class="cl"><span class="cn">17.1</span><strong>To the maximum extent permitted by law, the total aggregate liability of the Company and each Company Indemnified Party, arising out of or relating to this Agreement or the Program, whether in contract, tort, statute, or otherwise, will not exceed the total amount actually paid by you to the Company for the Program in the twelve (12) months preceding the event giving rise to the claim.</strong></p>
+<p class="cl"><span class="cn">17.2</span><strong>In no event will the Company or any Company Indemnified Party be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any loss of profits, revenue, business, opportunity, goodwill, audience, data, or anticipated savings, even if advised of the possibility of such damages.</strong></p>
+<p class="cl"><span class="cn">17.3</span>You knowingly and voluntarily assume full responsibility for all risks, losses, and damages, known or unknown, that you may incur as a result of your use of the Program.</p>
+<p class="cl"><span class="cn">17.4</span>The limitations in this Section apply to the fullest extent permitted by applicable law and reflect a reasonable allocation of risk that forms an essential basis of the bargain between you and the Company. Nothing in this Agreement excludes or limits liability that cannot lawfully be excluded or limited.</p>
+<h2 id="s18"><span class="sn">18.</span>Release</h2>
+<p>In consideration of being permitted to participate in the Program, you, on behalf of yourself and your heirs, successors, and assigns, knowingly, voluntarily, and expressly waive, release, and forever discharge Growth Haus LLC, its affiliates, and their respective members, managers, officers, directors, employees, agents, contractors, instructors, and other persons acting on its behalf, from any and all manner of action, cause of action, suit, claim, damage, cost, and expense whatsoever, whether based in tort, contract, statute, or any other theory of recovery, that you now have or may later have arising from or relating to your use of the Program. This release is intended to be as broad and inclusive as permitted by the laws of the State of Wyoming, and does not apply to any liability that cannot lawfully be released.</p>
+<h2 id="s19"><span class="sn">19.</span>Indemnity</h2>
+<p>You agree to indemnify, defend, and hold harmless the Company, its subsidiaries and affiliates, and their respective members, equity owners, managers, officers, directors, agents, attorneys, employees, contractors, successors, and assigns (each a "<strong>Company Indemnified Party</strong>"), from and against any and all Damages asserted against, resulting from, imposed upon, or incurred or suffered by any Company Indemnified Party arising out of or relating to: your breach of this Agreement; your use of the Program; any breach of your representations or warranties; your User Content; any content you publish or distribute using the Program; and your use of any AI Platform or third-party service. For the purposes of this Agreement, "<strong>Damages</strong>" means all liabilities, losses, injuries, penalties, fines, forfeitures, assessments, claims, suits, proceedings, investigations, actions, demands, causes of action, judgments, awards, taxes, charges, costs, expenses, and damages of any nature, including without limitation interest, penalties, reasonable attorneys', accountants', and other professionals' fees and expenses, court costs, and all amounts paid in investigation, defence, or settlement of any of the foregoing.</p>
+<h2 id="s20"><span class="sn">20.</span>Dispute Resolution — Binding Arbitration and Class Action Waiver</h2>
+<div class="warnbox sub"><strong>Please read this Section carefully. It affects your legal rights, including your right to file a lawsuit in court and to have a jury decide your claim.</strong></div>
+<p><strong>20.1 Informal resolution first.</strong> Before commencing arbitration, you agree to send a written notice of dispute to <strong><a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a></strong> describing the dispute and the relief sought, and to allow the Company thirty (30) days to resolve it informally.</p>
+<p><strong>20.2 Agreement to arbitrate.</strong> Any dispute, claim, or controversy arising out of or relating to this Agreement or the Program, including its formation, interpretation, breach, termination, validity, or enforceability, that is not resolved under Section 20.1 will be resolved exclusively by <strong>final and binding individual arbitration</strong> administered by the American Arbitration Association under its Consumer Arbitration Rules then in effect, rather than in court.</p>
+<p><strong>20.3 Seat and procedure.</strong> The arbitration will be seated in the State of Wyoming and, unless the parties agree otherwise, will be conducted by a single arbitrator by written submission, telephone, or video conference. The arbitrator's award is final and binding, and judgment on the award may be entered in any court of competent jurisdiction.</p>
+<p><strong>20.4 Class action waiver.</strong> <strong>You and the Company each agree that any dispute will be brought solely in your or its individual capacity, and not as a plaintiff or class member in any purported class, collective, consolidated, or representative proceeding. The arbitrator has no authority to consolidate the claims of more than one person or to preside over any form of class or representative proceeding.</strong></p>
+<p><strong>20.5 Jury trial waiver.</strong> <strong>You and the Company each knowingly and voluntarily waive any right to a trial by jury in respect of any dispute arising out of or relating to this Agreement or the Program.</strong></p>
+<p><strong>20.6 Exceptions.</strong> Notwithstanding Section 20.2, either party may bring an individual action in small claims court, and the Company may seek injunctive or other equitable relief in any court of competent jurisdiction to protect its intellectual property or confidential information.</p>
+<p><strong>20.7 Time limit.</strong> <strong>Any claim arising out of or relating to this Agreement or the Program must be commenced within one (1) year after the claim accrues, failing which it is permanently barred</strong>, unless a longer period is required by applicable law.</p>
+<p><strong>20.8 Governing law and venue.</strong> This Agreement is governed by and construed in accordance with the laws of the State of Wyoming and the laws of the United States of America, without regard to conflict of law rules. To the extent any matter is not subject to arbitration, the parties irrevocably submit to the exclusive jurisdiction of the state courts located in Laramie County, Wyoming, and the United States District Court for the District of Wyoming, and waive any objection to jurisdiction or venue in those courts.</p>
+<p><strong>20.9 Fees.</strong> The Company is entitled to recover all fees and costs, including reasonable attorneys' fees, incurred in enforcing this Agreement or in successfully defending any claim brought by you.</p>
+<p><strong>20.10 Severability of this Section.</strong> If Section 20.4 is held unenforceable as to any claim, that claim alone will be severed and heard in court, and the remainder of this Section 20 will continue in full force. If any other provision of this Section 20 is held unenforceable, it will be severed and the remainder of this Section 20 will continue in full force.</p>
+<h2 id="s21"><span class="sn">21.</span>Force Majeure</h2>
+<p>If either party is prevented from performing any obligation under this Agreement due to any cause beyond its reasonable control — including without limitation act of God, fire, flood, epidemic, pandemic, public health measure, explosion, war, terrorism, strike, embargo, government regulation, civil or military authority, act or omission of carriers or transmitters, vandalism, hacking, cyber-attack, failure or interruption of the internet, failure, outage, restriction, or discontinuation of any AI Platform, social media platform, hosting provider, or payment processor, or failure of the electrical or telecommunications supply (a "<strong>force majeure event</strong>") — the time for that party's performance will be extended for the period of the delay. You will not be excused from the payment of any sum owed to the Company. If a party suffering a force majeure event is unable to cure it within thirty (30) days, the other party may terminate this Agreement, and no such termination gives rise to any refund.</p>
+<h2 id="s22"><span class="sn">22.</span>Term, Termination, and Survival</h2>
+<p class="cl"><span class="cn">22.1</span>This Agreement commences on the date of purchase and continues until the end of the Access Period, save for those provisions that expressly or by their nature survive.</p>
+<p class="cl"><span class="cn">22.2</span>The Company may terminate this Agreement and your access immediately, without notice and <strong>without refund</strong>, on your material breach of any provision.</p>
+<p class="cl"><span class="cn">22.3</span>The following Sections survive termination or expiry of this Agreement for any reason: 1, 2, 3.2, 3.3, 3.4, 5 (in respect of amounts owed), 6, 8, 9, 10, 12.3, 12.5, 12.10, 13, 14, 16, 17, 18, 19, 20, 22, 23, and 24.</p>
+<p class="cl"><span class="cn">22.4</span>Your use of the Program after termination may extend the term of this Agreement and may cause you to incur additional fees.</p>
+<h2 id="s23"><span class="sn">23.</span>Changes to this Agreement</h2>
+<p class="cl"><span class="cn">23.1</span>The Company may modify this Agreement from time to time. The modified Agreement takes effect when posted on the Company's website, and the Company will use reasonable efforts to notify you by email.</p>
+<p class="cl"><span class="cn">23.2</span>Your continued access to or use of the Program after the modified Agreement takes effect constitutes your acceptance of it.</p>
+<p class="cl"><span class="cn">23.3</span>If you do not accept a modification, your sole remedy is to cease using the Program and to notify the Company in writing at <strong><a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a></strong>, which terminates your licence. <strong>No such termination entitles you to any refund.</strong></p>
+<p class="cl"><span class="cn">23.4</span>No modification will retroactively alter any dispute that arose before the modification took effect.</p>
+<h2 id="s24"><span class="sn">24.</span>General</h2>
+<p class="sub"><span class="cn">(a)</span><strong>Entire agreement.</strong> This Agreement constitutes the entire agreement between you and the Company in relation to the Program and supersedes all prior and contemporaneous communications, whether written or oral, including all marketing and promotional material. You may request a copy of this Agreement, or ask any question about it, by emailing <strong><a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a></strong>.</p>
+<p class="sub"><span class="cn">(b)</span><strong>Binding effect.</strong> This Agreement binds and benefits the parties and their respective successors in interest, licensees, sublicensees, legal representatives, heirs, and permitted assigns, and confers no right or remedy on any other person.</p>
+<p class="sub"><span class="cn">(c)</span><strong>No waiver.</strong> No failure or delay by either party in exercising or enforcing any provision or right operates as a waiver of that or any other provision or right, and no waiver of any breach operates as a waiver of any subsequent breach.</p>
+<p class="sub"><span class="cn">(d)</span><strong>Severability.</strong> If any provision of this Agreement is held illegal, invalid, or unenforceable: (i) that provision is fully severable; (ii) this Agreement will be construed and enforced as if the provision had never formed part of it; (iii) the remaining provisions remain in full force and effect; and (iv) there will be added automatically, in place of the severed provision, a legal, valid, and enforceable provision as similar in terms as may be possible.</p>
+<p class="sub"><span class="cn">(e)</span><strong>No void by non-use.</strong> Your failure to use the Program after purchase does not void any part of this Agreement.</p>
+<p class="sub"><span class="cn">(f)</span><strong>Assignment.</strong> You may not assign this Agreement, in whole or in part, voluntarily or by operation of law, without the Company's prior written consent, and any attempt to do so is a material default and is void. The Company may assign or transfer its rights and obligations, in whole or in part, without your consent.</p>
+<p class="sub"><span class="cn">(g)</span><strong>No partnership.</strong> Nothing in this Agreement gives either party the power to direct or control the day-to-day activities of the other, deems the parties to be partners, joint venturers, co-owners, or participants in a joint undertaking, or allows either party to create or assume any obligation on behalf of the other.</p>
+<p class="sub"><span class="cn">(h)</span><strong>Cumulative remedies.</strong> The rights and remedies of the Company set out in this Agreement are not exclusive and are in addition to any other rights and remedies available to it at law or in equity.</p>
+<p class="sub"><span class="cn">(i)</span><strong>Notices.</strong> Notices to the Company must be sent to <strong><a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a></strong> and, where this Agreement requires written notice, also to <span class="todo">[registered agent name and Wyoming address]</span>. Notices to you will be sent to the email address on your account and are deemed received on the date sent.</p>
+<p class="sub"><span class="cn">(j)</span><strong>Interpretation.</strong> This Agreement will be construed and interpreted fairly, in accordance with the plain meaning of its terms, and no presumption or inference will be drawn against the party that drafted it. Section headings are for convenience only and do not affect interpretation.</p>
+<p class="sub"><span class="cn">(k)</span><strong>Electronic acceptance.</strong> You agree that your electronic acceptance of this Agreement at checkout has the same legal effect as a handwritten signature, and that the Company's records of that acceptance are admissible as evidence of it.</p>
+<p class="exec"><strong>In witness whereof</strong>, the parties have executed this Growth Haus LLC Program Agreement, effective as of the date of purchase.</p>
+<p><strong>Growth Haus LLC</strong>, a Wyoming limited liability company, doing business as The Agent Labs</p>
+<p>Contact: <strong><a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a></strong></p>
+<p class="updated">Last updated: 3 August 2026</p>
+  </article>
+</div>
+
+<footer>
+  AI CONTENT MACHINE &middot; THE AGENT LABS &middot; 2026<br>
+  <a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a> &nbsp;&middot;&nbsp;
+  <a href="/">The Content Stack</a>
+</footer>
+
+</body>
+</html>
