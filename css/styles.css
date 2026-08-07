@@ -2415,30 +2415,27 @@ a.stat:hover span {
 
 
 .value-bands {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
 }
 
 
 
 .value-band {
-
   background:
     linear-gradient(
       145deg,
       rgba(255,255,255,0.06),
       rgba(255,255,255,0.02)
     );
-
   border: 1px solid rgba(255,255,255,0.08);
-
-  border-radius: 24px;
-
-  padding: 42px;
-
+  border-radius: 18px;
+  padding: 26px 22px 22px;
   position: relative;
-
+  display: flex;
+  flex-direction: column;
 }
 
 /* the three tiers escalate: quiet, lime, coral. Previously they were the
@@ -2457,7 +2454,7 @@ a.stat:hover span {
 }
 
 .band-head {
-  margin-bottom: 35px;
+  margin-bottom: 18px;
 }
 
 /* mono, to match every other eyebrow on the page */
@@ -2480,15 +2477,10 @@ a.stat:hover span {
 }
 
 .band-head h3 {
-
-  font-size: clamp(26px, 3vw, 38px);
-
-  max-width: 700px;
-
-  line-height: 1.15;
-
-  letter-spacing: -0.03em;
-
+  font-size: clamp(18px, 1.4vw, 21px);
+  max-width: 100%;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
 
 
@@ -2502,9 +2494,8 @@ a.stat:hover span {
 
 .band-items {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 34px;
-  row-gap: 22px;
+  grid-template-columns: 1fr;
+  row-gap: 15px;
 }
 
 
@@ -2518,19 +2509,15 @@ a.stat:hover span {
 
 
 .band-item strong {
-
-  display:block;
-
-  font-size:17px;
-
-  margin-bottom:8px;
-
+  display: block;
+  font-size: 14.5px;
+  margin-bottom: 5px;
 }
 
 .band-item p {
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.5;
   margin: 0;
 }
 
@@ -2547,45 +2534,31 @@ a.stat:hover span {
 
 
 .band-total {
-
-  margin-top:40px;
-
-  padding-top:35px;
-
-  border-top:1px solid rgba(255,255,255,.08);
-
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.08);
 }
 
 
 
 .band-total > strong {
-
-  display:block;
-
-  font-size:28px;
-
-  margin-bottom:15px;
-
+  display: block;
+  font-size: 17px;
+  margin-bottom: 8px;
 }
 
 
 
 .band-total div {
-
-  font-size:20px;
-
-  margin-bottom:25px;
-
+  font-size: 15px;
+  margin-bottom: 16px;
 }
 
 
 
 .band-total b {
-
-  color:var(--lime);
-
-  font-size:32px;
-
+  color: var(--lime);
+  font-size: 26px;
 }
 
 
@@ -2601,32 +2574,54 @@ a.stat:hover span {
 
 
 .locked-items {
-
-  margin-top:28px;
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:12px;
-
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
 }
 
 
 
 .locked-items span {
-
-  padding:10px 16px;
-
-  border-radius:999px;
-
-  background:rgba(255,255,255,.04);
-
-  color:#777;
-
-  font-size:14px;
-
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  color: #777;
+  font-size: 11.5px;
 }
+
+/* three across only while there is room. Below this the bands stack full
+   width again, so the items go back to two up inside each one. */
+@media (max-width: 1080px) {
+  .value-bands {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .value-band {
+    padding: 34px 30px 28px;
+  }
+  .band-items {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 34px;
+    row-gap: 20px;
+  }
+  .band-head h3 {
+    font-size: clamp(22px, 3vw, 30px);
+  }
+  .band-item strong {
+    font-size: 16.5px;
+  }
+  .band-item p {
+    font-size: 14.5px;
+  }
+  .band-total > strong {
+    font-size: 22px;
+  }
+  .band-total b {
+    font-size: 30px;
+  }
+}
+
 
 
 
