@@ -441,6 +441,45 @@ const CONFIG = {
   });
 })();
 
+/* proof wall: tap a screenshot to read it full size */
+(function(){
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  if(!box || !img) return;
+  var closeBtn = box.querySelector('.lightbox-close');
+  var lastFocus = null;
+
+  function open(src, alt){
+    lastFocus = document.activeElement;
+    img.src = src;
+    img.alt = alt || '';
+    box.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if(closeBtn) closeBtn.focus();
+  }
+  function close(){
+    box.hidden = true;
+    img.src = '';
+    document.body.style.overflow = '';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();   // back to the thumbnail
+    lastFocus = null;
+  }
+
+  document.querySelectorAll('.shot-open').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var full = btn.getAttribute('data-full');
+      var thumb = btn.querySelector('img');
+      if(full) open(full, thumb ? thumb.alt : '');
+    });
+  });
+
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function(e){ if(e.target === box) close(); });   // backdrop only
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !box.hidden) close();
+  });
+})();
+
 /* 50+ skills: turn the wrapped chip list into two stacked auto-scrolling rows */
 (function(){
   var wrap = document.querySelector('.vskills');
