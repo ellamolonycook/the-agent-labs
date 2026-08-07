@@ -1945,7 +1945,9 @@ a.stat:hover span {
 }
 
 .socials {
-  /* display: flex; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
   margin-top: 12px;
   justify-content: flex-start;
@@ -1965,12 +1967,11 @@ a.stat:hover span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
   width: 40px;
   height: 40px;
   border-radius: 4px;
-  /* background: rgba(204, 255, 0, 0.15); */
-  /* border: 1px solid #CCFF00; */
-  /* color: #CCFF00; */
+  color: var(--muted);
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -2003,7 +2004,9 @@ a.stat:hover span {
     display: block;
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
+    /* was overflow: hidden, which clipped the social icons once the card
+       went single column; nothing here needs clipping */
+    overflow: visible;
   }
 
   .profile-photo {
@@ -2822,9 +2825,11 @@ a.stat:hover span {
 
 
 .socials svg {
-  width: 30px;
-  height: 60px;
+  width: 20px;
+  height: 20px;
   fill: currentColor;
+  display: block;
+  flex: 0 0 auto;
 }
 
 
