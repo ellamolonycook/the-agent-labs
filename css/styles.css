@@ -2414,81 +2414,83 @@ a.stat:hover span {
 
 
 .value-bands {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  /* three across: the bands read as one comparable row rather than a
+     stack you scroll through one tier at a time */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
 }
 
 
 
 .value-band {
-
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,0.06),
-      rgba(255,255,255,0.02)
+      rgba(255,255,255,0.05),
+      rgba(255,255,255,0.015)
     );
-
   border: 1px solid rgba(255,255,255,0.08);
-
-  border-radius: 24px;
-
-  padding: 42px;
-
+  border-radius: 20px;
+  padding: 28px 24px 26px;
   position: relative;
-
+  display: flex;
+  flex-direction: column;
 }
 
-
+/* the three tiers escalate: quiet, lime, coral. Previously they were the
+   same grey and only a faint border tint told them apart. */
+.value-band.essentials {
+  border-color: rgba(255,255,255,0.09);
+}
 
 .value-band.featured {
-
-  border-color: rgba(185,255,0,0.35);
-
+  border-color: rgba(212,255,79,0.34);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(212,255,79,0.07),
+      rgba(255,255,255,0.015)
+    );
+  box-shadow: 0 26px 64px -44px rgba(212,255,79,0.45);
 }
-
-
 
 .value-band.studio {
-
-  border-color: rgba(255,107,96,0.3);
-
+  border-color: rgba(255,107,96,0.32);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,107,96,0.07),
+      rgba(255,255,255,0.015)
+    );
+  box-shadow: 0 26px 64px -44px rgba(255,107,96,0.4);
 }
-
-
-
 
 .band-head {
-  margin-bottom: 35px;
+  margin-bottom: 28px;
 }
 
-
+/* mono, to match every other eyebrow on the page */
 .band-head .t-name {
-
   display: inline-block;
-
-  font-size: 13px;
-
-  letter-spacing: .15em;
-
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
   color: var(--lime);
-
-  margin-bottom: 18px;
-
+  margin-bottom: 14px;
 }
 
+.value-band.studio .band-head .t-name {
+  color: #ff8078;
+}
 
 .band-head h3 {
-
-  font-size: clamp(26px, 3vw, 38px);
-
-  max-width: 700px;
-
-  line-height: 1.15;
-
-  letter-spacing: -0.03em;
-
+  font-size: clamp(19px, 1.5vw, 23px);
+  max-width: 100%;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 
@@ -2501,64 +2503,66 @@ a.stat:hover span {
 
 
 .band-items {
-
   display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 18px;
-
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
 
 
 .band-item {
-
-  padding: 22px;
-
+  /* column layout so the price sits on the card foot: across a two-up grid
+     of uneven copy lengths the prices then line up, instead of floating
+     wherever each paragraph happens to end */
+  padding: 20px 22px;
   background: rgba(0,0,0,.18);
-
-  border-radius: 16px;
-
+  border-radius: 14px;
   border: 1px solid rgba(255,255,255,.06);
-
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color 0.16s ease,
+    background 0.16s ease;
 }
 
-
+.band-item:hover {
+  border-color: rgba(212,255,79,.24);
+  background: rgba(0,0,0,.3);
+}
 
 .band-item strong {
-
-  display:block;
-
-  font-size:17px;
-
-  margin-bottom:8px;
-
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--text);
+  margin-bottom: 7px;
 }
-
-
 
 .band-item p {
-
-  color:var(--muted);
-
-  font-size:15px;
-
-  line-height:1.55;
-
-  margin:0 0 15px;
-
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  flex: 1;
 }
-
-
 
 .band-item span {
-
-  color:var(--lime);
-
-  font-weight:700;
-
+  display: block;
+  margin-top: auto;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--lime);
+  font-weight: 700;
 }
+
+.value-band.studio .band-item span {
+  color: #ff8078;
+}
+
 
 
 
@@ -2570,45 +2574,31 @@ a.stat:hover span {
 
 
 .band-total {
-
-  margin-top:40px;
-
-  padding-top:35px;
-
-  border-top:1px solid rgba(255,255,255,.08);
-
+  margin-top: auto;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255,255,255,.08);
 }
 
 
 
 .band-total > strong {
-
-  display:block;
-
-  font-size:28px;
-
-  margin-bottom:15px;
-
+  display: block;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 
 
 .band-total div {
-
-  font-size:20px;
-
-  margin-bottom:25px;
-
+  font-size: 16px;
+  margin-bottom: 18px;
 }
 
 
 
 .band-total b {
-
-  color:var(--lime);
-
-  font-size:32px;
-
+  color: var(--lime);
+  font-size: 26px;
 }
 
 
@@ -2638,17 +2628,11 @@ a.stat:hover span {
 
 
 .locked-items span {
-
-  padding:10px 16px;
-
-  border-radius:999px;
-
-  background:rgba(255,255,255,.04);
-
-  color:#777;
-
-  font-size:14px;
-
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  color: #777;
+  font-size: 12.5px;
 }
 
 
@@ -2737,6 +2721,31 @@ a.stat:hover span {
    MOBILE
 ===================== */
 
+
+
+/* three across only while there is room for it. Below this the bands
+   stack full width again, so the items go back to two up inside. */
+@media (max-width: 1080px) {
+  .value-bands {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .value-band {
+    padding: 32px 30px 28px;
+  }
+  .band-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .band-head h3 {
+    font-size: clamp(22px, 3vw, 30px);
+  }
+  .band-total > strong {
+    font-size: 24px;
+  }
+  .band-total b {
+    font-size: 30px;
+  }
+}
 
 @media(max-width:760px){
 
