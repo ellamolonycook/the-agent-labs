@@ -1,64 +1,108 @@
 
-/* ============ CONFIG ============
-   Ella, 6 Aug 2026: ALL early-bird timing is deliberately gone from this page.
-   No countdown, no "ends in", no price-increase dates. Prices are written in the
-   HTML and the "Rises to $X" lines carry the urgency without a clock.
-   `doorsClose` is the ONLY date left, and it only ever disables the buy buttons.
-   ================================================================ */
+/* ============ CONFIG · all dates + prices live here ============ */
 const CONFIG = {
-  doorsClose: new Date('2026-09-05T00:00:00+01:00')
+  earlyBirdEnds: new Date('2026-08-29T00:00:00+01:00'),
+  doorsClose:    new Date('2026-09-05T00:00:00+01:00'), 
+  essEarly:  '$197', essFull: '$297',  
+  earlyPrice: '$395', fullPrice: '$495'
 };
 
-/* doors-close guard: once the doors shut, no button still says "buy" */
+/* pricing flip */
 (function(){
-  if(new Date() <= CONFIG.doorsClose) return;
-  document.querySelectorAll('.cta-btn').forEach(function(b){
-    b.textContent = 'DOORS CLOSED';
-    b.style.pointerEvents = 'none';
-    b.style.opacity = '.4';
-  });
-  var ub = document.getElementById('ub-msg');
-  if(ub) ub.textContent = 'Doors closed · next run TBA';
-})();
-
-/* buttons with no destination yet must not behave like checkouts */
-(function(){
-  document.querySelectorAll('a[data-todo]').forEach(function(a){
-    a.addEventListener('click', function(e){ e.preventDefault(); });
-  });
-})();
-
-/* Both fixed bars publish their real height.
-   The hero has to clear BOTH — the red bar and the sticky bar — or its opening
-   line renders underneath them. The red bar wraps to two lines on a phone, so
-   these cannot be constants. */
-(function(){
-  var urgent = document.getElementById('urgent-bar');
-  var sticky = document.querySelector('.bar');
-  if(!urgent && !sticky) return;
-  function sync(){
-    var root = document.documentElement.style;
-    if(urgent) root.setProperty('--urgent-h', urgent.offsetHeight + 'px');
-    if(sticky) root.setProperty('--bar-h', sticky.offsetHeight + 'px');
+  const now = new Date();
+  const early = now < CONFIG.earlyBirdEnds;
+  const price = early ? CONFIG.earlyPrice : CONFIG.fullPrice;
+  const essPrice = early ? CONFIG.essEarly : CONFIG.essFull;
+  document.getElementById('vip-price').textContent = price;
+  document.getElementById('vip-btn').textContent = 'GET THE FULL MACHINE · ' + price + ' →';
+  document.getElementById('ess-price').textContent = essPrice;
+  document.getElementById('ess-btn').textContent = 'START WITH ESSENTIAL · ' + essPrice;
+  var pcDays = Math.max(1, Math.ceil((CONFIG.earlyBirdEnds - now) / 86400000));
+  document.getElementById('pc-days').textContent = pcDays + (pcDays === 1 ? ' day' : ' days');
+  if(!early){
+    ['vip-badge','vip-was','vip-deadline','ess-was','ess-deadline','price-countdown'].forEach(function(id){
+      var el = document.getElementById(id); if(el) el.style.display = 'none';
+    });
   }
-  window.addEventListener('resize', sync);
-  window.addEventListener('orientationchange', sync);
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
-  sync();
+  if(now > CONFIG.doorsClose){
+    document.querySelectorAll('.cta-btn').forEach(b=>{
+      b.textContent = 'DOORS CLOSED';
+      b.style.pointerEvents = 'none';
+      b.style.opacity = '.4';
+    });
+    document.getElementById('bar-count').textContent = 'DOORS CLOSED · NEXT RUN TBA';
+  }
 })();
 
-/* Phones get the finished text, never the typing.
-   Audit Part 6: two typewriter headlines plus a six-line typing terminal is jank
-   and battery on a mid-range phone. Treated exactly like reduced-motion. */
-function noType(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var narrow = window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
-  return !!(reduce || narrow);
-}
+/* countdown in sticky bar: early-bird first, then doors-close */
+(function () {
+  const el = document.getElementById('bar-count');
+  if (!el) return;
+
+  const endTime = new Date(Date.now() + 48 * 60 * 60 * 1000);
+
+  function fmt(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${hours}H ${minutes}M ${seconds}S`;
+  }
+
+  function tick() {
+    const now = new Date();
+    const remaining = endTime - now;
+
+    if (remaining > 0) {
+      el.textContent = `EARLY BIRD SPECIAL ENDS IN ${fmt(remaining)}`;
+    } else {
+      el.textContent = 'EARLY BIRD SPECIAL ENDED';
+      clearInterval(timer);
+    }
+  }
+
+  tick();
+
+  const timer = setInterval(tick, 1000);
+})();
+
+/* urgent red bar: live countdown + height sync */
+(function(){
+  var bar = document.getElementById('urgent-bar');
+  var el  = document.getElementById('urgent-count');
+  var msg = document.getElementById('ub-msg');
+  if(!bar || !el || !msg) return;
+  var state = '';
+  function pad(n){ return (n<10?'0':'')+n; }
+  function fmt(ms){
+    var d=Math.floor(ms/86400000), h=Math.floor(ms%86400000/3600000),
+        m=Math.floor(ms%3600000/60000), s=Math.floor(ms%60000/1000);
+    return (d>0?d+'d ':'') + pad(h)+'h '+pad(m)+'m '+pad(s)+'s';
+  }
+  function sync(){ document.documentElement.style.setProperty('--urgent-h', bar.offsetHeight+'px'); }
+  var timer;
+  function setState(s){
+    if(state===s) return; state=s;
+    if(s==='early'){ msg.innerHTML='Founding member pricing available now'; }
+    else if(s==='doors'){ msg.textContent='Doors close Fri Sept 4 · last chance to get in'; }
+    else { msg.textContent='Doors closed · next run TBA'; el.style.display='none'; }
+    sync();
+  }
+  function tick(){
+    var now = new Date();
+    if(now < CONFIG.earlyBirdEnds){ setState('early'); el.textContent = fmt(CONFIG.earlyBirdEnds - now); }
+    else if(now < CONFIG.doorsClose){ setState('doors'); el.textContent = fmt(CONFIG.doorsClose - now); }
+    else { setState('closed'); clearInterval(timer); }
+  }
+  tick(); timer = setInterval(tick, 1000);
+  window.addEventListener('resize', sync); sync();
+})();
 
 /* terminal typing loop */
 (function(){
-  const reduce = noType();
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const lines = [
     ['ag','research_agent',' scanning your niche… 3 rising formats found'],
     ['ag','brain',' loading tone of voice: yours, not a bot’s'],
@@ -161,10 +205,10 @@ function noType(){
 
 /* animated headings: TYPEWRITER reveal, char by char on scroll-in. Every char is pre-placed (just hidden) so nothing reflows. */
 (function(){
-  var reduceMo = noType();
+  var reduceMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lines = Array.prototype.slice.call(document.querySelectorAll('.typeline'));
   if(!lines.length) return;
-  if(reduceMo) return;                        // leave text intact on phones / reduced motion
+  if(reduceMo) return;                        // leave text intact if motion is reduced
   lines.forEach(function(el){
     var text = el.textContent;
     el.textContent = '';
@@ -207,7 +251,7 @@ function noType(){
 
 /* typewriter loop: type + erase + repeat, triggered on scroll-in */
 (function(){
-  var reduceMo = noType();
+  var reduceMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lines = Array.prototype.slice.call(document.querySelectorAll('.typeline-loop'));
   if(!lines.length) return;
   if(reduceMo) return;
