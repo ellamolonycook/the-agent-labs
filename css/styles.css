@@ -2004,9 +2004,7 @@ a.stat:hover span {
     display: block;
     width: 100%;
     max-width: 100%;
-    /* was overflow: hidden, which clipped the social icons once the card
-       went single column; nothing here needs clipping */
-    overflow: visible;
+    overflow: hidden;
   }
 
   .profile-photo {
@@ -2417,72 +2415,64 @@ a.stat:hover span {
 
 
 .value-bands {
-  /* three across: the bands read as one comparable row rather than a
-     stack you scroll through one tier at a time */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 
 
 .value-band {
+
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,0.05),
-      rgba(255,255,255,0.015)
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.02)
     );
+
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 18px;
-  padding: 24px 22px 22px;
+
+  border-radius: 24px;
+
+  padding: 42px;
+
   position: relative;
-  display: flex;
-  flex-direction: column;
+
 }
 
 /* the three tiers escalate: quiet, lime, coral. Previously they were the
    same grey and only a faint border tint told them apart. */
-.value-band.essentials {
-  border-color: rgba(255,255,255,0.09);
-}
 
 .value-band.featured {
-  border-color: rgba(212,255,79,0.34);
-  background:
-    linear-gradient(
-      145deg,
-      rgba(212,255,79,0.07),
-      rgba(255,255,255,0.015)
-    );
-  box-shadow: 0 26px 64px -44px rgba(212,255,79,0.45);
+
+  border-color: rgba(185,255,0,0.35);
+
 }
 
 .value-band.studio {
-  border-color: rgba(255,107,96,0.32);
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,107,96,0.07),
-      rgba(255,255,255,0.015)
-    );
-  box-shadow: 0 26px 64px -44px rgba(255,107,96,0.4);
+
+  border-color: rgba(255,107,96,0.3);
+
 }
 
 .band-head {
-  margin-bottom: 16px;
+  margin-bottom: 35px;
 }
 
 /* mono, to match every other eyebrow on the page */
 .band-head .t-name {
+
   display: inline-block;
-  font-family: var(--mono);
-  font-size: 11.5px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
+
+  font-size: 13px;
+
+  letter-spacing: .15em;
+
   color: var(--lime);
-  margin-bottom: 14px;
+
+  margin-bottom: 18px;
+
 }
 
 .value-band.studio .band-head .t-name {
@@ -2490,10 +2480,15 @@ a.stat:hover span {
 }
 
 .band-head h3 {
-  font-size: clamp(17px, 1.35vw, 20px);
-  max-width: 100%;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+
+  font-size: clamp(26px, 3vw, 38px);
+
+  max-width: 700px;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.03em;
+
 }
 
 
@@ -2506,62 +2501,40 @@ a.stat:hover span {
 
 
 .band-items {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 34px;
+  row-gap: 22px;
 }
 
 
 
 .band-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  column-gap: 14px;
-  align-items: baseline;
-  padding: 10px 0;
+  padding: 0;
   background: none;
   border: 0;
-  border-bottom: 1px solid rgba(255,255,255,.055);
   border-radius: 0;
 }
 
-.band-item:last-child {
-  border-bottom: 0;
-}
 
 .band-item strong {
-  grid-column: 1;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -.01em;
-  color: var(--text);
-  line-height: 1.35;
-  margin: 0;
+
+  display:block;
+
+  font-size:17px;
+
+  margin-bottom:8px;
+
 }
 
 .band-item p {
-  grid-column: 1 / -1;
   color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.45;
-  margin: 3px 0 0;
-}
-
-.band-item span {
-  grid-column: 2;
-  justify-self: end;
-  font-family: var(--mono);
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--lime);
-  white-space: nowrap;
-  border: 0;
-  padding: 0;
+  font-size: 15px;
+  line-height: 1.55;
   margin: 0;
 }
 
-.value-band.studio .band-item span {
-  color: #ff8078;
-}
+
 
 
 
@@ -2574,31 +2547,45 @@ a.stat:hover span {
 
 
 .band-total {
-  margin-top: auto;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255,255,255,.1);
+
+  margin-top:40px;
+
+  padding-top:35px;
+
+  border-top:1px solid rgba(255,255,255,.08);
+
 }
 
 
 
 .band-total > strong {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 6px;
+
+  display:block;
+
+  font-size:28px;
+
+  margin-bottom:15px;
+
 }
 
 
 
 .band-total div {
-  font-size: 14px;
-  margin-bottom: 14px;
+
+  font-size:20px;
+
+  margin-bottom:25px;
+
 }
 
 
 
 .band-total b {
-  color: var(--lime);
-  font-size: 24px;
+
+  color:var(--lime);
+
+  font-size:32px;
+
 }
 
 
@@ -2614,20 +2601,31 @@ a.stat:hover span {
 
 
 .locked-items {
-  margin-top: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+
+  margin-top:28px;
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:12px;
+
 }
 
 
 
 .locked-items span {
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.04);
-  color: #777;
-  font-size: 11.5px;
+
+  padding:10px 16px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.04);
+
+  color:#777;
+
+  font-size:14px;
+
 }
 
 
@@ -2718,30 +2716,6 @@ a.stat:hover span {
 
 
 
-/* three across only while there is room for it. Below this the bands
-   stack full width again, so the items go back to two up inside. */
-@media (max-width: 1080px) {
-  .value-bands {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .value-band {
-    padding: 28px 26px 24px;
-  }
-  .band-head h3 {
-    font-size: clamp(20px, 3vw, 26px);
-  }
-  .band-item strong {
-    font-size: 15px;
-  }
-  .band-item p,
-  .band-item span {
-    font-size: 13.5px;
-  }
-  .band-total b {
-    font-size: 28px;
-  }
-}
 
 @media(max-width:760px){
 
