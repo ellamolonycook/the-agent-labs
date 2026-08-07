@@ -1975,6 +1975,22 @@ a.stat:hover span {
   transition: all 0.2s ease;
 }
 
+/* Meet Aj + Ella icons. The anchors already carried a transition but no
+   hover state; the svg is fill: currentColor, so colour repaints the
+   glyph. #ccff00 is this section's own accent (.profile-credentials,
+   .profile-title), not the global --lime. */
+.profile-card .socials a:hover,
+.profile-card .socials a:focus-visible {
+  color: #ccff00;
+  transform: translateY(-3px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .profile-card .socials a:hover,
+  .profile-card .socials a:focus-visible {
+    transform: none;
+  }
+}
+
 
 @media (max-width: 820px) {
 
