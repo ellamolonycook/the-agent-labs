@@ -37,43 +37,12 @@ const CONFIG = {
       b.style.pointerEvents = 'none';
       b.style.opacity = '.4';
     });
-    document.getElementById('bar-count').textContent = 'DOORS CLOSED · NEXT RUN TBA';
+    setText('bar-count', 'DOORS CLOSED · NEXT RUN TBA');
   }
 })();
 
-/* countdown in sticky bar: early-bird first, then doors-close */
-(function () {
-  const el = document.getElementById('bar-count');
-  if (!el) return;
-
-  const endTime = new Date(Date.now() + 48 * 60 * 60 * 1000);
-
-  function fmt(ms) {
-    const totalSeconds = Math.floor(ms / 1000);
-
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    return `${hours}H ${minutes}M ${seconds}S`;
-  }
-
-  function tick() {
-    const now = new Date();
-    const remaining = endTime - now;
-
-    if (remaining > 0) {
-      el.textContent = `EARLY BIRD SPECIAL ENDS IN ${fmt(remaining)}`;
-    } else {
-      el.textContent = 'EARLY BIRD SPECIAL ENDED';
-      clearInterval(timer);
-    }
-  }
-
-  tick();
-
-  const timer = setInterval(tick, 1000);
-})();
+/* the sticky-bar countdown was removed with its #bar-count element:
+   no countdown or deadline messaging is published at the moment. */
 
 /* urgent red bar: live countdown + height sync */
 (function(){
