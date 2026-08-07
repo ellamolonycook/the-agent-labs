@@ -1498,7 +1498,6 @@ a.stat:hover span {
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 720px;
 }
 .tier.featured {
   border-color: var(--lime);
@@ -1571,6 +1570,7 @@ a.stat:hover span {
 #ess-btn {
   transform: translateY(25px);
   margin-bottom: 45px;
+  margin-top: -1px;
 
 }
 
@@ -1623,8 +1623,20 @@ a.stat:hover span {
 .tier .t-sub {
   color: var(--muted);
   font-size: 15px;
+  line-height: 1.5;
   margin: 6px 0 14px;
+  /* the three subheads wrap to a different number of lines, which was
+     landing the buy buttons at three different heights. A two line floor
+     levels them; everything above it is identical in all three cards. */
+  min-height: 3em;
 }
+
+@media (max-width: 1024px) {
+  .tier .t-sub {
+    min-height: 4.5em;
+  }
+}
+
 .tier ul {
   list-style: none;
   margin: 0 0 24px;
@@ -1654,6 +1666,22 @@ a.stat:hover span {
 .tier li.mut {
   color: var(--dim);
 }
+
+/* The card is a flex column, so the buy sits above the list on desktop
+   exactly as authored. On a phone the list is long enough that a button at
+   the top scrolls away before the reader has read what they are buying, so
+   order pushes it (and the Studio split payment) to the foot instead. */
+@media (max-width: 820px) {
+  .tier .cta-btn {
+    order: 90;
+    margin-top: 22px;
+    margin-bottom: 0;
+  }
+  .tier .split-payment {
+    order: 91;
+  }
+}
+
 .upgrade-note {
   text-align: center;
   color: var(--dim);
