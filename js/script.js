@@ -477,3 +477,30 @@ const CONFIG = {
     wrap.appendChild(m);
   });
 })();
+/* back to top: appears once the reader is a screen or so down */
+(function(){
+  var btn = document.getElementById('to-top');
+  if(!btn) return;
+
+  var SHOW_AT = 700;      // px scrolled before it fades in
+  var ticking = false;
+
+  function update(){
+    ticking = false;
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    btn.classList.toggle('show', y > SHOW_AT);
+  }
+
+  window.addEventListener('scroll', function(){
+    if(ticking) return;              // one read per frame, not one per event
+    ticking = true;
+    window.requestAnimationFrame(update);
+  }, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+
+  update();
+})();

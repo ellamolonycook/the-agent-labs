@@ -738,6 +738,37 @@ a.stat:hover span {
   color: var(--muted);
   margin-top: 12px;
 }
+
+/* ---------- 10 / The dates: text beside the studio photo ---------- */
+/* This grid was an inline style, so no media query could reach it and the
+   two columns stayed side by side down to phone widths. As a class it can
+   collapse. align-items was start, which pinned a 440px image to the top
+   of a much taller column and left a large hole beneath it. */
+.dates-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.dates-split .narrow {
+  max-width: 100%;
+  margin: 0;
+}
+.dates-split .story-figure {
+  margin: 0;
+}
+.dates-split .story-figure img {
+  max-width: 100%;
+}
+@media (max-width: 900px) {
+  .dates-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .dates-split .story-figure img {
+    max-width: 440px;
+  }
+}
 .loop-split {
   display: grid;
   grid-template-columns: minmax(0, 360px) 1fr;
@@ -1726,7 +1757,7 @@ a.stat:hover span {
    column can push the grid wider than .wrap and scroll the whole page. */
 .vip-intro {
   display: grid;
-  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 230px) minmax(0, 1fr);
   gap: 36px;
   align-items: center;
   margin-bottom: 8px;
@@ -1734,10 +1765,13 @@ a.stat:hover span {
 .vip-copy .lead {
   max-width: 640px;
   margin-top: 16px;
+  line-height: 1.7;
+  color: #c3c3cf;
 }
 .vip-statement {
   margin: 22px 0 0;
-  font-size: clamp(16px, 2vw, 22px);
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.45;
 }
 .vip-apply-btn {
   margin-top: 28px;
@@ -1755,8 +1789,23 @@ a.stat:hover span {
     grid-template-columns: 1fr;
     gap: 22px;
   }
+  /* full width at a 2/3 ratio put a 480px tall portrait on a 390px
+     screen, over half the viewport before a word was read */
   .vip-photo {
     justify-self: center;
+    max-width: 185px;
+    max-height: 278px;
+  }
+  .vip-copy .lead {
+    font-size: 16.5px;
+    line-height: 1.72;
+  }
+  .vip-scarcity {
+    margin-top: 24px;
+    line-height: 1.4;
+  }
+  .vip-apply-sub {
+    font-size: 12px;
   }
   .vip-band {
     padding-bottom: 48px;
@@ -1764,8 +1813,8 @@ a.stat:hover span {
 }
 .vip-photo {
   width: 100%;
-  max-width: 320px;
-  max-height: 440px;
+  max-width: 230px;
+  max-height: 345px;
   border-radius: 18px;
   border: 2px solid var(--lime);
   box-shadow:
@@ -1828,15 +1877,17 @@ a.stat:hover span {
   margin: 10px 0 12px;
 }
 .vip-card p {
-  color: var(--muted);
-  font-size: 15px;
+  color: #b6b6c4;
+  font-size: 15.5px;
+  line-height: 1.6;
 }
 .vip-apply-sub {
   margin-top: 16px;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: 0.06em;
-  color: var(--dim);
+  line-height: 1.6;
+  color: var(--muted);
 }
 
 
@@ -1921,7 +1972,7 @@ a.stat:hover span {
   background: rgba(204, 255, 0, 0.1);
   flex-shrink: 0;
   object-fit: cover;
-  object-position: center;
+  object-position: 50% 18%;
   display: block;
   /* margin-bottom: 16px; */
 }
@@ -2051,9 +2102,16 @@ a.stat:hover span {
 
   .profile-photo {
     width: 100%;
-    height: 69%;
-    aspect-ratio: 1 / 1;
+    /* height was 69%: a percentage against an auto height parent, which
+       fought aspect-ratio and left the card box shorter than its own
+       content, so overflow: hidden clipped the social icons off the
+       bottom. Let the ratio size it. */
+    height: auto;
+    /* 4/5 rather than square: cropping a portrait to 1/1 was cutting the
+       top of the head off. The bias keeps faces in frame. */
+    aspect-ratio: 4/5;
     object-fit: cover;
+    object-position: 50% 18%;
     display: block;
   }
 
@@ -2400,6 +2458,16 @@ a.stat:hover span {
 
 #pricing {
   padding-top: 64px;
+}
+
+/* the urgent bar and the sticky bar are both fixed, so an anchor jump
+   would otherwise land with the section top hidden behind them */
+#pricing,
+#machine,
+#value,
+#proof,
+#vip-coaching {
+  scroll-margin-top: calc(var(--urgent-h) + 76px);
 }
 
 
@@ -3279,20 +3347,55 @@ a.stat:hover span {
 }
 footer {
   border-top: 1px solid var(--line);
-  padding: 38px 0;
-  color: var(--dim);
+  padding: 40px 0 46px;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
   text-align: center;
-  letter-spacing: 0.08em;
-  line-height: 2.2;
+  /* was --dim at 12px, the lowest contrast text on the page */
+  color: var(--muted);
 }
 footer a {
-  color: var(--muted);
+  color: var(--text);
   text-decoration: none;
 }
 footer a:hover {
   color: var(--lime);
+}
+
+.foot-brand {
+  margin: 0 0 10px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* a real link row rather than four inline links glued together with
+   &nbsp;·&nbsp;, which had no gutters and no tap height on a phone */
+.foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0 26px;
+}
+.foot-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 2px;
+}
+
+@media (max-width: 640px) {
+  footer {
+    padding: 32px 0 38px;
+    font-size: 12px;
+  }
+  .foot-brand {
+    margin-bottom: 4px;
+  }
+  .foot-links {
+    gap: 0 20px;
+  }
 }
 .sec-h {
   font-size: clamp(22px, 2.8vw, 32px);
@@ -3410,5 +3513,68 @@ footer a:hover {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+
+/* ---------- back to top ---------- */
+/* Sits out of the way until the reader is well down the page. The sticky
+   bars are pinned to the top, so the bottom right corner is free. */
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 120;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 0;
+  /* solid lime against the dark page, dark glyph inside */
+  background: var(--lime);
+  color: #0b0b10;
+  cursor: pointer;
+  box-shadow: 0 10px 26px -10px rgba(212, 255, 79, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s,
+    background 0.16s ease,
+    box-shadow 0.16s ease;
+}
+.to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.to-top:hover,
+.to-top:focus-visible {
+  background: #e2ff7a;
+  box-shadow: 0 14px 30px -10px rgba(212, 255, 79, 0.7);
+}
+.to-top svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  display: block;
+}
+@media (max-width: 640px) {
+  .to-top {
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .to-top {
+    transition: opacity 0.2s ease, visibility 0.2s;
+    transform: none;
+  }
+  .to-top.show {
+    transform: none;
   }
 }
