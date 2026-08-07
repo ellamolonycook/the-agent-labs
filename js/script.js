@@ -13,14 +13,22 @@ const CONFIG = {
   const early = now < CONFIG.earlyBirdEnds;
   const price = early ? CONFIG.earlyPrice : CONFIG.fullPrice;
   const essPrice = early ? CONFIG.essEarly : CONFIG.essFull;
-  document.getElementById('vip-price').textContent = price;
-  document.getElementById('vip-btn').textContent = 'GET THE FULL MACHINE · ' + price + ' →';
-  document.getElementById('ess-price').textContent = essPrice;
-  document.getElementById('ess-btn').textContent = 'START WITH ESSENTIAL · ' + essPrice;
+  const setText = function(id, text){
+    const el = document.getElementById(id); if(el) el.textContent = text;
+  };
+  setText('vip-price', price);
+  setText('vip-btn', 'GET THE EDIT · ' + price + ' →');
+  setText('ess-price', essPrice);
+  setText('ess-btn', 'START WITH THE ESSENTIALS · ' + essPrice);
+  /* value-stack dropdowns mirror the same prices */
+  setText('vs-ess-price', essPrice);
+  setText('vs-edit-price', price);
+  setText('vs-ess-cta', 'yours for ' + essPrice + ' →');
+  setText('vs-edit-cta', 'yours for ' + price + ' →');
   var pcDays = Math.max(1, Math.ceil((CONFIG.earlyBirdEnds - now) / 86400000));
   document.getElementById('pc-days').textContent = pcDays + (pcDays === 1 ? ' day' : ' days');
   if(!early){
-    ['vip-badge','vip-was','vip-deadline','ess-was','ess-deadline','price-countdown'].forEach(function(id){
+    ['vip-badge','vip-was','vip-deadline','ess-was','ess-deadline','price-countdown','vs-ess-then','vs-edit-then'].forEach(function(id){
       var el = document.getElementById(id); if(el) el.style.display = 'none';
     });
   }
