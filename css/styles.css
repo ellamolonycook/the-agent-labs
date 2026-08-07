@@ -568,6 +568,8 @@ a.stat:hover span {
   margin-bottom: 8px;
   white-space: pre-wrap;
 }
+
+.term-body .txt { color: inherit; }
 .term-body .ag {
   color: var(--lime);
 }
@@ -1120,11 +1122,12 @@ a.stat:hover span {
     box-shadow: 0 0 16px -5px rgba(212, 255, 79, 0.55);
   }
 }
+
 .m-agent {
   transition:
     transform 0.15s ease,
     border-color 0.15s ease;
-  animation: agentPing 5.4s ease-in-out infinite;
+  animation: agentPing 5.4s ease-in-out infinite !important;
 }
 .m-agent:hover {
   transform: translateY(-2px);
@@ -1435,6 +1438,8 @@ a.stat:hover span {
     transform: translateX(-50%);
   }
 }
+
+
 /* ---------- pricing ---------- */
 .price-countdown {
   display: inline-flex;
@@ -1476,7 +1481,7 @@ a.stat:hover span {
 .tiers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 24px;
   margin-top: 22px;
   align-items: stretch;
 }
@@ -1489,9 +1494,11 @@ a.stat:hover span {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 26px 26px;
+  padding: 26px;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  min-height: 720px;
 }
 .tier.featured {
   border-color: var(--lime);
@@ -2258,6 +2265,478 @@ a.stat:hover span {
   line-height: 1.6;
   opacity: 0.85;
 }
+
+
+
+/* =====================================================
+   08 · WHAT YOU'RE ACTUALLY GETTING
+===================================================== */
+
+
+#pricing {
+  padding-top: 100px;
+}
+
+
+.value-anchor {
+  text-align: center;
+  margin: 55px auto 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.value-anchor strong {
+  font-size: clamp(56px, 8vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--lime);
+}
+
+
+.value-anchor span {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+
+.value-anchor b {
+  font-size: 28px;
+  margin-top: 12px;
+}
+
+
+
+.money-note {
+  max-width: 620px;
+  margin: 0 auto 40px;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+
+
+.price-countdown {
+  width: fit-content;
+  margin: 0 auto 55px;
+}
+
+
+
+
+/* =====================
+   VALUE BANDS
+===================== */
+
+
+.value-bands {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+
+
+.value-band {
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.02)
+    );
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 24px;
+
+  padding: 42px;
+
+  position: relative;
+
+}
+
+
+
+.value-band.featured {
+
+  border-color: rgba(185,255,0,0.35);
+
+}
+
+
+
+.value-band.studio {
+
+  border-color: rgba(255,107,96,0.3);
+
+}
+
+
+
+
+.band-head {
+  margin-bottom: 35px;
+}
+
+
+.band-head .t-name {
+
+  display: inline-block;
+
+  font-size: 13px;
+
+  letter-spacing: .15em;
+
+  color: var(--lime);
+
+  margin-bottom: 18px;
+
+}
+
+
+.band-head h3 {
+
+  font-size: clamp(26px, 3vw, 38px);
+
+  max-width: 700px;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.03em;
+
+}
+
+
+
+
+
+/* =====================
+   ITEMS
+===================== */
+
+
+.band-items {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
+
+}
+
+
+
+.band-item {
+
+  padding: 22px;
+
+  background: rgba(0,0,0,.18);
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(255,255,255,.06);
+
+}
+
+
+
+.band-item strong {
+
+  display:block;
+
+  font-size:17px;
+
+  margin-bottom:8px;
+
+}
+
+
+
+.band-item p {
+
+  color:var(--muted);
+
+  font-size:15px;
+
+  line-height:1.55;
+
+  margin:0 0 15px;
+
+}
+
+
+
+.band-item span {
+
+  color:var(--lime);
+
+  font-weight:700;
+
+}
+
+
+
+
+
+/* =====================
+   TOTAL + BUTTON
+===================== */
+
+
+.band-total {
+
+  margin-top:40px;
+
+  padding-top:35px;
+
+  border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+
+
+.band-total > strong {
+
+  display:block;
+
+  font-size:28px;
+
+  margin-bottom:15px;
+
+}
+
+
+
+.band-total div {
+
+  font-size:20px;
+
+  margin-bottom:25px;
+
+}
+
+
+
+.band-total b {
+
+  color:var(--lime);
+
+  font-size:32px;
+
+}
+
+
+
+.band-total span {
+
+  color:var(--muted);
+
+}
+
+
+
+
+
+.locked-items {
+
+  margin-top:28px;
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:12px;
+
+}
+
+
+
+.locked-items span {
+
+  padding:10px 16px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.04);
+
+  color:#777;
+
+  font-size:14px;
+
+}
+
+
+
+
+
+/* =====================
+   STUDIO
+===================== */
+
+
+.studio-price-line span {
+
+  color:#FF6B60;
+
+  font-weight:700;
+
+}
+
+
+
+.studio-note {
+
+  margin-top:30px;
+
+  padding:18px;
+
+  border-left:3px solid var(--lime);
+
+  color:var(--muted);
+
+}
+
+
+
+.split-payment {
+
+  margin-top:28px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:12px;
+
+}
+
+
+
+.split-payment > span {
+
+  color:var(--muted);
+
+  font-size:14px;
+
+}
+
+
+
+.split-payment small {
+
+  color:var(--muted);
+
+}
+
+
+
+
+
+.unlock-note {
+
+  margin-top:25px;
+
+  color:var(--muted);
+
+  font-size:14px;
+
+}
+
+
+
+
+
+
+/* =====================
+   MOBILE
+===================== */
+
+
+@media(max-width:760px){
+
+
+  #pricing {
+
+    padding-top:70px;
+
+  }
+
+
+  .value-anchor strong {
+
+    font-size:58px;
+
+  }
+
+
+
+  .value-anchor b {
+
+    font-size:22px;
+
+  }
+
+
+
+  .value-band {
+
+    padding:24px;
+
+    border-radius:18px;
+
+  }
+
+
+
+  .band-items {
+
+    grid-template-columns:1fr;
+
+  }
+
+
+
+  .band-head h3 {
+
+    font-size:26px;
+
+  }
+
+
+
+  .band-total > strong {
+
+    font-size:22px;
+
+  }
+
+
+
+  .band-total b {
+
+    font-size:28px;
+
+  }
+
+
+
+  .locked-items {
+
+    flex-direction:column;
+
+  }
+
+
+}
+
+
+
+
+
 
 /* Move bio and socials below the image + name area */
 

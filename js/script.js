@@ -9,16 +9,23 @@ const CONFIG = {
 
 /* pricing flip */
 (function(){
+  // Every id below is optional in the markup — a missing one used to throw here,
+  // and an uncaught throw at top level kills every script block after it.
+  function setText(id, value){
+    var el = document.getElementById(id);
+    if(el) el.textContent = value;
+  }
+
   const now = new Date();
   const early = now < CONFIG.earlyBirdEnds;
   const price = early ? CONFIG.earlyPrice : CONFIG.fullPrice;
   const essPrice = early ? CONFIG.essEarly : CONFIG.essFull;
-  document.getElementById('vip-price').textContent = price;
-  document.getElementById('vip-btn').textContent = 'GET THE FULL MACHINE · ' + price + ' →';
-  document.getElementById('ess-price').textContent = essPrice;
-  document.getElementById('ess-btn').textContent = 'START WITH ESSENTIAL · ' + essPrice;
+  setText('vip-price', price);
+  setText('vip-btn', 'GET THE FULL MACHINE · ' + price + ' →');
+  setText('ess-price', essPrice);
+  setText('ess-btn', 'START WITH ESSENTIAL · ' + essPrice);
   var pcDays = Math.max(1, Math.ceil((CONFIG.earlyBirdEnds - now) / 86400000));
-  document.getElementById('pc-days').textContent = pcDays + (pcDays === 1 ? ' day' : ' days');
+  setText('pc-days', pcDays + (pcDays === 1 ? ' day' : ' days'));
   if(!early){
     ['vip-badge','vip-was','vip-deadline','ess-was','ess-deadline','price-countdown'].forEach(function(id){
       var el = document.getElementById(id); if(el) el.style.display = 'none';
@@ -100,56 +107,132 @@ const CONFIG = {
   window.addEventListener('resize', sync); sync();
 })();
 
-/* terminal typing loop */
-(function(){
-  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const lines = [
-    ['ag','research_agent',' scanning your niche… 3 rising formats found'],
-    ['ag','brain',' loading tone of voice: yours, not a bot’s'],
-    ['ag','caption_writer',' 5 hooks drafted for tomorrow’s post'],
-    ['ag','linkedin_writer',' founder post ready for review'],
-    ['ag','carousel_builder',' 8 slides queued from one idea'],
-    ['ok','machine',' week of content: done. you were at dinner.']
+/* ============================================================
+   THE CONTENT MACHINE — terminal typing loop
+   ============================================================ */
+(function () {
+  'use strict';
+
+  // Flip to false to render exactly as before (no blinking cursor).
+  var SHOW_CARET = true;
+
+  var CHAR_DELAY = 55;    // ms per character
+  var LINE_DELAY = 650;   // ms between lines
+  var LOOP_DELAY = 6000;  // ms before restarting
+
+  var LINES = [
+    ['ag', 'research_agent',   ' scanning your niche… 3 rising formats found'],
+    ['ag', 'brain',            ' loading tone of voice: yours, not a bot’s'],
+    ['ag', 'caption_writer',   ' 5 hooks drafted for tomorrow’s post'],
+    ['ag', 'linkedin_writer',  ' founder post ready for review'],
+    ['ag', 'carousel_builder', ' 8 slides queued from one idea'],
+    ['ok', 'machine',          ' week of content: done. you were at dinner.']
   ];
-  const el = document.getElementById('term');
-  if(!el) return;
 
-  if(reduce){
-    lines.forEach(l=>{
-      const s = document.createElement('span'); s.className='ln';
-      const t = document.createElement('span'); t.className=l[0]; t.textContent=l[1]+' ›';
-      s.appendChild(t); s.appendChild(document.createTextNode(l[2]));
-      el.appendChild(s);
-    });
-    return;
-  }
-
-  let li = 0, ci = 0, cur = null;
-  function type(){
-    if(li >= lines.length){
-      setTimeout(()=>{ el.innerHTML=''; li=0; ci=0; cur=null; type(); }, 6000);
-      return;
-    }
-    if(!cur){
-      cur = document.createElement('span');
-      cur.className = 'ln';
-      const tag = document.createElement('span');
-      tag.className = lines[li][0];
-      tag.textContent = lines[li][1] + ' ›';
-      cur.appendChild(tag);
-      cur.appendChild(document.createTextNode(''));
-      el.appendChild(cur);
-    }
-    const full = lines[li][2];
-    if(ci < full.length){
-      cur.childNodes[1].textContent = full.slice(0, ++ci);
-      setTimeout(type, 55);
+  function ready(fn) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fn, { once: true });
     } else {
-      li++; ci=0; cur=null;
-      setTimeout(type, 650);
+      fn();
     }
   }
-  type();
+
+  ready(function init() {
+    var el = document.getElementById('term');
+    if (!el) return;
+    if (el.getAttribute('data-term-init') === '1') return; // no double-init
+    el.setAttribute('data-term-init', '1');
+
+    var mq = window.matchMedia
+      ? window.matchMedia('(prefers-reduced-motion: reduce)')
+      : null;
+
+    var timer = null;
+    var caret = null;
+    var li = 0, ci = 0, cur = null;
+
+    function stop() {
+      if (timer) { clearTimeout(timer); timer = null; }
+      while (el.firstChild) el.removeChild(el.firstChild);
+      caret = null; cur = null; li = 0; ci = 0;
+    }
+
+    // Builds one line and returns a direct reference to its text element.
+    // An element node is never dropped by normalize() or an innerHTML
+    // round-trip, and we never look it up by index again.
+    function makeLine(def) {
+      var line = document.createElement('span');
+      line.className = 'ln';
+
+      var tag = document.createElement('span');
+      tag.className = def[0];
+      tag.textContent = def[1] + ' ›';
+
+      var txt = document.createElement('span');
+      txt.className = 'txt';
+
+      line.appendChild(tag);
+      line.appendChild(txt);
+
+      return { line: line, txt: txt };
+    }
+
+    function renderStatic() {
+      stop();
+      for (var i = 0; i < LINES.length; i++) {
+        var part = makeLine(LINES[i]);
+        part.txt.textContent = LINES[i][2];
+        el.appendChild(part.line);
+      }
+    }
+
+    function start() {
+      stop();
+      if (SHOW_CARET) {
+        caret = document.createElement('span');
+        caret.className = 'caret';
+      }
+      step();
+    }
+
+    function step() {
+      timer = null;
+
+      if (li >= LINES.length) {
+        timer = setTimeout(start, LOOP_DELAY);
+        return;
+      }
+
+      if (!cur) {
+        cur = makeLine(LINES[li]);
+        el.appendChild(cur.line);
+        if (caret) cur.line.appendChild(caret); // appendChild moves it down
+      }
+
+      var full = LINES[li][2];
+
+      if (ci < full.length) {
+        ci++;
+        cur.txt.textContent = full.slice(0, ci); // direct reference, never null
+        timer = setTimeout(step, CHAR_DELAY);
+      } else {
+        li++; ci = 0; cur = null;
+        timer = setTimeout(step, LINE_DELAY);
+      }
+    }
+
+    function apply() {
+      if (mq && mq.matches) renderStatic();
+      else start();
+    }
+
+    apply();
+
+    if (mq) {
+      if (mq.addEventListener) mq.addEventListener('change', apply);
+      else if (mq.addListener) mq.addListener(apply); // older Safari
+    }
+  });
 })();
 
 /* scroll reveal + stat count-up */
