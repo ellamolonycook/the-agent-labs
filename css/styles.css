@@ -2432,8 +2432,8 @@ a.stat:hover span {
       rgba(255,255,255,0.015)
     );
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 28px 24px 26px;
+  border-radius: 18px;
+  padding: 24px 22px 22px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2468,7 +2468,7 @@ a.stat:hover span {
 }
 
 .band-head {
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 
 /* mono, to match every other eyebrow on the page */
@@ -2487,9 +2487,9 @@ a.stat:hover span {
 }
 
 .band-head h3 {
-  font-size: clamp(19px, 1.5vw, 23px);
+  font-size: clamp(17px, 1.35vw, 20px);
   max-width: 100%;
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: -0.02em;
 }
 
@@ -2503,60 +2503,57 @@ a.stat:hover span {
 
 
 .band-items {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 
 
 .band-item {
-  /* column layout so the price sits on the card foot: across a two-up grid
-     of uneven copy lengths the prices then line up, instead of floating
-     wherever each paragraph happens to end */
-  padding: 20px 22px;
-  background: rgba(0,0,0,.18);
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.06);
-  display: flex;
-  flex-direction: column;
-  transition:
-    border-color 0.16s ease,
-    background 0.16s ease;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 14px;
+  align-items: baseline;
+  padding: 10px 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,.055);
+  border-radius: 0;
 }
 
-.band-item:hover {
-  border-color: rgba(212,255,79,.24);
-  background: rgba(0,0,0,.3);
+.band-item:last-child {
+  border-bottom: 0;
 }
 
 .band-item strong {
-  display: block;
-  font-size: 16px;
+  grid-column: 1;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -.01em;
   color: var(--text);
-  margin-bottom: 7px;
+  line-height: 1.35;
+  margin: 0;
 }
 
 .band-item p {
+  grid-column: 1 / -1;
   color: var(--muted);
-  font-size: 14.5px;
-  line-height: 1.5;
-  margin: 0 0 16px;
-  flex: 1;
+  font-size: 12.5px;
+  line-height: 1.45;
+  margin: 3px 0 0;
 }
 
 .band-item span {
-  display: block;
-  margin-top: auto;
-  padding-top: 13px;
-  border-top: 1px solid rgba(255,255,255,.07);
-  text-align: right;
+  grid-column: 2;
+  justify-self: end;
   font-family: var(--mono);
-  font-size: 14px;
-  color: var(--lime);
+  font-size: 12.5px;
   font-weight: 700;
+  color: var(--lime);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .value-band.studio .band-item span {
@@ -2575,30 +2572,30 @@ a.stat:hover span {
 
 .band-total {
   margin-top: auto;
-  padding-top: 26px;
-  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.1);
 }
 
 
 
 .band-total > strong {
   display: block;
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 16px;
+  margin-bottom: 6px;
 }
 
 
 
 .band-total div {
-  font-size: 16px;
-  margin-bottom: 18px;
+  font-size: 14px;
+  margin-bottom: 14px;
 }
 
 
 
 .band-total b {
   color: var(--lime);
-  font-size: 26px;
+  font-size: 24px;
 }
 
 
@@ -2614,25 +2611,20 @@ a.stat:hover span {
 
 
 .locked-items {
-
-  margin-top:28px;
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:12px;
-
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 
 
 .locked-items span {
-  padding: 7px 12px;
+  padding: 5px 10px;
   border-radius: 999px;
   background: rgba(255,255,255,.04);
   color: #777;
-  font-size: 12.5px;
+  font-size: 11.5px;
 }
 
 
@@ -2728,22 +2720,23 @@ a.stat:hover span {
 @media (max-width: 1080px) {
   .value-bands {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
   .value-band {
-    padding: 32px 30px 28px;
-  }
-  .band-items {
-    grid-template-columns: repeat(2, 1fr);
+    padding: 28px 26px 24px;
   }
   .band-head h3 {
-    font-size: clamp(22px, 3vw, 30px);
+    font-size: clamp(20px, 3vw, 26px);
   }
-  .band-total > strong {
-    font-size: 24px;
+  .band-item strong {
+    font-size: 15px;
+  }
+  .band-item p,
+  .band-item span {
+    font-size: 13.5px;
   }
   .band-total b {
-    font-size: 30px;
+    font-size: 28px;
   }
 }
 
@@ -2783,11 +2776,7 @@ a.stat:hover span {
 
 
 
-  .band-items {
-
-    grid-template-columns:1fr;
-
-  }
+  
 
 
 
