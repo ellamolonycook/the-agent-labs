@@ -300,80 +300,6 @@ const CONFIG = {
   lines.forEach(function(el){ to.observe(el); });
 })();
 
-
-/* typewriter loop: type + erase + repeat, triggered on scroll-in */
-(function(){
-  var reduceMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var lines = Array.prototype.slice.call(document.querySelectorAll('.typeline-loop'));
-  if(!lines.length) return;
-  if(reduceMo) return;
-  
-  lines.forEach(function(el){
-    var text = el.textContent;
-    el.textContent = '';
-    el._chars = [];
-    for(var i = 0; i < text.length; i++){
-      var s = document.createElement('span');
-      s.className = 'tw-char';
-      s.textContent = text.charAt(i);
-      el.appendChild(s);
-      el._chars.push(s);
-    }
-  });
-  
-  function loop(el){
-    var chars = el._chars || [];
-    var caret = document.createElement('span');
-    caret.className = 'tw-caret';
-    
-    function typeOut(){
-      var i = 0;
-      (function step(){
-        if(i >= chars.length){
-          setTimeout(erase, 2000);
-          return;
-        }
-        var c = chars[i];
-        c.classList.add('on');
-        c.after(caret);
-        i++;
-        var ch = c.textContent;
-        var delay = /[.,!?;:]/.test(ch) ? 460 : (ch === ' ' ? 95 : 74);
-        setTimeout(step, delay);
-      })();
-    }
-    
-    function erase(){
-      var i = chars.length - 1;
-      (function step(){
-        if(i < 0){
-          setTimeout(typeOut, 800);
-          return;
-        }
-        var c = chars[i];
-        c.classList.remove('on');
-        c.after(caret);
-        i--;
-        setTimeout(step, 50);
-      })();
-    }
-    
-    typeOut();
-  }
-  
-  var to = new IntersectionObserver(function(es){
-    es.forEach(function(e){ 
-      if(e.isIntersecting && !e.target._loopStarted){
-        e.target._loopStarted = true;
-        loop(e.target);
-        to.unobserve(e.target);
-      }
-    });
-  }, { threshold: .5 });
-  
-  lines.forEach(function(el){ to.observe(el); });
-})();
-
 /* story: each paragraph starts blank and glides in as you scroll down to it. */
 (function(){
   var stories = Array.prototype.slice.call(document.querySelectorAll('.story'));
@@ -481,6 +407,52 @@ const CONFIG = {
   box.addEventListener('click', function(e){ if(e.target === box) close(); });   // backdrop only
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && !box.hidden) close();
+  });
+})();
+
+/* FAQ: answers open in a card rather than expanding inline.
+   The <details> markup stays, so with no JS it still works as a plain
+   accordion; here we cancel the native toggle and show the answer in a
+   dialog that closes on the X, the backdrop or Escape. */
+(function(){
+  var faq   = document.querySelector('.faq');
+  var modal = document.getElementById('faq-modal');
+  if(!faq || !modal) return;
+
+  var qEl      = modal.querySelector('.faq-modal-q');
+  var aEl      = modal.querySelector('.faq-modal-a');
+  var closeBtn = modal.querySelector('.faq-modal-close');
+  var lastFocus = null;
+
+  function open(summary){
+    var answer = summary.parentNode.querySelector('.a');
+    lastFocus = summary;
+    qEl.textContent = summary.textContent.trim();
+    aEl.innerHTML = answer ? answer.innerHTML : '';
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function close(){
+    modal.hidden = true;
+    aEl.innerHTML = '';
+    document.body.style.overflow = '';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();   // back to the question
+    lastFocus = null;
+  }
+
+  faq.addEventListener('click', function(e){
+    var s = e.target && e.target.closest ? e.target.closest('summary') : null;
+    if(!s || !faq.contains(s)) return;
+    e.preventDefault();          // cancel the inline expand
+    open(s);
+  });
+
+  closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !modal.hidden) close();
   });
 })();
 
