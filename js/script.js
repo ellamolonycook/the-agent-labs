@@ -441,7 +441,41 @@ const CONFIG = {
   });
 })();
 
-/* proof wall: tap a screenshot to read it full size */
+/* proof carousel: advance a page at a time — 3 screenshots on desktop, 1 on a phone */
+(function(){
+  var rail = document.getElementById('proof-rail');
+  if(!rail) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var DELAY = 2600;
+  var paused = false;
+
+  function step(dir){
+    var max = rail.scrollWidth - rail.clientWidth;
+    var next = rail.scrollLeft + dir * rail.clientWidth;
+    if(next >= max - 4) next = 0;          // past the last page, wrap to the start
+    if(next < 0) next = max;               // and back round the other way
+    rail.scrollTo({ left: next, behavior: 'smooth' });
+  }
+
+  // arrows work either way; only the auto-advance respects reduced motion
+  if(!reduce) setInterval(function(){ if(!paused) step(1); }, DELAY);
+
+  var prevBtn = document.getElementById('proof-prev');
+  var nextBtn = document.getElementById('proof-next');
+  if(prevBtn) prevBtn.addEventListener('click', function(){ step(-1); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ step(1); });
+
+  // hold still while the reader is actually looking at one
+  ['mouseenter','focusin','touchstart','pointerdown'].forEach(function(ev){
+    rail.addEventListener(ev, function(){ paused = true; }, { passive: true });
+  });
+  ['mouseleave','focusout','touchend'].forEach(function(ev){
+    rail.addEventListener(ev, function(){ paused = false; }, { passive: true });
+  });
+})();
+
+/* proof rails: tap a screenshot to read it full size */
 (function(){
   var box = document.getElementById('lightbox');
   var img = document.getElementById('lightbox-img');
@@ -465,12 +499,13 @@ const CONFIG = {
     lastFocus = null;
   }
 
-  document.querySelectorAll('.shot-open').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var full = btn.getAttribute('data-full');
-      var thumb = btn.querySelector('img');
-      if(full) open(full, thumb ? thumb.alt : '');
-    });
+  // delegated, so the cloned marquee cards open too
+  document.addEventListener('click', function(e){
+    var btn = e.target && e.target.closest ? e.target.closest('.shot-open') : null;
+    if(!btn) return;
+    var full = btn.getAttribute('data-full');
+    var thumb = btn.querySelector('img');
+    if(full) open(full, thumb ? thumb.alt : '');
   });
 
   if(closeBtn) closeBtn.addEventListener('click', close);
