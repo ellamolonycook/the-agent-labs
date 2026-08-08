@@ -504,3 +504,19 @@ const CONFIG = {
 
   update();
 })();
+
+
+/* value stack: the full priced breakdown is opt-in on a phone */
+(function(){
+  var btn   = document.getElementById('vstack-toggle');
+  var stack = document.getElementById('vstack');
+  if(!btn || !stack) return;
+  var label = btn.querySelector('.vt-label');
+
+  btn.addEventListener('click', function(){
+    var open = stack.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(label) label.textContent = btn.getAttribute(open ? 'data-less' : 'data-more');
+    if(!open) stack.scrollIntoView({ block: 'nearest' });   // don't strand the reader mid-page
+  });
+})();

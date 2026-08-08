@@ -3578,3 +3578,68 @@ footer a:hover {
     transform: none;
   }
 }
+
+
+/* ---------- value stack: collapsed on a phone ---------- */
+/* Thirteen priced rows is a wall of detail on a 390px screen. On mobile
+   the list is cut to roughly three rows behind a fade, and the button
+   opens the full breakdown for anyone who wants every line. Desktop is
+   untouched: the whole list shows and the button never appears. */
+.vstack-toggle {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .vstack {
+    position: relative;
+    max-height: 306px;
+    overflow: hidden;
+  }
+  .vstack::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 96px;
+    background: linear-gradient(to bottom, rgba(11, 11, 16, 0), var(--bg));
+    pointer-events: none;
+  }
+  .vstack.is-open {
+    max-height: none;
+  }
+  .vstack.is-open::after {
+    display: none;
+  }
+
+  .vstack-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 48px;
+    margin-top: 14px;
+    padding: 12px 18px;
+    background: none;
+    border: 1px solid rgba(212, 255, 79, 0.4);
+    border-radius: 10px;
+    color: var(--lime);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .vt-caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid currentColor;
+    transition: transform 0.18s ease;
+  }
+  .vstack-toggle[aria-expanded="true"] .vt-caret {
+    transform: rotate(180deg);
+  }
+}
