@@ -11,7 +11,7 @@
 (function () {
   'use strict';
 
-  var PIXEL_ID = ''; // <-- the only line that needs changing
+  var PIXEL_ID = '1790181495468842';
 
   if (!PIXEL_ID) return; // not configured yet, stay silent
 
