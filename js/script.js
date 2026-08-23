@@ -1,8 +1,10 @@
 
 /* ============ CONFIG · all dates + prices live here ============ */
 const CONFIG = {
-  earlyBirdEnds: new Date('2026-08-29T00:00:00+01:00'),
-  doorsClose:    new Date('2026-09-05T00:00:00+01:00'), 
+  // null = no announced early-bird close date; early pricing stays live.
+  // Put an ISO date back here to re-arm the automatic price flip.
+  earlyBirdEnds: null,
+  doorsClose:    new Date('2026-09-26T00:00:00+01:00'), // midnight after Fri 25 Sept
   essEarly:  '$197', essFull: '$297',  
   earlyPrice: '$395', fullPrice: '$495'
 };
@@ -17,15 +19,19 @@ const CONFIG = {
   }
 
   const now = new Date();
-  const early = now < CONFIG.earlyBirdEnds;
+  const early = !CONFIG.earlyBirdEnds || now < CONFIG.earlyBirdEnds;
   const price = early ? CONFIG.earlyPrice : CONFIG.fullPrice;
   const essPrice = early ? CONFIG.essEarly : CONFIG.essFull;
   setText('vip-price', price);
   setText('vip-btn', 'GET THE FULL MACHINE · ' + price + ' →');
   setText('ess-price', essPrice);
   setText('ess-btn', 'START WITH ESSENTIAL · ' + essPrice);
-  var pcDays = Math.max(1, Math.ceil((CONFIG.earlyBirdEnds - now) / 86400000));
-  setText('pc-days', pcDays + (pcDays === 1 ? ' day' : ' days'));
+  if(CONFIG.earlyBirdEnds){
+    var pcDays = Math.max(1, Math.ceil((CONFIG.earlyBirdEnds - now) / 86400000));
+    setText('pc-days', pcDays + (pcDays === 1 ? ' day' : ' days'));
+  } else {
+    var pc = document.getElementById('price-countdown'); if(pc) pc.style.display = 'none';
+  }
   if(!early){
     ['vip-badge','vip-was','vip-deadline','ess-was','ess-deadline','price-countdown'].forEach(function(id){
       var el = document.getElementById(id); if(el) el.style.display = 'none';
@@ -62,13 +68,13 @@ const CONFIG = {
   function setState(s){
     if(state===s) return; state=s;
     if(s==='early'){ msg.innerHTML='Founding member pricing available now'; }
-    else if(s==='doors'){ msg.textContent='Doors close Fri Sept 4 · last chance to get in'; }
+    else if(s==='doors'){ msg.textContent='Doors close Fri Sept 25 · last chance to get in'; }
     else { msg.textContent='Doors closed · next run TBA'; el.style.display='none'; }
     sync();
   }
   function tick(){
     var now = new Date();
-    if(now < CONFIG.earlyBirdEnds){ setState('early'); el.textContent = fmt(CONFIG.earlyBirdEnds - now); }
+    if(CONFIG.earlyBirdEnds && now < CONFIG.earlyBirdEnds){ setState('early'); el.textContent = fmt(CONFIG.earlyBirdEnds - now); }
     else if(now < CONFIG.doorsClose){ setState('doors'); el.textContent = fmt(CONFIG.doorsClose - now); }
     else { setState('closed'); clearInterval(timer); }
   }
