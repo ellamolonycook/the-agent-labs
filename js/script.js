@@ -4,7 +4,7 @@ const CONFIG = {
   // null = no announced early-bird close date; early pricing stays live.
   // Put an ISO date back here to re-arm the automatic price flip.
   earlyBirdEnds: null,
-  doorsClose:    new Date('2026-09-26T00:00:00+01:00'), // midnight after Fri 25 Sept
+  doorsClose:    new Date('2026-10-10T00:00:00+01:00'), // midnight after Fri 9 Oct
   essEarly:  '$197', essFull: '$297',  
   earlyPrice: '$395', fullPrice: '$495'
 };
@@ -68,7 +68,7 @@ const CONFIG = {
   function setState(s){
     if(state===s) return; state=s;
     if(s==='early'){ msg.innerHTML='Founding member pricing available now'; }
-    else if(s==='doors'){ msg.textContent='Doors close Fri Sept 25 · last chance to get in'; }
+    else if(s==='doors'){ msg.textContent='Doors close Fri Oct 9 · last chance to get in'; }
     else { msg.textContent='Doors closed · next run TBA'; el.style.display='none'; }
     sync();
   }
