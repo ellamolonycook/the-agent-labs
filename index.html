@@ -3,33 +3,128 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Build a system of AI agents that research, write and produce your content in your voice. The machine behind Aj Yadav's 10K to 400K growth, taught with Ella Molony Cook building hers live. From $197. Doors close Fri 9 October." />
+<meta name="description" content="The Agent Labs — coming soon." />
 <link rel="canonical" href="https://theagentlabs.ai/" />
 <meta name="theme-color" content="#0B0B10" />
 <meta property="og:type" content="website" /><meta property="og:site_name" content="The Agent Labs" />
 <meta property="og:url" content="https://theagentlabs.ai/" />
-<meta property="og:title" content="Content Stack: 40 Day Challenge" />
-<meta property="og:description" content="The agent system that took Aj from 10K to 400K followers in under 5 months, built with you over 40 days. From $197. Doors close Fri 9 October." />
-<meta property="og:image" content="https://theagentlabs.ai/og-content-stack.jpg" />
+<meta property="og:title" content="The Agent Labs — Coming Soon" />
+<meta property="og:description" content="Something is being built here." />
+<meta property="og:image" content="https://theagentlabs.ai/og-image.jpg" />
 <meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Content Stack — 40 Day Challenge, The Agent Labs" />
+<meta property="og:image:alt" content="The Agent Labs" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Content Stack: 40 Day Challenge" />
-<meta name="twitter:image" content="https://theagentlabs.ai/og-content-stack.jpg" />
-<title>Content Stack: 40 Day Challenge</title>
+<meta name="twitter:title" content="The Agent Labs — Coming Soon" />
+<meta name="twitter:image" content="https://theagentlabs.ai/og-image.jpg" />
+<title>The Agent Labs — Coming Soon</title>
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="stylesheet" href="css/styles.css">
 
-<!-- Meta Pixel -->
-<script src="/js/meta-pixel.js"></script>
-<noscript><img height="1" width="1" style="display:none" alt=""
-  src="https://www.facebook.com/tr?id=1790181495468842&amp;ev=PageView&amp;noscript=1" /></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0b0b10;
+    --text:#f2f2f4;
+    --lime:#d4ff4f;
+    --line:rgba(255,255,255,.09);
+    --display:"Space Grotesk", system-ui, -apple-system, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--mono);
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+  ::selection{background:var(--lime);color:#0b0b10}
+
+  /* faint grid ground */
+  .grid{
+    position:fixed;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 45%, #000 0%, transparent 72%);
+    -webkit-mask-image:radial-gradient(circle at 50% 45%, #000 0%, transparent 72%);
+    opacity:.55;
+  }
+  /* lime bloom behind the type */
+  .bloom{
+    position:fixed;left:50%;top:46%;transform:translate(-50%,-50%);
+    width:min(78vw,720px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle, rgba(212,255,79,.10) 0%, rgba(212,255,79,0) 68%);
+    pointer-events:none;
+  }
+
+  main{
+    position:relative;z-index:1;
+    min-height:100%;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:32px 24px;
+    text-align:center;
+  }
+
+  .wordmark{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(11px,2.4vw,13px);
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--lime);
+    margin-bottom:clamp(28px,7vh,64px);
+    padding-left:.42em; /* optical: offset trailing letter-spacing */
+  }
+
+  .type-line{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(38px,9.5vw,104px);
+    line-height:1.05;
+    letter-spacing:-.02em;
+    min-height:1.05em;
+    white-space:nowrap;
+  }
+
+  .cursor{
+    display:inline-block;
+    width:.075em;height:.82em;
+    margin-left:.06em;
+    background:var(--lime);
+    vertical-align:-.06em;
+    animation:blink 1.06s steps(1,end) infinite;
+  }
+  @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+
+  .sub{
+    margin-top:clamp(22px,5vh,40px);
+    font-size:clamp(11px,2.2vw,13px);
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:rgba(242,242,244,.42);
+    opacity:0;
+    transition:opacity .9s ease;
+  }
+  .sub.in{opacity:1}
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor{animation:none;opacity:1}
+    .sub{transition:none}
+  }
+</style>
 </head>
 
+<body>
 
 <!-- Google Tag Manager -->
 <script>
@@ -41,10 +136,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <!-- End Google Tag Manager -->
 
-
-
-
-<body>
+<!-- Meta Pixel -->
+<script src="/js/meta-pixel.js"></script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=1790181495468842&amp;ev=PageView&amp;noscript=1" /></noscript>
 
 <!-- Google Tag Manager (noscript) -->
 <noscript>
@@ -53,1132 +148,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<div class="grid" aria-hidden="true"></div>
+<div class="bloom" aria-hidden="true"></div>
+
+<main>
+  <div class="wordmark">The Agent Labs</div>
+
+  <h1 class="type-line">
+    <span id="typed">Coming soon</span><span class="cursor" aria-hidden="true"></span>
+  </h1>
+
+  <p class="sub" id="sub">Back shortly</p>
+</main>
+
+<script>
+(function(){
+  var el = document.getElementById('typed');
+  var sub = document.getElementById('sub');
+  var text = 'Coming soon';
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduced) { sub.classList.add('in'); return; }
+
+  el.textContent = '';
+  var i = 0;
+  function step(){
+    if (i >= text.length) { setTimeout(function(){ sub.classList.add('in'); }, 420); return; }
+    el.textContent += text.charAt(i);
+    i++;
+    var ch = text.charAt(i - 1);
+    var delay = ch === ' ' ? 190 : 78 + Math.random() * 72;
+    setTimeout(step, delay);
+  }
+  setTimeout(step, 620);
+})();
+</script>
 
-
-
-<!-- URGENT RED BAR -->
-<div class="urgent-bar" id="urgent-bar">
-  <span class="ub-dot" aria-hidden="true"></span>
-  <span class="ub-msg" id="ub-msg">This price never comes back</span>
-</div>
-
-<!-- STICKY BAR -->
-<div class="bar">
-  <div class="bar-in">
-    <div class="bar-brand">
-      <b>THE CONTENT STACK</b><span class="bar-suffix"> · 40 DAY CHALLENGE</span>
-    </div>
-
-    <a href="#pricing" class="btn small cta-btn">BUILD MY STACK →</a>
-  </div>
-</div>
-
-<!-- ============ HERO ============ -->
-<header class="hero">
-  <div class="wrap">
-    <h1 class="hero-h1">
-      <span class="h-setup">I’d been following Aj for weeks when it finally hit me…</span>
-      <span class="h-big">That wasn’t Aj.</span>
-      <span class="h-big">It was his <span class="hl">AI clone</span>.</span>
-      <span class="h-kick">Okay… AI just got <span class="h-kick-em">SERIOUSLY</span> good.</span>
-    </h1>
-
-    <p class="lead">
-      His AI content Stack took him from 10K to 400K followers in under five months whilst he ran his companies and travelled the world. Now you can build your own in 40 days: AI agents that research, write and create in your voice while you live your actual life.
-    </p>
-
-    <div class="hero-ctas">
-      <a href="#pricing" class="btn big cta-btn">BUILD MY STACK →</a>
-      <a href="#machine" class="btn ghost">See what it builds</a>
-    </div>
-
-    <p class="lead" style="max-width:720px;margin-top:26px">
-      Aj's numbers, what his content machine actually built:
-    </p>
-
-    <div class="stats" style="margin-top:14px">
-      <a class="stat k" href="https://www.instagram.com/thevibefounder/" target="_blank" rel="noopener">
-        <b data-count="400" data-suffix="K">0</b>
-        <span>Instagram ↗</span>
-      </a>
-
-      <a class="stat" href="https://www.linkedin.com/in/yadavajay/" target="_blank" rel="noopener">
-        <b data-count="114" data-suffix="K">0</b>
-        <span>LinkedIn ↗</span>
-      </a>
-
-      <a class="stat" href="https://substack.com/@thevibefounder" target="_blank" rel="noopener">
-        <b data-count="45" data-suffix="K">0</b>
-        <span>Substack ↗</span>
-      </a>
-
-      <a class="stat k" href="https://www.linkedin.com/company/simplifiedhq/" target="_blank" rel="noopener">
-        <b data-count="30" data-suffix="M+">0</b>
-        <span>Simplified users · VC-backed ↗</span>
-      </a>
-    </div>
-
-    <p class="hero-sub">
-      RUNS ON ANY AI TOOL · NO CODE · DOORS CLOSE OCT 9
-    </p>
-  </div>
-</header>
-
-
-
-<!-- ============ FILMING GRIND ============ -->
-<section>
-  <div class="wrap narrow">
-    <span class="eyebrow">The filming grind</span>
-
-    <div class="story">
-      <svg class="story-spine" viewBox="0 0 24 100" preserveAspectRatio="none" aria-hidden="true">
-        <path class="track" d="M12 0 L 12 100"/>
-        <path class="prog" pathLength="1" d="M12 0 L 12 100"/>
-      </svg>
-
-      <div class="story-group">
-        <p class="story-line">
-          Find the idea. Write the hook. Set up the phone.
-        </p>
-      </div>
-
-      <div class="story-group">
-        <p class="story-line p-emph">
-          <strong><span class="key">Fourteen takes and two hours of editing later, your 45-second video gets 200 views.</span></strong>
-        </p>
-      </div>
-
-      <div class="story-group">
-        <p class="story-line">
-          Then tomorrow, you do it all again.
-        </p>
-      </div>
-
-      <div class="story-group">
-        <p class="story-line p-emph">
-          <strong><span class="key">You don’t need more takes. You need a content system that does the hard work before you press record.</span></strong>
-        </p>
-      </div>
-
-
-    </div>
-  </div>
-</section>
-
-
-
-<!-- ============ REGISTRANT QUOTES ============ -->
-<section class="registrants">
-  <div class="wrap">
-    <h2>Sound familiar?</h2>
-
-    <div class="quotes">
-      <div class="quote">
-        <p>I know I should be posting, but I <b class="pain">never know what to say</b>.</p>
-      </div>
-
-      <div class="quote">
-        <p>Creating content <b class="pain">takes me hours</b> and still doesn’t feel like me.</p>
-      </div>
-
-      <div class="quote">
-        <p>I have the expertise. I just <b class="pain">don’t have the system</b>.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- ============ 02 WHY NOW ============ -->
-<section>
-  <div class="wrap">
-    <div class="why-split">
-      <div>
-        <span class="eyebrow">02 / Why now</span>
-        <h2 class="sec-h">Attention is the new equity.</h2>
-        <div class="pull">
-          Every builder needs an audience. Every company needs customers. Every creator needs 
-          <span class="hl">attention that converts.</span>
-        </div>
-        <p class="why-cost">
-          The cost of waiting is higher than ever. The people building an audience today will own the attention, trust, and opportunities of tomorrow.
-        </p>
-      </div>
-      <figure class="story-figure">
-        <img src="ella-ajay-studio-3.jpg" alt="Ella and Aj recording together in the podcast studio" loading="lazy" />
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 03 THE STORY ============ -->
-<section>
-  <div class="wrap narrow">
-    <span class="eyebrow">03 / How this started</span>
-    <h2 class="sec-h">I didn't know I was watching an AI clone.</h2>
-    <div class="story">
-      <svg class="story-spine" viewBox="0 0 24 100" preserveAspectRatio="none" aria-hidden="true">
-        <path class="track" d="M12 0 L 12 100"/>
-        <path class="prog" pathLength="1" d="M12 0 L 12 100"/>
-      </svg>
-
-      <div class="story-group">
-        <p class="story-line">When I found Aj on Instagram, his content felt original and completely human.</p>
-        <p class="story-line p-emph">But you know what made my jaw drop?</p>
-      </div>
-
-      <div class="story-group">
-        <p class="story-line">I discovered much of it was created by an <span class="key">AI system trained on his voice and expertise</span> while he ran his companies and grew his following organically.</p>
-      </div>
-
-      <div class="story-group">
-        <p class="story-line">I invited him onto the Time Rich podcast to learn how it worked. By the end of our conversation, one thing was clear: other founders needed a way to build this for themselves.</p>
-        <p class="story-line p-emph">So we joined forces to help you build your own.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ 08 WHO'S TEACHING ============ -->
-<section class="instructors-section">
-  <div class="wrap narrow">
-        <span class="eyebrow">MEET Aj + ELLA</span>
-        <h2 class="sec-h">Aka Builders turned Creators</h2>
-      
-        <div class="profiles-grid">
-          <div class="profile-card">
-            <img src="ajay.jpg" alt="Aj Yadav" class="profile-photo">
-          <div class="profile-content">
-        <div class="profile-name">Aj Yadav</div>
-        <div class="profile-credentials">AKA "THE VIBE FOUNDER" · FORBES 30 UNDER 30 · 3X FOUNDER · BACKED BY KHOSLA + CRAFT</div>
-        <p class="profile-bio">
-          Aj built venture-backed AI companies before creating his own AI content machine. He grew from 10K to 400K followers in under 5 months by building a system that researches, writes, and produces content in his voice.
-        </p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/yadavajay/" aria-label="Aj on LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
-          <a href="https://instagram.com/thevibefounder" aria-label="Aj on Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63 19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
-        </div>
-          </div>
-      </div>
-
-      <div class="profile-card">
-        <img src="ella.jpg" alt="Ella Molony Cook" class="profile-photo">
-        <div class="profile-content">
-          <div class="profile-name">Ella Molony Cook</div>
-          <div class="profile-credentials">4X FOUNDER · 1 EXIT 2021 · EARLY INVESTOR IN ANTHROPIC · AI SYSTEM ARCHITECT</div>
-          <p class="profile-bio">
-            Ella is a 4X founder, AI systems architect, and early investor in Anthropic. She built companies, studied how AI changes the way we work, and teamed up with Aj to make world-class AI education accessible.
-          </p>
-          <div class="socials">
-          <a href="https://www.linkedin.com/in/ellamolonycook" aria-label="Ella on LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
-          <a href="https://www.instagram.com/timerich.ai/" aria-label="Time Rich on Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63 19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
-        </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ---------- VIKA SECTION ---------- -->
-<section class="vika section">
-  <div class="wrap">
-    <span class="eyebrow">THE GUEST SPEAKER · ViKA</span>
-
-    <h2 class="vika-hook">
-      Your machine can write.
-      <span class="key">It can't decide what you stand for.</span>
-    </h2>
-
-    <div class="vika-grid">
-    
-      <div class="vika-photo">
-        <img src="vika.png" alt="ViKA Victoria" loading="lazy">
-      </div>
-    
-      <div class="vika-content">
-        <h3>THE STORY ONLY YOU CAN TELL · with ViKA Victoria</h3>
-      
-        <span class="cred">
-          ViKA Victoria · Narrative Architect
-          FORMER RECORD-BREAKING NEW YORK AD EXECUTIVE ·
-          2× MONTH STORYSLAM CHAMPION ·
-          GLOBAL KEYNOTE SPEAKER
-        </span>
-
-        <p>
-          ViKA helps you turn your beliefs, expertise and stories into a clear point of view, so every AI agent can create content that sounds like you and gives people a reason to listen.
-        </p>
-
-      </div>
-    
-    </div>
-
-
-  </div>
-</section>
-
-
-
-<!-- ============ 08b PROOF / TESTIMONIALS ============ -->
-<section id="proof">
-  <div class="wrap">
-    <div class="narrow">
-      <span class="eyebrow">The receipts</span>
-      <h2 class="sec-h">Faceless Growth. The numbers don't lie.</h2>
-    </div>
-
-    <div class="proof-carousel">
-     <button type="button" class="proof-nav prev" id="proof-prev" aria-label="Previous screenshots">&#8249;</button>
-     <button type="button" class="proof-nav next" id="proof-next" aria-label="Next screenshots">&#8250;</button>
-     <div class="proof-rail" id="proof-rail">
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/reels-top-grid.jpg" aria-label="Enlarge: top performing reels">
-          <img src="proof/reels-top-grid.jpg" width="853" height="1600" loading="lazy" decoding="async"
-               alt="Instagram top reels grid showing view counts of 2.5M, 2.2M, 2M, 1.9M, 1.8M, 1.7M, 1.6M, 1.2M, 1M and 951K" />
-        </button>
-        <figcaption><b>2.5M</b> top reel · 11 posts over 950K</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/post-233k-views.jpg" aria-label="Enlarge: post insights, 233,758 views">
-          <img src="proof/post-233k-views.jpg" width="1320" height="1547" loading="lazy" decoding="async"
-               alt="Instagram post insights showing 233,758 views, 3K likes, 156 comments and 2.5K shares" />
-        </button>
-        <figcaption><b>233,758</b> views · 2.5K shares</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/reel-118k-likes.jpg" aria-label="Enlarge: reel insights, 118K likes">
-          <img src="proof/reel-118k-likes.jpg" width="1320" height="1207" loading="lazy" decoding="async"
-               alt="Instagram reel insights showing 118K likes, 27.8K comments, 71K shares and 53.7K saves" />
-        </button>
-        <figcaption><b>118K</b> likes · 71K shares</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/reel-120k-saves.jpg" aria-label="Enlarge: reel insights, 120K saves">
-          <img src="proof/reel-120k-saves.jpg" width="1320" height="1209" loading="lazy" decoding="async"
-               alt="Instagram reel insights showing 68.7K likes, 61.2K comments, 68.4K shares and 120K saves" />
-        </button>
-        <figcaption><b>120K</b> saves · 61.2K comments</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/post-86k-views.jpg" aria-label="Enlarge: post insights, 86,706 views">
-          <img src="proof/post-86k-views.jpg" width="1320" height="1591" loading="lazy" decoding="async"
-               alt="Instagram post insights showing 86,706 views and 36,170 viewers" />
-        </button>
-        <figcaption><b>86,706</b> views · 36,170 viewers</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/post-79k-views.jpg" aria-label="Enlarge: post insights, 79,718 views">
-          <img src="proof/post-79k-views.jpg" width="1320" height="1576" loading="lazy" decoding="async"
-               alt="Instagram post insights showing 79,718 views and 33,428 viewers" />
-        </button>
-        <figcaption><b>79,718</b> views · 33,428 viewers</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/post-68k-views.jpg" aria-label="Enlarge: post insights, 68,313 views">
-          <img src="proof/post-68k-views.jpg" width="1315" height="1600" loading="lazy" decoding="async"
-               alt="Instagram post insights showing 68,313 views and 28,913 viewers" />
-        </button>
-        <figcaption><b>68,313</b> views · 28,913 viewers</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/post-58k-views.jpg" aria-label="Enlarge: post insights, 58,153 views">
-          <img src="proof/post-58k-views.jpg" width="1320" height="1597" loading="lazy" decoding="async"
-               alt="Instagram post insights showing 58,153 views and 27,475 viewers" />
-        </button>
-        <figcaption><b>58,153</b> views · 27,475 viewers</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/account-ai-droplets.jpg" aria-label="Enlarge: ai.droplets account, 290.7K views in 30 days">
-          <img src="proof/account-ai-droplets.jpg" width="1320" height="1169" loading="lazy" decoding="async"
-               alt="Instagram profile ai.droplets showing 5,413 followers and 290.7K views in the last 30 days" />
-        </button>
-        <figcaption><b>290.7K</b> views in 30 days · a second account, same machine</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/account-ai-hardware.jpg" aria-label="Enlarge: ai.hardware account, 101K views in 30 days">
-          <img src="proof/account-ai-hardware.jpg" width="1320" height="1235" loading="lazy" decoding="async"
-               alt="Instagram profile ai.hardware showing 478 followers and 101.0K views in the last 30 days" />
-        </button>
-        <figcaption><b>101K</b> views in 30 days · off 478 followers</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/feed-fable5.jpg" aria-label="Enlarge: feed post with 3,082 likes">
-          <img src="proof/feed-fable5.jpg" width="1006" height="1600" loading="lazy" decoding="async"
-               alt="Instagram feed post from thevibefounder with 3,082 likes, 156 comments, 85 shares and 2,555 sends" />
-        </button>
-        <figcaption><b>3,082</b> likes · 2,555 sends</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/feed-opus5-games.jpg" aria-label="Enlarge: feed post with 1,016 likes">
-          <img src="proof/feed-opus5-games.jpg" width="974" height="1600" loading="lazy" decoding="async"
-               alt="Instagram feed post from thevibefounder with 1,016 likes, 282 comments and 529 sends" />
-        </button>
-        <figcaption><b>1,016</b> likes · 282 comments</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/feed-kimi-k3.jpg" aria-label="Enlarge: feed post with 730 likes">
-          <img src="proof/feed-kimi-k3.jpg" width="965" height="1600" loading="lazy" decoding="async"
-               alt="Instagram feed post from thevibefounder with 730 likes, 10 comments and 129 sends" />
-        </button>
-        <figcaption><b>730</b> likes · 129 sends</figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button type="button" class="shot-open" data-full="proof/feed-safety-test.jpg" aria-label="Enlarge: feed post with 638 likes">
-          <img src="proof/feed-safety-test.jpg" width="992" height="1600" loading="lazy" decoding="async"
-               alt="Instagram feed post from thevibefounder with 638 likes, 5 comments and 122 sends" />
-        </button>
-        <figcaption><b>638</b> likes · 122 sends</figcaption>
-      </figure>
-
-     </div>
-    </div>
-
-    <p class="proof-note">INSTAGRAM ANALYTICS · @THEVIBEFOUNDER AND SPIN-OFF ACCOUNTS · SCREENSHOTS UNEDITED · AUG 2026</p>
-  </div>
-</section>
-
-<!-- lightbox for the proof screenshots -->
-<div class="lightbox" id="lightbox" hidden>
-  <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
-  <img class="lightbox-img" id="lightbox-img" src="" alt="" />
-</div>
-
-<!-- FAQ answers open in this card instead of expanding inline -->
-<div class="faq-modal" id="faq-modal" hidden>
-  <div class="faq-modal-card" role="dialog" aria-modal="true" aria-labelledby="faq-modal-q">
-    <button type="button" class="faq-modal-close" aria-label="Close">&times;</button>
-    <h3 class="faq-modal-q" id="faq-modal-q"></h3>
-    <div class="faq-modal-a"></div>
-  </div>
-</div>
-
-<!-- ============ 04 THE CHALLENGE / HOW IT WORKS ============ -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">04 / The 40 Day Challenge</span>
-    <h2 class="sec-h">Live workshops + on-demand.</h2>
-    <p class="lead" style="max-width:720px;margin-top:22px">
-      A course you watch someday is a folder you never open. A challenge has a start line, a finish line, and people building alongside you. This is 40 days of building the machine, together.
-    </p>
-    <p style="max-width:720px;margin-top:18px">Your evenings are already full, so we won't add another weekly Zoom call to your calendar. Here's what we're doing instead:</p>
-    <div class="grid4">
-      <div class="card"><span class="tag">ON-DEMAND</span><h3>Pre-recorded modules</h3><p>Watch when you want. Pause, rewind, build alongside. 2x speed if you like.</p></div>
-      <div class="card"><span class="tag">6 MONTHS</span><h3>Access to Mon 12 April 2027</h3><p>Enough time to build it properly. Not so long you park it in the "someday" folder.</p></div>
-      <div class="card"><span class="tag">LIVE BUILDS</span><h3>4 Live Calls</h3><p>A Day 1 kickoff to start strong and a Day 40 finale to keep your machine running. Live Q&amp;A with Aj. Plus the bonus session with ViKa, our Narrative Architect.</p></div>
-      <div class="card"><span class="tag">YOUR PACE</span><h3>The machine runs at its pace</h3><p>You build yours. You get your evenings back. That's the whole point.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ THE CONTENT MACHINE ============ -->
-<section id="machine">
-  <div class="wrap">
-
-    <span class="eyebrow">THE CONTENT STACK</span>
-
-    <h2 class="sec-h">
-      One idea goes in.
-      <span class="key">A week of content comes out.</span>
-    </h2>
-
-    <p class="lead" style="max-width:720px;margin-top:22px">
-      This is the system Aj built to turn expertise into consistent content.
-      Your ideas, voice, and positioning become the foundation every AI agent runs on.
-    </p>
-
-    <div class="term">
-      <div class="term-top">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="term-title">CONTENT_MACHINE · RUNNING</span>
-      </div>
-      <div class="term-body" id="term"></div>
-    </div>
-
-    <div class="machine">
-      <div class="m-row">
-
-        <div class="m-io">
-          ONE IDEA<br>IN
-        </div>
-
-        <div class="m-arrow">→</div>
-
-        <div class="m-core">
-
-          <div class="m-brain">
-            THE BRAIN · YOUR CONTENT OS
-          </div>
-
-          <div class="m-grid">
-
-            <div class="m-agent">
-              Brand Guidelines
-              <em>Your visual and verbal identity, encoded once.</em>
-            </div>
-
-            <div class="m-agent">
-              Research Agent
-              <em>Finds what's winning in your niche before it saturates.</em>
-            </div>
-
-            <div class="m-agent">
-              Viral Hook Writer
-              <em>Scroll-stopping hooks for every post.</em>
-            </div>
-
-            <div class="m-agent">
-              Caption Writer
-              <em>Runs on every post you publish.</em>
-            </div>
-
-            <div class="m-agent vip">
-              LinkedIn Writer
-              <em>Founder posts, not motivational posters.</em>
-            </div>
-
-            <div class="m-agent vip">
-              Substack Writer
-              <em>Humanised newsletters from your ideas.</em>
-            </div>
-
-            <div class="m-agent vip">
-              Carousel Builder
-              <em>The format doing the heavy lifting on Instagram.</em>
-            </div>
-
-            <div class="m-agent vip">
-              Infographic Builder
-              <em>Ideas and data turned into shareable visuals.</em>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="m-arrow">→</div>
-
-        <div class="m-io">
-          A WEEK OF<br>CONTENT OUT
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============ 05b VALUE STACK ============ -->
-<section id="value">
-  <div class="wrap">
-    <span class="eyebrow">What you're actually getting</span>
-    <h2 class="sec-h">Your entire AI content team — for dramatically less than six figures.</h2>
-    <!-- <p class="lead" style="max-width:720px;margin-top:22px">Let's peel back what each piece would cost to hire out. Then look at what you pay.</p> -->
-        <div class="vgroups">
-      <div class="vgroup">
-        <span class="vg-n">01</span>
-        <h3>Your foundation</h3>
-        <p>Content OS, brand guidelines and a clear 40-day build plan.</p>
-        <div class="vg-val"><span>Estimated value</span><b>$12,700</b></div>
-      </div>
-      <div class="vgroup">
-        <span class="vg-n">02</span>
-        <h3>Your writing team</h3>
-        <p>Research, hooks, captions, LinkedIn posts and Substack newsletters, in your voice.</p>
-        <div class="vg-val"><span>Estimated value</span><b>$9,200</b></div>
-      </div>
-      <div class="vgroup">
-        <span class="vg-n">03</span>
-        <h3>Your visual team</h3>
-        <p>Carousels, infographics and a complete video pipeline.</p>
-        <div class="vg-val"><span>Estimated value</span><b>$14,300</b></div>
-      </div>
-      <div class="vgroup">
-        <span class="vg-n">04</span>
-        <h3>Your support</h3>
-        <p>Four live calls, step-by-step training and a private cohort building alongside you.</p>
-        <div class="vg-val"><span>Estimated value</span><b>$9,000</b></div>
-      </div>
-    </div>
-
-    <div class="vbonus">
-      <span class="btag">BONUS</span>
-      <p>Your own voice tool and 50+ built-in marketing skills.</p>
-      <b>$1,490</b>
-    </div>
-
-    <button type="button" class="vstack-toggle" id="vstack-toggle"
-            aria-expanded="false" aria-controls="vstack"
-            data-more="See everything included" data-less="Hide the full list">
-      <span class="vt-label">See everything included</span>
-      <span class="vt-caret" aria-hidden="true"></span>
-    </button>
-
-<div class="vstack" id="vstack">
-      <div class="vrow"><div class="vlabel">The Content OS + Brand Guidelines<em>your knowledge and voice, encoded once, plus a full visual and verbal identity</em></div><div class="vval">$8,500</div></div>
-      <div class="vrow"><div class="vlabel">Content Planner<em>decides what gets built next, so nothing sits half finished</em></div><div class="vval">$1,200</div></div>
-      <div class="vrow"><div class="vlabel">Research Agent<em>finds what is working in your niche while it still works</em></div><div class="vval">$2,000</div></div>
-      <div class="vrow"><div class="vlabel">Viral Hook + Caption Writers<em>the line that earns the read, and the caption that finishes the job</em></div><div class="vval">$2,400</div></div>
-      <div class="vrow"><div class="vlabel">LinkedIn + Substack Writers<em>founder posts and essays people actually finish, in your voice, not a bot&rsquo;s</em></div><div class="vval">$4,800</div></div>
-      <div class="vrow"><div class="vlabel">Carousel + Infographic Builders<em>the formats still doing the heavy lifting, built in minutes</em></div><div class="vval">$3,300</div></div>
-      <div class="vrow"><div class="vlabel">The video pipeline<em>ClipScout, VidClip, Pixels, the Faceless Video Engine and the Reel Builder</em></div><div class="vval">$11,000</div></div>
-      <div class="vrow"><div class="vlabel">The 40 Day Build<em>the build order Aj reverse engineered over 18 months, handed to you day by day</em></div><div class="vval">$3,000</div></div>
-      <div class="vrow"><div class="vlabel">The Cohort<em>the private room where nobody builds this alone, for the full 40 days</em></div><div class="vval">$1,000</div></div>
-      <div class="vrow bonus"><div class="vlabel"><span class="btag">BONUS</span>Your own Whisper Flow-style voice tool<em>talk your content into existence with <a href="https://usevoice.xyz" target="_blank" rel="noopener">UseVoice.xyz</a> - yours to keep</em></div><div class="vval">$490</div></div>
-      <div class="vrow bonus"><div class="vlabel"><span class="btag">BONUS</span>50+ marketing skills<em>a full growth playbook wired straight into your machine</em></div><div class="vval">$1,000</div></div>
-      <div class="vrow"><div class="vlabel">4 live calls<em>kickoff + closing call with Ella, a Q&amp;A with Aj himself, plus a bonus session with ViKa</em></div><div class="vval">$7,000</div></div>
-      <div class="vrow"><div class="vlabel">6 months access<em>build it properly, and never alone</em></div><div class="vval">$1,000</div></div>
-    </div>
-
-    <p class="vnote">Estimated equivalent cost if each system were commissioned separately. You’re building the systems yourself during the challenge.</p>
-
-    <div class="vtotal">
-      <span>Total real value</span>
-      <b><span class="vtotal-was">$46,690</span> <a href="https://agentlabs.thrivecart.com/the-essentials/" style="color:inherit;text-decoration:underline;text-decoration-color:var(--lime);text-underline-offset:3px">pay from $197 →</a></b>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ============ 08 WHAT YOU'RE ACTUALLY GETTING ============ -->
-
-<section id="pricing">
-
-  <div class="wrap">
-
-    <div class="money-note">
-
-      Choose the level that fits, upgrade any time inside your six months
-      by paying the difference.
-
-    </div>
-
-
-
-    <div class="tiers">
-
-      <!-- THE ESSENTIALS -->
-      <div class="tier">
-        <span class="t-name">THE ESSENTIALS</span>
-
-        <div class="t-price">
-          <span id="ess-price">$197</span>
-          <span class="t-was" id="ess-was">$297</span>
-        </div>
-
-        <!-- <span class="t-deadline" id="ess-deadline">
-          $197 now · then $297
-        </span> -->
-
-        <p class="t-sub">
-          First it thinks. Your brain, on tap.
-        </p>
-
-        <a href="https://agentlabs.thrivecart.com/the-essentials/"
-           class="btn ghost cta-btn"
-           style="text-align:center"
-           id="ess-btn"
-           target="_blank"
-           rel="noopener">
-          START WITH THE ESSENTIALS · $197
-        </a>
-
-        <ul>
-          <li>Content Operating System
-            <em>your knowledge and voice, encoded once, then used by everything below</em>
-          </li>
-
-          <li>Brand Guidelines Process
-            <em>a full visual and verbal identity, built in an afternoon, not a quarter</em>
-          </li>
-
-          <li>Content Planner
-            <em>decides what gets built next, so nothing sits half finished</em>
-          </li>
-
-          <li>Research Agent
-            <em>finds what is working in your niche while it still works</em>
-          </li>
-
-          <li>Viral Hook Writer
-            <em>writes the line that decides whether the rest gets read</em>
-          </li>
-
-          <li>Viral Caption Writer
-            <em>finishes the job the hook started, on every post you publish</em>
-          </li>
-
-          <li>The 40 Day Build
-            <em>the build order Aj reverse engineered over 18 months, handed to you day by day</em>
-          </li>
-
-          <li>The Cohort
-            <em>the private room where nobody builds this alone, for the full 40 days</em>
-          </li>
-
-          <li>All 4 live calls
-            <em>four live rooms where it gets built with you: The Download, The Story Only You Can Tell, The AI Engine, Ship It</em>
-          </li>
-
-          <li>Bonus · UseVoice.xyz
-            <em>talk instead of type, and the tool stays yours after day 40</em>
-          </li>
-
-          <li>Six months access
-            <em>long enough to build it properly, with every replay, the whole time</em>
-          </li>
-
-          <li class="mut">Long-form engines · The Edit and up</li>
-          <li class="mut">Carousel and Infographic Builders · The Edit and up</li>
-          <li class="mut">Video pipeline · The Studio only</li>
-        </ul>
-      </div>
-
-
-      <!-- THE EDIT -->
-      <div class="tier featured">
-
-        <span class="badge" id="vip-badge">
-          PRICE INCREASING SOON
-        </span>
-
-        <span class="t-name">THE EDIT</span>
-
-        <div class="t-price">
-          <span id="vip-price">$395</span>
-          <span class="t-was" id="vip-was">$495</span>
-        </div>
-
-        <!-- <span class="t-deadline" id="vip-deadline">
-          $395 early-bird price · then $495
-        </span> -->
-
-        <p class="t-sub">
-          Now it writes. In your voice, at your volume.
-        </p>
-
-        <a href="https://agentlabs.thrivecart.com/the-edit/"
-           class="btn cta-btn"
-           style="text-align:center"
-           id="vip-btn"
-           target="_blank"
-           rel="noopener">
-          GET THE EDIT · $395 →
-        </a>
-
-
-        <ul>
-          <li>Everything in The Essentials</li>
-
-          <li>LinkedIn Ghost Writer
-            <em>posts that sound like a founder, not a motivational poster</em>
-          </li>
-
-          <li>Humanised Substack Writer
-            <em>essays people actually finish, in your voice, not a bot’s</em>
-          </li>
-
-          <li>Carousel Builder
-            <em>the format still doing the heavy lifting on Instagram, built in minutes</em>
-          </li>
-
-          <li>Infographic Builder
-            <em>turns your data into the posts people save and send to someone else</em>
-          </li>
-
-          <li>Bonus · 50+ marketing skills
-            <em>fifty growth plays, already wired into your machine</em>
-          </li>
-
-          <li class="mut">Video pipeline · The Studio only</li>
-        </ul>
-      </div>
-
-
-      <!-- THE STUDIO -->
-      <div class="tier studio" id="studio-card">
-
-        <span class="t-name">THE STUDIO</span>
-
-        <div class="t-price">
-          <span id="studio-price">$795</span>
-          <span class="t-was" id="studio-was">$995</span>
-        </div>
-
-        <!-- <span class="badge studio-badge" id="studio-deadline">
-          Founding price · Never comes back down
-        </span> -->
-
-        <p class="t-sub">
-          Now it films. With you nowhere near a camera.
-        </p>
-
-        <a href="https://agentlabs.thrivecart.com/the-studio/"
-          class="btn cta-btn studio-vip-btn"
-          id="studio-btn"
-          target="_blank"
-          rel="noopener">
-          GO STUDIO · $795 →
-        </a>
-
-        <div class="split-payment">
-          <span>or split it</span>
-          <a href="https://agentlabs.thrivecart.com/the-studio/" class="btn ghost" target="_blank" rel="noopener">2 payments of $415</a>
-          <small>First payment today, second in 30 days. Full access from the moment you join.</small>
-        </div>
-
-        <ul>
-          <li>Everything in The Essentials and The Edit</li>
-
-          <li>ClipScout
-            <em>finds the footage your story needs while you write the story</em>
-          </li>
-
-          <li>VidClip
-            <em>pulls the source video down whole and clean, ready to cut</em>
-          </li>
-
-          <li>Pixels
-            <em>reads every frame, so the machine knows what it is holding</em>
-          </li>
-
-          <li>Faceless Video Engine
-            <em>turns something you wrote into video, with you nowhere near a camera</em>
-          </li>
-
-          <li>Reel Builder
-            <em>cuts, captions and assembles it, finished, not a draft</em>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-    <p class="upgrade-note">
-      Start with The Essentials and upgrade at any point during your six-month access. You’ll simply pay the difference.
-    </p>
-
-
-
-  </div>
-
-</section>
-
-<!-- ============ THE GROWTH LAYER ============ -->
-<section>
-  <div class="wrap">
-
-    <span class="eyebrow">THE GROWTH LAYER</span>
-
-<h3 class="sec-h">
-  50+ marketing skills, wired into your machine.
-</h3>
-
-<p class="vskills-label">
-  The full growth playbook, built into your AI system.
-</p>
-
-<div class="vskills marquee-on">
-
-  <!-- Row 1 -->
-  <div class="vmarquee">
-    <div class="vtrack">
-      <span class="vchip">A/B Testing</span>
-      <span class="vchip">Ad Creative</span>
-      <span class="vchip">Ads</span>
-      <span class="vchip">AI SEO</span>
-      <span class="vchip">Analytics</span>
-      <span class="vchip">ASO</span>
-      <span class="vchip">Churn Prevention</span>
-      <span class="vchip">Co-Marketing</span>
-      <span class="vchip">Cold Email</span>
-      <span class="vchip">Community Marketing</span>
-      <span class="vchip">Competitor Profiling</span>
-      <span class="vchip">Competitor Analysis</span>
-      <span class="vchip">Content Strategy</span>
-      <span class="vchip">Copy Editing</span>
-      <span class="vchip">Copywriting</span>
-
-      <!-- Duplicate for seamless loop -->
-      <span class="vchip">A/B Testing</span>
-      <span class="vchip">Ad Creative</span>
-      <span class="vchip">Ads</span>
-      <span class="vchip">AI SEO</span>
-      <span class="vchip">Analytics</span>
-      <span class="vchip">ASO</span>
-      <span class="vchip">Churn Prevention</span>
-      <span class="vchip">Co-Marketing</span>
-      <span class="vchip">Cold Email</span>
-      <span class="vchip">Community Marketing</span>
-      <span class="vchip">Competitor Profiling</span>
-      <span class="vchip">Competitor Analysis</span>
-      <span class="vchip">Content Strategy</span>
-      <span class="vchip">Copy Editing</span>
-      <span class="vchip">Copywriting</span>
-    </div>
-  </div>
-
-  <!-- Row 2 -->
-  <div class="vmarquee">
-    <div class="vtrack rev">
-      <span class="vchip">CRO</span>
-      <span class="vchip">Customer Research</span>
-      <span class="vchip">Directory Submissions</span>
-      <span class="vchip">Email Marketing</span>
-      <span class="vchip">Free Tools</span>
-      <span class="vchip">Image Generation</span>
-      <span class="vchip">Launch Planning</span>
-      <span class="vchip">Lead Magnets</span>
-      <span class="vchip">Marketing Ideas</span>
-      <span class="vchip">Marketing Plan</span>
-      <span class="vchip">Marketing Psychology</span>
-      <span class="vchip">Offers</span>
-      <span class="vchip">Onboarding</span>
-      <span class="vchip">Paywalls</span>
-      <span class="vchip">Popups</span>
-      <span class="vchip">Pricing</span>
-      <span class="vchip">Product Marketing</span>
-      <span class="vchip">Programmatic SEO</span>
-      <span class="vchip">Prospecting</span>
-      <span class="vchip">Public Relations</span>
-      <span class="vchip">Referrals</span>
-      <span class="vchip">RevOps</span>
-      <span class="vchip">Sales Enablement</span>
-      <span class="vchip">Schema</span>
-      <span class="vchip">SEO Audit</span>
-      <span class="vchip">Signup Flows</span>
-      <span class="vchip">Site Architecture</span>
-      <span class="vchip">SMS</span>
-      <span class="vchip">Social</span>
-      <span class="vchip">Video</span>
-      <span class="vchip">Webinars</span>
-      <span class="vchip">Affiliate Programs</span>
-      <span class="vchip">Newsletter Growth</span>
-      <span class="vchip">TikTok Strategy</span>
-      <span class="vchip">Influencer Outreach</span>
-      <span class="vchip">Brand Voice</span>
-      <span class="vchip">Landing Pages</span>
-
-      <!-- Duplicate for seamless loop -->
-      <span class="vchip">CRO</span>
-      <span class="vchip">Customer Research</span>
-      <span class="vchip">Directory Submissions</span>
-      <span class="vchip">Email Marketing</span>
-      <span class="vchip">Free Tools</span>
-      <span class="vchip">Image Generation</span>
-      <span class="vchip">Launch Planning</span>
-      <span class="vchip">Lead Magnets</span>
-      <span class="vchip">Marketing Ideas</span>
-      <span class="vchip">Marketing Plan</span>
-      <span class="vchip">Marketing Psychology</span>
-      <span class="vchip">Offers</span>
-      <span class="vchip">Onboarding</span>
-      <span class="vchip">Paywalls</span>
-      <span class="vchip">Popups</span>
-      <span class="vchip">Pricing</span>
-      <span class="vchip">Product Marketing</span>
-      <span class="vchip">Programmatic SEO</span>
-      <span class="vchip">Prospecting</span>
-      <span class="vchip">Public Relations</span>
-      <span class="vchip">Referrals</span>
-      <span class="vchip">RevOps</span>
-      <span class="vchip">Sales Enablement</span>
-      <span class="vchip">Schema</span>
-      <span class="vchip">SEO Audit</span>
-      <span class="vchip">Signup Flows</span>
-      <span class="vchip">Site Architecture</span>
-      <span class="vchip">SMS</span>
-      <span class="vchip">Social</span>
-      <span class="vchip">Video</span>
-      <span class="vchip">Webinars</span>
-      <span class="vchip">Affiliate Programs</span>
-      <span class="vchip">Newsletter Growth</span>
-      <span class="vchip">TikTok Strategy</span>
-      <span class="vchip">Influencer Outreach</span>
-      <span class="vchip">Brand Voice</span>
-      <span class="vchip">Landing Pages</span>
-    </div>
-  </div>
-
-</div>
-
-  </div>
-</section>
-
-
-
-<!-- ============ 10 DATES ============ -->
-<section>
-  <div class="wrap">
-    <div class="dates-split">
-      <div class="narrow">
-        <span class="eyebrow">10 / The dates</span>
-        <h2 class="sec-h">Doors close once we hit capacity. Limited spots available.</h2>
-        <div class="dates">
-          <div class="date-row slam"><div class="dd">AT CAPACITY</div><div class="dt"><b>Doors fully close.</b> Limited spots available. Once we're in, we're in.</div></div>
-          <div class="date-row"><div class="dd">MON · OCT 12</div><div class="dt"><b>Day 1.</b> Live kickoff with Ella. Your access opens.</div></div>
-          <div class="date-row"><div class="dd">MID-CHALLENGE</div><div class="dt"><b>Live Q&amp;A with Aj.</b> Date announced inside the challenge. Bring your hardest build question.</div></div>
-          <div class="date-row"><div class="dd">DAY 40</div><div class="dt"><b>Live closing call with Ella.</b> Date announced inside the challenge, and your machine runs end to end.</div></div>
-        </div>
-        <p style="margin-top:30px;color:var(--muted)">If you're reading this before the doors close: you're early. Act like it.</p>
-      </div>
-      <figure class="story-figure">
-        <img src="ella-ajay-studio-2.jpg" alt="Ella Molony Cook and Aj Yadav in the studio" loading="lazy" />
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 11 FINAL CTA ============ -->
-<section class="final">
-  <div class="wrap">
-    <span class="eyebrow" style="text-align:center">11 / Decide</span>
-    <h2><span class="hl">Your content system starts here.</span></h2>
-    <p class="lead">Every week you create from scratch is another week your expertise stays harder to share.</p>
-    <p class="lead" style="margin-top:18px">Build the agents that turn what you know into content that converts attention.</p>
-    <div class="countdown" id="countdown">DOORS CLOSE FRI 9 OCT · WE BEGIN MON 12 OCT</div>
-    <a href="#pricing" class="btn big cta-btn">BUILD MY STACK →</a>
-    <p class="final-sub">Your expertise. Your voice. Your machine, running in 40 days.</p>
-  </div>
-</section>
-
-<!-- ============ FAQ (moved to bottom) ============ -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">06 / Questions you're already asking</span>
-    <h2 class="sec-h">Asked and answered.</h2>
-    <div class="faq">
-      <details><summary>Do I need to be technical?</summary><div class="a">
-        <p>No. If you can follow a video and copy-paste, you can build this.</p>
-        <p>Everything runs inside an AI tool you already know how to open. No code. No APIs to wrestle with. Nothing to install.</p>
-        <p>The people who struggle with this aren't the non-technical ones. They're the ones who never start.</p>
-      </div></details>
-      <details><summary>Are there live calls?</summary><div class="a">
-        <p>Yes. Four of them, and they're the spine of the 40 days.</p>
-        <p><b>The Download</b> &middot; Day 1, Monday 12 October, with Ella. Your access opens and you lay the foundation live, so you finish the call with your Content Operating System already standing rather than a folder of videos to get around to.</p>
-        <p><b>The Story Only You Can Tell</b> &middot; with ViKa, our Narrative Architect. The session that makes the machine sound like you: your positioning, your stories, the things nobody else can say. This is the difference between content that's yours and content that's merely correct.</p>
-        <p><b>The AI Engine</b> &middot; an open Q&amp;A with Aj. Date announced inside the challenge. Bring your hardest build question and get it answered by the person whose agents you're running.</p>
-        <p><b>Ship It</b> &middot; Day 40, with Ella. Date announced inside the challenge. Your machine runs end to end and you leave with it publishing.</p>
-        <p>What there isn't is a weekly cohort call, because your evenings are already full. Everything else is pre-recorded, every live call is recorded too, and all of it sits in your portal for 6 months.</p>
-      </div></details>
-      <details><summary>What tools do I need?</summary><div class="a">
-        <p>Any capable AI tool. That's the whole stack.</p>
-        <p>We set it up with you on day one of the challenge, step by step. If you're already paying for a subscription, you almost certainly already have what you need.</p>
-      </div></details>
-      <details><summary>Will the content actually sound like me?</summary><div class="a">
-        <p>That's the whole foundation, and it's the first thing you build.</p>
-        <p>Before a single agent writes anything, you build your Content Operating System: your knowledge, your stories, your positioning, your tone of voice, encoded once. Every agent in your stack reads from that file.</p>
-        <p>Feed it a blurry position and you'll get blurry content. Feed it you, and it sounds like you.</p>
-      </div></details>
-      <details><summary>Do I have to be on camera?</summary><div class="a">
-        <p>No. That's rather the point.</p>
-        <p>Aj built a 400K audience without being the person filming himself twenty times to get one usable take. Carousels, long form, infographics, and in The Studio a full faceless video pipeline that turns an article into a finished reel with you nowhere near a lens.</p>
-        <p>If you love filming but hate the edit, the machine takes the edit. If you never want a lens near you, it takes that too.</p>
-      </div></details>
-      <details><summary>What if I'm starting from zero followers?</summary><div class="a">
-        <p>Fine, and arguably easier. There's no old positioning to unpick.</p>
-        <p>You build from the foundation up, with a Research Agent showing you what's already connecting with people in your niche. You start with evidence instead of guesswork.</p>
-        <p>Aj started at 10K. The system is what moved the number.</p>
-      </div></details>
-      <details><summary>How much time does this take to build?</summary><div class="a">
-        <p>More than a weekend, and that's deliberate.</p>
-        <p>Aj developed the original system over 18 months. You start from the agents he's already built and adapt them to your business, which is why this is 40 days and not 18 months.</p>
-        <p>Realistically: a few focused hours in the first week to lay the foundation, then shorter sessions as you add each agent. You have 6 months of access, so you can build at a pace that fits a real calendar.</p>
-      </div></details>
-      <details><summary>How long do I have access?</summary><div class="a">
-        <p>6 months from Day 1: Monday 12 October 2026 to Monday 12 April 2027, whichever day you buy. Early bird or last minute, everyone gets the same window and the same end date.</p>
-        <p>That includes every live call recording and every update we make inside it.</p>
-        <p>What you build is yours permanently. The agents live in your own AI tool, on your account. You're not renting them from us. Build it once in that window and the machine is yours to run forever.</p>
-      </div></details>
-      <details><summary>Which tier is right for me?</summary><div class="a">
-        <p><b>The Essentials</b> is the foundation: your Content Operating System, brand guidelines, content planner, Research Agent, and the hook and caption writers. Everything else plugs into it.</p>
-        <p><b>The Edit</b> adds the publishing arm: LinkedIn, Substack, carousels, infographics and 50+ marketing skills. This is the one to take if you intend to actually post.</p>
-        <p><b>The Studio</b> adds the video pipeline Aj built for his own channels: footage sourcing, the faceless video engine and the reel builder. Still no camera.</p>
-        <p>All three include all four live calls and 6 months of access. Want Ella building it with you one to one? That's the <a href="#vip-coaching">VIP tier at the bottom of this page</a>.</p>
-      </div></details>
-      <details><summary>What is the refund policy?</summary><div class="a">
-        <p>All sales are final. The Content Stack is a fully digital product and you get the complete agent stack the moment your portal opens, so there are no refunds, part-refunds, credits, or transfers.</p>
-        <p>We know that is a firm line, so here is the reasoning: everything you are buying is delivered at once and cannot be handed back. The founding price reflects that.</p>
-        <p>One exception, and it is a legal one. If you are buying from the EU, the EEA or the UK you have a statutory 14 day right to withdraw, and nothing in our terms takes that away from you. Because the portal does not open until 12 October, that right is fully live for anyone who buys before then. See the next question.</p>
-        <p>If something is not working for you, email <a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a>.</p>
-      </div></details>
-      <details><summary>I'm in the EU, the EEA or the UK — how does the 14 day withdrawal right work?</summary><div class="a">
-        <p>If you're buying as a consumer from the EU, the EEA or the UK, you have a statutory 14 day right to withdraw, running from the day you buy. It's your right, not our policy, and nothing in our terms removes or shortens it.</p>
-        <p>The portal doesn't open until Monday 12 October. Nothing is supplied to you before then, so if you buy before that date your full 14 days sits there untouched.</p>
-        <p>To use it, email <a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a> inside the 14 days and say clearly that you're withdrawing. No reason needed. We refund everything you paid, to the same card, within 14 days of hearing from you.</p>
-        <p>We're not going to make you sign that right away to get in. There's no box to tick and no waiver at checkout. The 14 days runs its full course whether or not you've been inside the portal, and if you withdraw we refund the lot with nothing held back. Full detail in Sections 6.6 to 6.14 of the <a href="/terms/">Terms</a>.</p>
-      </div></details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 12 THE VIP TIER · 1:1 WITH ELLA ============ -->
-<section class="vip-band" id="vip-coaching">
-  <div class="wrap">
-    <div class="vip-intro">
-      <img class="vip-photo" src="ella-vip.jpg" alt="Ella Molony Cook, relaxed and seated — The Agent Labs" loading="lazy" />
-      <div class="vip-copy">
-        <span class="eyebrow vip-eyebrow">The VIP tier · 1:1 with Ella</span>
-        <h2 class="sec-h" style="margin-top:12px">Want to go ALL IN - build your AI Operating System?</h2>
-        <p class="lead">The deeper dive transforms your business from good to undeniably efficient. Ella begins with three goals in mind: <span style="color:var(--lime);text-shadow:0 0 18px rgba(212,255,79,.45)">growing revenue, scaling, and AI operations</span>. By diagnosing the income streams you're sitting on, she wires every department - content, ops, research, sales - into one custom integrated AI system. Working side by side with you, every problem holds an AI solution.</p>
-        <p class="statement typeline vip-statement">The result? Grow faster than you thought possible, with the system to scale.</p>
-      </div>
-    </div>
-    <div class="vip-tiers">
-      <div class="vip-card">
-        <span class="vname">6-Week · 1:1 AI System Coaching</span>
-        <div class="vprice">$4,950</div>
-        <p>Six weeks, one to one, building and shipping the core agents that take your highest-cost busywork off your plate for good - the full AI Content Machine program included.</p>
-      </div>
-      <div class="vip-card">
-        <span class="vname">12-Week · 1:1 COO AI Coaching</span>
-        <div class="vprice">$14,950</div>
-        <p>Twelve weeks to wire your content, ops and research into one COO-level system you own and run without us - the full AI Content Machine program included.</p>
-      </div>
-    </div>
-    <p class="vip-scarcity"><span class="hl">Only 4 spots available.</span> Don't sleep on this if you want to supercharge your AI system + strategy.</p>
-    <a href="https://timerich.ai/coaching/apply/" class="btn big vip-apply-btn">Apply for 1:1 coaching →</a>
-    <p class="vip-apply-sub">BY APPLICATION · ELLA READS AND REPLIES TO EVERY ONE PERSONALLY</p>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <p class="foot-brand">THE CONTENT STACK · GROWTH HAUS LLC DBA THE AGENT LABS · 2026</p>
-    <nav class="foot-links" aria-label="Footer">
-      <a href="mailto:support@theagentlabs.ai">support@theagentlabs.ai</a>
-      <a href="/terms/">Terms</a>
-      <a href="https://timerich.ai/challenge/privacy.html">Privacy</a>
-      <a href="https://www.linkedin.com/in/ellamolonycook/" target="_blank" rel="noopener">LinkedIn</a>
-    </nav>
-  </div>
-</footer>
-
-<!-- back to top -->
-<button type="button" class="to-top" id="to-top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5 5 12.5l1.4 1.4L11 9.3V19h2V9.3l4.6 4.6L19 12.5z"/></svg>
-</button>
-
-<script src="js/script.js"></script>
 </body>
 </html>
